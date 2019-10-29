@@ -29,7 +29,7 @@ public class PhonyPlayerController : MonoBehaviour
     private void Update()
     {
         print(phony_body.velocity.magnitude);
-
+        phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
     }
 
     void FixedUpdate()
