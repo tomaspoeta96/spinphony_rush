@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhonyPlayerController : MonoBehaviour
-{
+public class PhonyPlayerController : MonoBehaviour {
     public float speed;
     public float maxSpeed;
     private Rigidbody phony_body;
@@ -13,71 +12,69 @@ public class PhonyPlayerController : MonoBehaviour
     private int pushSeconds;
     private float pushSpeed;
     private bool onPush = false;
+
+    private KeysTable keys = new KeysTable();
+
     //====no estan en uso====
     /*float timeZeroToMax = 2.5f;
     float accelerationRate;
     float forwardVelocity;
     float backwardVelocity;
     float breakFactor = 3f;*/
-    void Start()
-    {
+
+    private KeyCode right;
+    private KeyCode left;
+    private KeyCode up;
+    private KeyCode down;
+
+    void Awake() {
+        right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
+        left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
+        up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
+        down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
+    }
+
+    void Start() {
         phony_body = GetComponent<Rigidbody>();
         //backwardVelocity = 0f;
         //forwardVelocity = 0f;
     }
 
-    private void Update()
-    {
+    private void Update() {
         print(phony_body.velocity.magnitude);
         phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
     }
 
-    void FixedUpdate()
-    {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+    void FixedUpdate() {
+        if (!onPush) {
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-        if (!onPush)
-        {
-            phony_body.AddForce(movement * speed);
+            addMovement(speed);
             phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed);
-            if (Input.GetKey(KeyCode.Space))
-            {
+            if (Input.GetKey(KeyCode.Space)) {
                 timer += Time.deltaTime;
                 seconds = (int)timer % 60;
-                if (seconds >= 3)
-                {
-                    seconds = 3;
-                }
+                if (seconds >= 3) seconds = 3;
             }
-            else if(Input.GetKeyUp(KeyCode.Space))
-            {
-                onPush = true;
-            }
+            else if(Input.GetKeyUp(KeyCode.Space)) onPush = true;
         }
 
-        else if (onPush)
-        {
+        else if (onPush) {
             
             pushTimer += Time.deltaTime;
             pushSeconds = (int)pushTimer % 60;
-            if (pushSeconds >= 2)
-            {
+            if (pushSeconds >= 2) {
                 seconds = 0;
                 phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed);
                 onPush = false;
                 timer = 0f;
                 pushTimer = 0f;
                 pushSeconds = 0;
-                phony_body.AddForce(movement * speed);
+                addMovement(speed);
             }
-            else
-            {
+            else {
                 phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed + 10);
                 pushSpeed = speed + (10f*(seconds/3));
-                phony_body.AddForce(movement * pushSpeed);
+                addMovement(pushSpeed);
             }
             /*if (Input.GetKey(KeyCode.W))
        {
@@ -119,5 +116,18 @@ public class PhonyPlayerController : MonoBehaviour
 
         }
     }
+
+    private void addMovement(float speed) {
+
+        if (Input.GetKey(left))
+            phony_body.AddForce(Vector3.left * speed);
+        if (Input.GetKey(right))
+            phony_body.AddForce(Vector3.right * speed);
+        if (Input.GetKey(down))
+            phony_body.AddForce(Vector3.back * speed);
+        if (Input.GetKey(up))
+            phony_body.AddForce(Vector3.forward * speed);
+    }
+
 
 }
