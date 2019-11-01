@@ -29,11 +29,11 @@ public class PhonyPlayerController : MonoBehaviour {
     private KeyCode hability;
 
     void Awake() {
-        right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT());
-        left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT());
-        up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP());
-        down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN());
-        hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY());
+        right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
+        left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
+        up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
+        down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
+        hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
     }
 
     void Start() {
@@ -49,7 +49,6 @@ public class PhonyPlayerController : MonoBehaviour {
 
     void FixedUpdate() {
         if (!onPush) {
-
             addMovement(speed);
             phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed);
             if (Input.GetKey(hability)) {
