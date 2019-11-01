@@ -9,6 +9,7 @@ public class KeysTable {
     private string leftKey = "A";
     private string upKey = "W";
     private string downKey = "S";
+    private string habilityKey = "Space";
 
     public string RIGHT() {
         return rightKey;
@@ -21,6 +22,9 @@ public class KeysTable {
     }
     public string DOWN() {
         return downKey;
+    }
+    public string HABILITY() {
+        return habilityKey;
     }
 
 
