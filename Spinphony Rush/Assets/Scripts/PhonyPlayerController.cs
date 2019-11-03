@@ -28,6 +28,8 @@ public class PhonyPlayerController : MonoBehaviour {
     private KeyCode down;
     private KeyCode hability;
 
+    private int collisionCount = 0;
+
     void Awake() {
         right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
         left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
@@ -51,6 +53,9 @@ public class PhonyPlayerController : MonoBehaviour {
     void FixedUpdate() {
         if(!isOnLimits()){
           Destroy(this.gameObject);
+        }
+        if(collisionCount == 0) {
+          phony_body.AddForce(Vector3.down * 15);
         }
         if (!onPush) {
             addMovement(speed);
@@ -122,6 +127,27 @@ public class PhonyPlayerController : MonoBehaviour {
         }
     }
 
+    void OnCollisionEnter(Collision col)
+     {
+         if(col.gameObject.name == "Mapa_Arbol") {
+            collisionCount++;
+         }
+     }
+
+     void OnCollisionStay(Collision col) {
+        if(col.gameObject.name == "Mapa_Arbol") {
+            collisionCount = 1;
+         }
+     }
+     void OnCollisionExit(Collision col)
+     {
+         if(col.gameObject.name == "Mapa_Arbol") {
+            collisionCount--;
+         }
+     }
+ 
+     
+
     private void addMovement(float speed) {
 
         if (Input.GetKey(left))
@@ -137,9 +163,7 @@ public class PhonyPlayerController : MonoBehaviour {
       if(Mathf.Abs(this.gameObject.transform.position.x) <= 300 &&
          Mathf.Abs(this.gameObject.transform.position.y) <= 300 &&
          Mathf.Abs(this.gameObject.transform.position.z) <= 300) {
-        print(this.gameObject.transform.position.x);
-        print(this.gameObject.transform.position.y);
-        print(this.gameObject.transform.position.z);
+        
         return true;
       }
       else {
