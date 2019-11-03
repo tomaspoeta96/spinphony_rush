@@ -33,7 +33,7 @@ public class PhonyPlayerController : MonoBehaviour {
         left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
         up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
         down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
-        hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
+        hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
     }
 
     void Start() {
@@ -43,11 +43,15 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        print(phony_body.velocity.magnitude);
+        //print(phony_body.velocity.magnitude);
         phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
+        
     }
 
     void FixedUpdate() {
+        if(!isOnLimits()){
+          Destroy(this.gameObject);
+        }
         if (!onPush) {
             addMovement(speed);
             phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed);
@@ -128,6 +132,20 @@ public class PhonyPlayerController : MonoBehaviour {
             phony_body.AddForce(Vector3.back * speed);
         if (Input.GetKey(up))
             phony_body.AddForce(Vector3.forward * speed);
+    }
+    private bool isOnLimits() {
+      if(Mathf.Abs(this.gameObject.transform.position.x) <= 300 &&
+         Mathf.Abs(this.gameObject.transform.position.y) <= 300 &&
+         Mathf.Abs(this.gameObject.transform.position.z) <= 300) {
+        print(this.gameObject.transform.position.x);
+        print(this.gameObject.transform.position.y);
+        print(this.gameObject.transform.position.z);
+        return true;
+      }
+      else {
+        print("Destroyed");
+        return false;
+      }
     }
 
 
