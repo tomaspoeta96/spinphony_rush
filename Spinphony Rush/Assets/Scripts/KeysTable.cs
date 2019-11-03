@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class KeysTable {
+
     
     //codigo ascii de las teclas AWSD por defecto
     private string rightKey = "D";
@@ -10,6 +11,19 @@ public class KeysTable {
     private string upKey = "W";
     private string downKey = "S";
     private string habilityKey = "P";
+
+    public KeysTable() {
+
+    }
+
+    public KeysTable(string d, string w, string a, string s, string sp) {
+        rightKey = d;
+        leftKey = a;
+        upKey = w;
+        downKey = s;
+        habilityKey = sp;
+
+    }
 
     public string RIGHT() {
         return rightKey;
