@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PhonyPlayer2Controller : MonoBehaviour {
     public float speed;
@@ -12,6 +13,7 @@ public class PhonyPlayer2Controller : MonoBehaviour {
     private int pushSeconds;
     private float pushSpeed;
     private bool onPush = false;
+    private int estado = -1;
 
     private KeysTable keys = new KeysTable("L","I","J","K","M");
 
@@ -51,14 +53,17 @@ public class PhonyPlayer2Controller : MonoBehaviour {
     }
 
     void FixedUpdate() {
+
         if(!isOnLimits()){
           Destroy(this.gameObject);
         }
-        if(collisionCount == 0) {
-          phony_body.AddForce(Vector3.down * 15);
+        if (collisionCount == 0)
+        {
+            phony_body.AddForce(Vector3.down * 15);
         }
+        
         if (!onPush) {
-            addMovement(speed);
+            movimientoAutomatico(speed);
             phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed);
             if (Input.GetKey(hability)) {
                 timer += Time.deltaTime;
@@ -66,6 +71,9 @@ public class PhonyPlayer2Controller : MonoBehaviour {
                 if (seconds >= 3) seconds = 3;
             }
             else if(Input.GetKeyUp(hability)) onPush = true;
+
+            
+
         }
 
         else if (onPush) {
@@ -79,7 +87,7 @@ public class PhonyPlayer2Controller : MonoBehaviour {
                 timer = 0f;
                 pushTimer = 0f;
                 pushSeconds = 0;
-                addMovement(speed);
+                movimientoAutomatico(speed);
             }
             else {
                 phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed + 10);
@@ -131,8 +139,14 @@ public class PhonyPlayer2Controller : MonoBehaviour {
      {
          if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount++;
+            estado = 0;
          }
-     }
+
+        if (col.gameObject.name == GameObject.FindGameObjectWithTag("Player").name)
+        {
+            estado = 1;
+        }
+    }
 
      void OnCollisionStay(Collision col) {
         if(col.gameObject.name == "Mapa_Arbol") {
@@ -145,8 +159,37 @@ public class PhonyPlayer2Controller : MonoBehaviour {
             collisionCount--;
          }
      }
- 
-     
+
+    private void movimientoAutomatico(float speed)
+    {
+        if (estado >= 0)
+        {
+            
+            Transform target = GameObject.FindGameObjectWithTag("Player").transform;
+
+            Vector3 atacar = Vector3.Normalize(target.position - phony_body.position);
+            Vector3 huir = Vector3.Normalize(phony_body.position - target.position);
+            Vector3 centro = Vector3.Normalize(Vector3.zero - phony_body.position);
+
+            if (phony_body.position.x > 10 || phony_body.position.z > 10 || phony_body.position.x < -10 || phony_body.position.z < -10)
+            {
+                phony_body.AddForce(atacar * speed);
+            }
+
+            else
+            {
+                if (estado % 20 == 0)
+                {
+                    phony_body.AddForce(atacar * speed);
+                }
+                else
+                {
+                    phony_body.AddForce(huir * speed);
+                    estado++;
+                }
+            }
+        }
+    }
 
     private void addMovement(float speed) {
 
