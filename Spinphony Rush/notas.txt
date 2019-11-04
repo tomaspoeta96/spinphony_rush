@@ -1,0 +1,5 @@
+rigidbody.AddForce(Physics.gravity * rigidbody.mass); 
+esta linea en fixedUpdate controla la gravetat
+
+
+cuando la peonza npc se choca con algo muchas veces, se pone a huir

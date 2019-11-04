@@ -51,7 +51,9 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if(!isOnLimits()){
+        phony_body.AddForce(Physics.gravity * phony_body.mass);
+
+        if (!isOnLimits()){
           Destroy(this.gameObject);
         }
         if(collisionCount == 0) {

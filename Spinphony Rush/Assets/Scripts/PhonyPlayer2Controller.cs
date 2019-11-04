@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,7 +14,10 @@ public class PhonyPlayer2Controller : MonoBehaviour {
     private int pushSeconds;
     private float pushSpeed;
     private bool onPush = false;
-    private int estado = -1;
+    private int estado = 0;
+    private bool panico = false;
+    private int umbral = 10;
+    private int iteracion = 1;
 
     private KeysTable keys = new KeysTable("L","I","J","K","M");
 
@@ -47,7 +51,7 @@ public class PhonyPlayer2Controller : MonoBehaviour {
     }
 
     private void Update() {
-        print(phony_body.velocity.magnitude);
+        //print(phony_body.velocity.magnitude);
         phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
         
     }
@@ -92,45 +96,8 @@ public class PhonyPlayer2Controller : MonoBehaviour {
             else {
                 phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed + 10);
                 pushSpeed = speed + (10f*(seconds/3));
-                addMovement(pushSpeed);
+                movimientoAutomatico(pushSpeed);
             }
-            /*if (Input.GetKey(KeyCode.W))
-       {
-           if (backwardVelocity > 0f)
-           {
-               phony_body.AddForce(-breakFactor * phony_body.velocity);
-               if (phony_body.velocity.magnitude == 0f)
-               {
-                   phony_body.velocity = Vector3.zero;
-                   phony_body.angularVelocity = Vector3.zero;
-               }
-           }
-           else
-           {
-               accelerationRate = maxSpeed / timeZeroToMax;
-               forwardVelocity += accelerationRate * Time.deltaTime;
-               forwardVelocity = Mathf.Min(Mathf.Abs(forwardVelocity), maxSpeed);
-               phony_body.velocity = transform.forward * forwardVelocity;
-           }
-       }
-       if (Input.GetKey(KeyCode.S)) {
-           if (forwardVelocity > 0f)
-           {
-               phony_body.AddForce(-breakFactor * phony_body.velocity);
-               if (phony_body.velocity.magnitude == 0f)
-               {
-                   accelerationRate = maxSpeed / timeZeroToMax;
-                   forwardVelocity = 0f;
-               }
-           }
-           else
-           {
-               accelerationRate = maxSpeed / timeZeroToMax;
-               forwardVelocity -= accelerationRate * Time.deltaTime;
-               forwardVelocity = Mathf.Min(Mathf.Abs(forwardVelocity), maxSpeed);
-               phony_body.velocity = transform.forward * -forwardVelocity;
-           }
-       }*/
 
         }
     }
@@ -139,12 +106,11 @@ public class PhonyPlayer2Controller : MonoBehaviour {
      {
          if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount++;
-            estado = 0;
          }
 
         if (col.gameObject.name == GameObject.FindGameObjectWithTag("Player").name)
         {
-            estado = 1;
+            estado++;
         }
     }
 
@@ -164,7 +130,7 @@ public class PhonyPlayer2Controller : MonoBehaviour {
     {
         if (estado >= 0)
         {
-            
+
             Transform target = GameObject.FindGameObjectWithTag("Player").transform;
 
             Vector3 atacar = Vector3.Normalize(target.position - phony_body.position);
@@ -178,17 +144,24 @@ public class PhonyPlayer2Controller : MonoBehaviour {
 
             else
             {
-                if (estado % 20 == 0)
+                if (estado == 0) {
+                    panico = false;
+                }
+                if (estado > umbral) {
+                    panico = true;
+                }
+                if (estado < umbral && !panico)
                 {
                     phony_body.AddForce(atacar * speed);
                 }
                 else
                 {
                     phony_body.AddForce(huir * speed);
-                    estado++;
+                    estado--;
                 }
             }
         }
+        print(estado);
     }
 
     private void addMovement(float speed) {

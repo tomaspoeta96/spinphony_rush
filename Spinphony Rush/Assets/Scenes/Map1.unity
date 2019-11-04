@@ -192,6 +192,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 81d2ea5942fbac74dbfc288164573b85,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.888
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 81d2ea5942fbac74dbfc288164573b85,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.888
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 81d2ea5942fbac74dbfc288164573b85,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.888
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 81d2ea5942fbac74dbfc288164573b85,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -693,28 +708,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 501211636}
   m_PrefabAsset: {fileID: 0}
---- !u!195 &1878179191
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1878179186}
-  m_Enabled: 0
-  m_AgentTypeID: 0
-  m_Radius: 1.7095344
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 0
-  m_AutoBraking: 0
-  m_AutoRepath: 0
-  m_Height: 3.6798983
-  m_BaseOffset: 1.8399491
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &1878179192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,6 +807,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.888
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.888
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.888
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
