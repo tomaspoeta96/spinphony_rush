@@ -127,26 +127,36 @@ public class PhonyPlayerController : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collision col)
-     {
-         if(col.gameObject.name == "Mapa_Arbol") {
-            collisionCount++;
-         }
-     }
 
-     void OnCollisionStay(Collision col) {
+
+    void OnTriggerEnter(Collider c) {
+        switch (c.gameObject.name) {
+            case "JumpBoost":
+            case "ShieldBoost":
+            case "FuelleBoost":
+            case "MoveBoost":
+                c.gameObject.SetActive(false);
+                break;
+        }
+    }
+
+    void OnCollisionEnter(Collision col) {
+        if(col.gameObject.name == "Mapa_Arbol") {
+            collisionCount++;
+        }
+    }
+
+    void OnCollisionStay(Collision col) {
         if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount = 1;
-         }
-     }
-     void OnCollisionExit(Collision col)
-     {
-         if(col.gameObject.name == "Mapa_Arbol") {
+        }
+    }
+    void OnCollisionExit(Collision col)
+    {
+        if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount--;
-         }
+        }
      }
- 
-     
 
     private void addMovement(float speed) {
 

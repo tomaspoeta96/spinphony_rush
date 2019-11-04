@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\PhonyPlayer2Controller.cs" />
      <Compile Include="Assets\Scripts\PhonyPlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\RandomBoost.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/User/Desktop/UNIVERSIDAD/4.CUARTO/IPV/spinphony_rush/Spinphony Rush/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
