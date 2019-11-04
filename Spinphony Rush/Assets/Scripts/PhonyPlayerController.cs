@@ -86,43 +86,6 @@ public class PhonyPlayerController : MonoBehaviour {
                 pushSpeed = speed + (10f*(seconds/3));
                 addMovement(pushSpeed);
             }
-            /*if (Input.GetKey(KeyCode.W))
-       {
-           if (backwardVelocity > 0f)
-           {
-               phony_body.AddForce(-breakFactor * phony_body.velocity);
-               if (phony_body.velocity.magnitude == 0f)
-               {
-                   phony_body.velocity = Vector3.zero;
-                   phony_body.angularVelocity = Vector3.zero;
-               }
-           }
-           else
-           {
-               accelerationRate = maxSpeed / timeZeroToMax;
-               forwardVelocity += accelerationRate * Time.deltaTime;
-               forwardVelocity = Mathf.Min(Mathf.Abs(forwardVelocity), maxSpeed);
-               phony_body.velocity = transform.forward * forwardVelocity;
-           }
-       }
-       if (Input.GetKey(KeyCode.S)) {
-           if (forwardVelocity > 0f)
-           {
-               phony_body.AddForce(-breakFactor * phony_body.velocity);
-               if (phony_body.velocity.magnitude == 0f)
-               {
-                   accelerationRate = maxSpeed / timeZeroToMax;
-                   forwardVelocity = 0f;
-               }
-           }
-           else
-           {
-               accelerationRate = maxSpeed / timeZeroToMax;
-               forwardVelocity -= accelerationRate * Time.deltaTime;
-               forwardVelocity = Mathf.Min(Mathf.Abs(forwardVelocity), maxSpeed);
-               phony_body.velocity = transform.forward * -forwardVelocity;
-           }
-       }*/
 
         }
     }
