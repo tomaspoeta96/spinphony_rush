@@ -132,19 +132,34 @@ public class PhonyPlayerController : MonoBehaviour {
          if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount++;
          }
+
+         
      }
 
      void OnCollisionStay(Collision col) {
         if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount = 1;
-         }
-     }
+        }
+    }
      void OnCollisionExit(Collision col)
      {
          if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount--;
          }
-     }
+
+        if (col.gameObject.name == "Phony_Player2") {
+            Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
+            vel = vel * (this.phony_body.velocity.magnitude * 0.3f);
+            if(Mathf.Abs(this.phony_body.velocity.magnitude - col.gameObject.GetComponent<Rigidbody>().velocity.magnitude) < 2)
+            {
+                
+            }
+            else if((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)) {
+                col.gameObject.GetComponent<Rigidbody>().velocity = vel;
+                col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(col.gameObject.GetComponent<Rigidbody>().velocity, speed);
+            }
+        }
+    }
  
      
 

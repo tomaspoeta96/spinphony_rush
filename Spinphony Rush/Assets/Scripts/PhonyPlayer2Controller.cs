@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhonyPlayer2Controller : MonoBehaviour {
+public class PhonyPlayer2Controller : MonoBehaviour
+{
     public float speed;
     public float maxSpeed;
     private Rigidbody phony_body;
@@ -13,14 +14,9 @@ public class PhonyPlayer2Controller : MonoBehaviour {
     private float pushSpeed;
     private bool onPush = false;
 
-    private KeysTable keys = new KeysTable("L","I","J","K","M");
+    private KeysTable keys = new KeysTable("L", "I", "J", "K", "M");
 
-    //====no estan en uso====
-    /*float timeZeroToMax = 2.5f;
-    float accelerationRate;
-    float forwardVelocity;
-    float backwardVelocity;
-    float breakFactor = 3f;*/
+
 
     private KeyCode right;
     private KeyCode left;
@@ -30,49 +26,58 @@ public class PhonyPlayer2Controller : MonoBehaviour {
 
     private int collisionCount = 0;
 
-    void Awake() {
-        right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
-        left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
-        up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
-        down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
-        hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
+    void Awake()
+    {
+        right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT());
+        left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT());
+        up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP());
+        down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN());
+        hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY());
     }
 
-    void Start() {
+    void Start()
+    {
         phony_body = GetComponent<Rigidbody>();
-        //backwardVelocity = 0f;
-        //forwardVelocity = 0f;
+
     }
 
-    private void Update() {
-        print(phony_body.velocity.magnitude);
+    private void Update()
+    {
+        //print(phony_body.velocity.magnitude);
         phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
-        
+
     }
 
-    void FixedUpdate() {
-        if(!isOnLimits()){
-          Destroy(this.gameObject);
+    void FixedUpdate()
+    {
+        if (!isOnLimits())
+        {
+            Destroy(this.gameObject);
         }
-        if(collisionCount == 0) {
-          phony_body.AddForce(Vector3.down * 15);
+        if (collisionCount == 0)
+        {
+            phony_body.AddForce(Vector3.down * 15);
         }
-        if (!onPush) {
+        if (!onPush)
+        {
             addMovement(speed);
             phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed);
-            if (Input.GetKey(hability)) {
+            if (Input.GetKey(hability))
+            {
                 timer += Time.deltaTime;
                 seconds = (int)timer % 60;
                 if (seconds >= 3) seconds = 3;
             }
-            else if(Input.GetKeyUp(hability)) onPush = true;
+            else if (Input.GetKeyUp(hability)) onPush = true;
         }
 
-        else if (onPush) {
-            
+        else if (onPush)
+        {
+
             pushTimer += Time.deltaTime;
             pushSeconds = (int)pushTimer % 60;
-            if (pushSeconds >= 2) {
+            if (pushSeconds >= 2)
+            {
                 seconds = 0;
                 phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed);
                 onPush = false;
@@ -81,74 +86,60 @@ public class PhonyPlayer2Controller : MonoBehaviour {
                 pushSeconds = 0;
                 addMovement(speed);
             }
-            else {
+            else
+            {
                 phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed + 10);
-                pushSpeed = speed + (10f*(seconds/3));
+                pushSpeed = speed + (10f * (seconds / 3));
                 addMovement(pushSpeed);
             }
-            /*if (Input.GetKey(KeyCode.W))
-       {
-           if (backwardVelocity > 0f)
-           {
-               phony_body.AddForce(-breakFactor * phony_body.velocity);
-               if (phony_body.velocity.magnitude == 0f)
-               {
-                   phony_body.velocity = Vector3.zero;
-                   phony_body.angularVelocity = Vector3.zero;
-               }
-           }
-           else
-           {
-               accelerationRate = maxSpeed / timeZeroToMax;
-               forwardVelocity += accelerationRate * Time.deltaTime;
-               forwardVelocity = Mathf.Min(Mathf.Abs(forwardVelocity), maxSpeed);
-               phony_body.velocity = transform.forward * forwardVelocity;
-           }
-       }
-       if (Input.GetKey(KeyCode.S)) {
-           if (forwardVelocity > 0f)
-           {
-               phony_body.AddForce(-breakFactor * phony_body.velocity);
-               if (phony_body.velocity.magnitude == 0f)
-               {
-                   accelerationRate = maxSpeed / timeZeroToMax;
-                   forwardVelocity = 0f;
-               }
-           }
-           else
-           {
-               accelerationRate = maxSpeed / timeZeroToMax;
-               forwardVelocity -= accelerationRate * Time.deltaTime;
-               forwardVelocity = Mathf.Min(Mathf.Abs(forwardVelocity), maxSpeed);
-               phony_body.velocity = transform.forward * -forwardVelocity;
-           }
-       }*/
 
         }
     }
 
     void OnCollisionEnter(Collision col)
-     {
-         if(col.gameObject.name == "Mapa_Arbol") {
+    {
+        if (col.gameObject.name == "Mapa_Arbol")
+        {
             collisionCount++;
-         }
-     }
+        }
 
-     void OnCollisionStay(Collision col) {
-        if(col.gameObject.name == "Mapa_Arbol") {
+
+    }
+
+    void OnCollisionStay(Collision col)
+    {
+        if (col.gameObject.name == "Mapa_Arbol")
+        {
             collisionCount = 1;
-         }
-     }
-     void OnCollisionExit(Collision col)
-     {
-         if(col.gameObject.name == "Mapa_Arbol") {
+        }
+    }
+    void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.name == "Mapa_Arbol")
+        {
             collisionCount--;
-         }
-     }
- 
-     
+        }
 
-    private void addMovement(float speed) {
+        if (col.gameObject.name == "Phony_Player")
+        {
+            Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
+            vel = vel * (this.phony_body.velocity.magnitude * 0.2f);
+            if (Mathf.Abs(this.phony_body.velocity.magnitude - col.gameObject.GetComponent<Rigidbody>().velocity.magnitude) < 2)
+            {
+                
+            }
+            else if ((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude))
+            {
+                col.gameObject.GetComponent<Rigidbody>().velocity = vel;
+                col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(col.gameObject.GetComponent<Rigidbody>().velocity, speed);
+            }
+        }
+    }
+
+
+
+    private void addMovement(float speed)
+    {
 
         if (Input.GetKey(left))
             phony_body.AddForce(Vector3.left * speed);
@@ -159,17 +150,20 @@ public class PhonyPlayer2Controller : MonoBehaviour {
         if (Input.GetKey(up))
             phony_body.AddForce(Vector3.forward * speed);
     }
-    private bool isOnLimits() {
-      if(Mathf.Abs(this.gameObject.transform.position.x) <= 300 &&
-         Mathf.Abs(this.gameObject.transform.position.y) <= 300 &&
-         Mathf.Abs(this.gameObject.transform.position.z) <= 300) {
-        
-        return true;
-      }
-      else {
-        print("Destroyed");
-        return false;
-      }
+    private bool isOnLimits()
+    {
+        if (Mathf.Abs(this.gameObject.transform.position.x) <= 300 &&
+           Mathf.Abs(this.gameObject.transform.position.y) <= 300 &&
+           Mathf.Abs(this.gameObject.transform.position.z) <= 300)
+        {
+
+            return true;
+        }
+        else
+        {
+            print("Destroyed");
+            return false;
+        }
     }
 
 
