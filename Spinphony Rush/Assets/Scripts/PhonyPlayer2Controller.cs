@@ -13,7 +13,7 @@ public class PhonyPlayer2Controller : MonoBehaviour {
     private float pushSpeed;
     private bool onPush = false;
 
-    private KeysTable keys = new KeysTable("L","I","J","K","M");
+    private KeysTable keys = new KeysTable("L","I","J","K","M","U");
 
     //====no estan en uso====
     /*float timeZeroToMax = 2.5f;
@@ -27,6 +27,7 @@ public class PhonyPlayer2Controller : MonoBehaviour {
     private KeyCode up;
     private KeyCode down;
     private KeyCode hability;
+    private KeyCode boost;
 
     private int collisionCount = 0;
 
@@ -36,6 +37,7 @@ public class PhonyPlayer2Controller : MonoBehaviour {
         up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
         down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
         hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
+        boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.BOOST()) ;
     }
 
     void Start() {
