@@ -12,8 +12,12 @@ public class PhonyPlayerController : MonoBehaviour {
     private int pushSeconds;
     private float pushSpeed;
     private bool onPush = false;
-
+    private bool haveJump = false;
+    private bool haveShield = false;
+    private bool haveFuelle = false;
+    private bool haveMove = false;
     private KeysTable keys = new KeysTable();
+    public RandomBoost boosts;
 
     //====no estan en uso====
     /*float timeZeroToMax = 2.5f;
@@ -27,6 +31,7 @@ public class PhonyPlayerController : MonoBehaviour {
     private KeyCode up;
     private KeyCode down;
     private KeyCode hability;
+    private KeyCode boost;
 
     private int collisionCount = 0;
 
@@ -36,6 +41,7 @@ public class PhonyPlayerController : MonoBehaviour {
         up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
         down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
         hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
+        boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.BOOST()) ;
     }
 
     void Start() {
@@ -47,7 +53,12 @@ public class PhonyPlayerController : MonoBehaviour {
     private void Update() {
         //print(phony_body.velocity.magnitude);
         phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
-        
+        if (Input.GetKey(boost)) {
+            if (haveJump) jump();
+            if (haveShield) shield();
+            if (haveFuelle) fuelle();
+            if (haveMove) move();
+            }
     }
 
     void FixedUpdate() {
@@ -128,15 +139,30 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
 
-
     void OnTriggerEnter(Collider c) {
-        switch (c.gameObject.name) {
-            case "JumpBoost":
-            case "ShieldBoost":
-            case "FuelleBoost":
-            case "MoveBoost":
-                c.gameObject.SetActive(false);
-                break;
+        if(!haveFuelle && !haveJump && !haveMove && !haveShield) {
+            switch (c.gameObject.name) {
+                case "JumpBoost":
+                    haveJump = true;
+                    boosts.on_map_Jump = false;
+                    c.gameObject.SetActive(false);
+                    break;
+                case "ShieldBoost":
+                    haveShield = true;
+                    boosts.on_map_Shield = false;
+                    c.gameObject.SetActive(false);
+                    break;
+                case "FuelleBoost":
+                    haveFuelle = true;
+                    boosts.on_map_Fuelle = false;
+                    c.gameObject.SetActive(false);
+                    break;
+                case "MoveBoost":
+                    haveMove = true;
+                    boosts.on_map_Move = false;
+                    c.gameObject.SetActive(false);
+                    break;
+            }
         }
     }
 
@@ -169,6 +195,7 @@ public class PhonyPlayerController : MonoBehaviour {
         if (Input.GetKey(up))
             phony_body.AddForce(Vector3.forward * speed);
     }
+
     private bool isOnLimits() {
       if(Mathf.Abs(this.gameObject.transform.position.x) <= 300 &&
          Mathf.Abs(this.gameObject.transform.position.y) <= 300 &&
@@ -181,6 +208,23 @@ public class PhonyPlayerController : MonoBehaviour {
         return false;
       }
     }
+
+    private void jump() {
+        haveJump = false;
+    }
+
+    private void shield(){
+        haveShield = false;
+    }
+
+    private void fuelle(){
+        haveFuelle = false;
+    }
+
+    private void move(){
+        haveMove = false;
+    }
+
 
 
 }

@@ -4,38 +4,55 @@ using UnityEngine;
 
 public class RandomBoost : MonoBehaviour
 {
-    public GameObject[] jump_boost = new GameObject[4];
-    // pos 0 jump
-    // pos 1 shield
-    // pos 2 fuelle
-    // pos 3 move
-    //public GameObject[] shield_boost = new GameObject[2];
-    private int j_index, s_index = 0;
+    public GameObject[] boosts = new GameObject[16];
+    public PhonyPlayerController phony;
+    private int index = 0;
     public float elapsedTime = 0f;
     public float repeatTime = 5f;
+    public bool on_map_Jump = false;
+    public bool on_map_Shield = false;
+    public bool on_map_Fuelle = false;
+    public bool on_map_Move = false;
 
+
+    void Start() {
+
+    }
 
     // Update is called once per frame
-    /*void Update()
+    void Update()
     {
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= repeatTime) {
-            //if ()
-            int new_j_index = Random.Range (0, jump_boost.Length);
-            //int new_s_index = Random.Range (0, shield_boost.Length);
-            jump_boost[j_index].SetActive(false);
-            //shield_boost[s_index].SetActive(false);
-            j_index = new_j_index;
-            //s_index = new_s_index;
-            jump_boost[j_index].SetActive(true);
-            //shield_boost[s_index].SetActive(true);
+            index = Random.Range (0, boosts.Length);
+            switch (boosts[index].name) {
+                case "JumpBoost":
+                    if(!on_map_Jump) {
+                        boosts[index].SetActive(true);
+                        on_map_Jump = true;
+                    } 
+                    break;
+                case "ShieldBoost":
+                    if(!on_map_Shield) {
+                        boosts[index].SetActive(true);
+                        on_map_Shield = true;
+                    } 
+                    break;
+                case "FuelleBoost":
+                    if(!on_map_Fuelle) {
+                        boosts[index].SetActive(true);
+                        on_map_Fuelle = true;
+                    } 
+                    break;
+                case "MoveBoost":
+                    if(!on_map_Move) {
+                        boosts[index].SetActive(true);
+                        on_map_Move = true;
+                    } 
+                    break;
+            }
             elapsedTime -= repeatTime;
         }
-    }
-    */
-
-    private bool jump_is_free() {
-        return true;
     }
     
 }

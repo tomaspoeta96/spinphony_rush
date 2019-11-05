@@ -11,17 +11,19 @@ public class KeysTable {
     private string upKey = "W";
     private string downKey = "S";
     private string habilityKey = "P";
+    private string boostKey = "Q";
 
     public KeysTable() {
 
     }
 
-    public KeysTable(string d, string w, string a, string s, string sp) {
+    public KeysTable(string d, string w, string a, string s, string sp, string b) {
         rightKey = d;
         leftKey = a;
         upKey = w;
         downKey = s;
         habilityKey = sp;
+        boostKey = b;
 
     }
 
@@ -40,6 +42,10 @@ public class KeysTable {
 
     public string HABILITY() {
         return habilityKey;
+    }
+
+    public string BOOST() {
+        return boostKey;
     }
 
 
