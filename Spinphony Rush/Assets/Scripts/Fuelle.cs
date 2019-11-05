@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Fuelle : MonoBehaviour
 {
-    private Slider fuelleSlider;
+    public Slider fuelleSlider;
     private Image fuelleFill;
-    private float consumoPorSegundo = (float)0.01;
+    private float consumoPorSegundo = (float)0.1;
     private int UpdateCount = 0;
     public GameObject player;
 
