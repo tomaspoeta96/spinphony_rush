@@ -97,43 +97,6 @@ public class PhonyPlayerController : MonoBehaviour {
                 pushSpeed = speed + (10f*(seconds/3));
                 addMovement(pushSpeed);
             }
-            /*if (Input.GetKey(KeyCode.W))
-       {
-           if (backwardVelocity > 0f)
-           {
-               phony_body.AddForce(-breakFactor * phony_body.velocity);
-               if (phony_body.velocity.magnitude == 0f)
-               {
-                   phony_body.velocity = Vector3.zero;
-                   phony_body.angularVelocity = Vector3.zero;
-               }
-           }
-           else
-           {
-               accelerationRate = maxSpeed / timeZeroToMax;
-               forwardVelocity += accelerationRate * Time.deltaTime;
-               forwardVelocity = Mathf.Min(Mathf.Abs(forwardVelocity), maxSpeed);
-               phony_body.velocity = transform.forward * forwardVelocity;
-           }
-       }
-       if (Input.GetKey(KeyCode.S)) {
-           if (forwardVelocity > 0f)
-           {
-               phony_body.AddForce(-breakFactor * phony_body.velocity);
-               if (phony_body.velocity.magnitude == 0f)
-               {
-                   accelerationRate = maxSpeed / timeZeroToMax;
-                   forwardVelocity = 0f;
-               }
-           }
-           else
-           {
-               accelerationRate = maxSpeed / timeZeroToMax;
-               forwardVelocity -= accelerationRate * Time.deltaTime;
-               forwardVelocity = Mathf.Min(Mathf.Abs(forwardVelocity), maxSpeed);
-               phony_body.velocity = transform.forward * -forwardVelocity;
-           }
-       }*/
 
         }
     }
@@ -177,12 +140,27 @@ public class PhonyPlayerController : MonoBehaviour {
             collisionCount = 1;
         }
     }
-    void OnCollisionExit(Collision col)
-    {
-        if(col.gameObject.name == "Mapa_Arbol") {
+     void OnCollisionExit(Collision col)
+     {
+         if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount--;
+         }
+
+        if (col.gameObject.name == "Phony_Player2") {
+            Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
+            vel = vel * (this.phony_body.velocity.magnitude * 0.3f);
+            if(Mathf.Abs(this.phony_body.velocity.magnitude - col.gameObject.GetComponent<Rigidbody>().velocity.magnitude) < 2)
+            {
+                
+            }
+            else if((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)) {
+                col.gameObject.GetComponent<Rigidbody>().velocity = vel;
+                col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(col.gameObject.GetComponent<Rigidbody>().velocity, speed);
+            }
         }
-     }
+    }
+ 
+     
 
     private void addMovement(float speed) {
 
