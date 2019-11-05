@@ -120,6 +120,120 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 6f94249939014584d93397953cf34036, type: 2}
+--- !u!1001 &18988484
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8451280847471285909, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_Name
+      value: Phony_Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8451280847471285909, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 89.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.888
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.888
+      objectReference: {fileID: 0}
+    - target: {fileID: 4833386043430429830, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.888
+      objectReference: {fileID: 0}
+    - target: {fileID: 7886978513881047625, guid: 52930d81125897647b8f69fc17b13b9f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: de830771d8cd2954585673a0e3bf86e5, type: 2}
+    - target: {fileID: 1548160414, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
+      propertyPath: right
+      value: 108
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548160414, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
+      propertyPath: left
+      value: 106
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548160414, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
+      propertyPath: up
+      value: 105
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548160414, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
+      propertyPath: down
+      value: 107
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548160414, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
+      propertyPath: hability
+      value: 112
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
 --- !u!1001 &501211636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,7 +244,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 81d2ea5942fbac74dbfc288164573b85,
         type: 3}
       propertyPath: m_Name
-      value: Phony_Player2
+      value: Phony_IA
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 81d2ea5942fbac74dbfc288164573b85,
         type: 3}
@@ -822,6 +936,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.888
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548160414, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
+      propertyPath: right
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548160414, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
+      propertyPath: left
+      value: 97
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548160414, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
+      propertyPath: up
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548160414, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
+      propertyPath: down
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 1548160414, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}
+      propertyPath: hability
+      value: 102
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52930d81125897647b8f69fc17b13b9f, type: 3}

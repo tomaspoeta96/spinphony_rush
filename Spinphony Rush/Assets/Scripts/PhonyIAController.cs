@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PhonyPlayer2Controller : MonoBehaviour {
+public class PhonyIAController : MonoBehaviour {
     public float speed;
     public float maxSpeed;
     private Rigidbody phony_body;
@@ -139,7 +139,7 @@ public class PhonyPlayer2Controller : MonoBehaviour {
 
             if (phony_body.position.x > 10 || phony_body.position.z > 10 || phony_body.position.x < -10 || phony_body.position.z < -10)
             {
-                phony_body.AddForce(atacar * speed);
+                phony_body.AddForce(((centro + atacar)/2) * speed);
             }
 
             else

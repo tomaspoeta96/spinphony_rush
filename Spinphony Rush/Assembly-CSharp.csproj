@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\KeysTable.cs" />
-    <Compile Include="Assets\Scripts\PhonyPlayer2Controller.cs" />
+    <Compile Include="Assets\Scripts\PhonyIAController.cs" />
     <Compile Include="Assets\Scripts\PhonyPlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Reference Include="Unity.Timeline.Editor">

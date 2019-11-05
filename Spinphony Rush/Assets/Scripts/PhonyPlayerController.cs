@@ -22,20 +22,20 @@ public class PhonyPlayerController : MonoBehaviour {
     float backwardVelocity;
     float breakFactor = 3f;*/
 
-    private KeyCode right;
-    private KeyCode left;
-    private KeyCode up;
-    private KeyCode down;
-    private KeyCode hability;
+    public KeyCode right;
+    public KeyCode left;
+    public KeyCode up;
+    public KeyCode down;
+    public KeyCode hability;
 
     private int collisionCount = 0;
 
     void Awake() {
-        right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
-        left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
-        up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
-        down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
-        hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
+        //right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
+        //left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
+        //up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
+        //down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
+        //hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
     }
 
     void Start() {
