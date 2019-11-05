@@ -52,6 +52,7 @@ public class PhonyIAController : MonoBehaviour
         if (currentFuelle.fuelleSlider.value <= 0)
         {
             muerto = true;
+            gameObject.tag = "Untagged";
             phony_body.constraints = RigidbodyConstraints.None;
         }
         else
@@ -211,8 +212,21 @@ public class PhonyIAController : MonoBehaviour
 
         if (estado >= 0)
         {
+            //no esta en uso aun
             objetivo = Random.Range(1, GameObject.FindGameObjectsWithTag("Player").Length);
-            Transform target = GameObject.FindGameObjectsWithTag("Player")[objetivo].transform;
+            Transform target;
+            GameObject t = GameObject.FindGameObjectsWithTag("Player")[0];
+            if (t != this.gameObject) {
+                target = t.transform;
+            }
+            else
+            {
+                t = GameObject.FindGameObjectsWithTag("Player")[1];
+                target = t.transform;
+            }
+
+
+
             print(GameObject.FindGameObjectsWithTag("Player"));
 
             Vector3 atacar = Vector3.Normalize(target.position - phony_body.position);
@@ -259,6 +273,8 @@ public class PhonyIAController : MonoBehaviour
         }
         else
         {
+            muerto = true;
+            gameObject.tag = "Untagged";
             print("Destroyed");
             return false;
         }

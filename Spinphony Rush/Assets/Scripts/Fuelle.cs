@@ -30,8 +30,14 @@ public class Fuelle : MonoBehaviour
 
     private void FollowPlayer()
     {
-        Vector3 targetPosition = player.transform.position + _followOffset;
-        transform.position += (targetPosition - transform.position);
+        try
+        {
+            Vector3 targetPosition = player.transform.position + _followOffset;
+            transform.position += (targetPosition - transform.position);
+        }
+        catch (MissingReferenceException e) {
+
+        }
     }
 
     private void ConsumeOverTime()
