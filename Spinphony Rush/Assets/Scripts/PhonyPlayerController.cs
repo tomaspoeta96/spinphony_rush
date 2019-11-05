@@ -19,12 +19,7 @@ public class PhonyPlayerController : MonoBehaviour {
     private KeysTable keys = new KeysTable();
     public RandomBoost boosts;
 
-    //====no estan en uso====
-    /*float timeZeroToMax = 2.5f;
-    float accelerationRate;
-    float forwardVelocity;
-    float backwardVelocity;
-    float breakFactor = 3f;*/
+
 
     private KeyCode right;
     private KeyCode left;
@@ -46,8 +41,6 @@ public class PhonyPlayerController : MonoBehaviour {
 
     void Start() {
         phony_body = GetComponent<Rigidbody>();
-        //backwardVelocity = 0f;
-        //forwardVelocity = 0f;
     }
 
     private void Update() {
