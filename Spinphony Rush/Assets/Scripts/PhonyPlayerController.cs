@@ -27,6 +27,10 @@ public class PhonyPlayerController : MonoBehaviour {
     private bool isJump = false;
     private bool isMove = false;
 
+    private bool isReverb = false;
+    private float elapsedTimeReverb = 0f;
+    private float durationTimeReverb = 0.8f;
+
     public PhysicMaterial normalPhysic;
     public PhysicMaterial movePhysic;
 
@@ -36,6 +40,8 @@ public class PhonyPlayerController : MonoBehaviour {
     public KeyCode down;
     public KeyCode hability;
     public KeyCode boost;
+    public KeyCode reverb;
+
     private int collisionCount = 0;
 
     void Awake()
@@ -77,6 +83,15 @@ public class PhonyPlayerController : MonoBehaviour {
         if(isJump) {
             phony_body.AddForce(Vector3.up * 1000f);
             isJump = false;
+        }
+
+        if(isReverb) {
+        	elapsedTimeReverb += Time.deltaTime;
+        	if(elapsedTimeReverb >= durationTimeReverb) {
+        		phony_body.mass = 1f;
+        		isReverb = false;
+        		elapsedTimeReverb = 0f;
+        	}
         }
         
         
@@ -183,9 +198,11 @@ public class PhonyPlayerController : MonoBehaviour {
     {
         if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount--;
+            print("CHAU");
         }
 
-        if (col.gameObject.name == "Phony_Player") {
+        if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA") {
+        	print("HOLA");
             Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
             vel = vel * (this.phony_body.velocity.magnitude * 0.3f);
             if(Mathf.Abs(this.phony_body.velocity.magnitude - col.gameObject.GetComponent<Rigidbody>().velocity.magnitude) < 2)
@@ -195,6 +212,7 @@ public class PhonyPlayerController : MonoBehaviour {
             else if((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)) {
                 col.gameObject.GetComponent<Rigidbody>().velocity = vel;
                 col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(col.gameObject.GetComponent<Rigidbody>().velocity, speed);
+
             }
         }
     }
@@ -212,6 +230,8 @@ public class PhonyPlayerController : MonoBehaviour {
                 phony_body.AddForce(Vector3.back * speed);
             if (Input.GetKey(up))
                 phony_body.AddForce(Vector3.forward * speed);
+            if (Input.GetKey(reverb))
+            	invokeReverb();
         }
     }
 
@@ -257,6 +277,11 @@ public class PhonyPlayerController : MonoBehaviour {
         this.enabled = false;
         print("Destroyed");
         return true;
+    }
+
+    private void invokeReverb() {
+    	phony_body.mass = 10f;
+    	isReverb = true;
     }
 
 }
