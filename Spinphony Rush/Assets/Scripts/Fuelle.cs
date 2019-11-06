@@ -7,8 +7,8 @@ public class Fuelle : MonoBehaviour
 {
     public Slider fuelleSlider;
     private Image fuelleFill;
-    private float consumoPorSegundo = (float)0.01;
-    private int UpdateCount = 0;
+    private float duracion = (float)30; //segundos
+    //private int UpdateCount = 0;
     public GameObject player;
     public bool shield;
 
@@ -31,12 +31,19 @@ public class Fuelle : MonoBehaviour
 
     private void FollowPlayer()
     {
-        Vector3 targetPosition = player.transform.position + _followOffset;
-        transform.position += (targetPosition - transform.position);
+        try
+        {
+            Vector3 targetPosition = player.transform.position + _followOffset;
+            transform.position += (targetPosition - transform.position);
+        }
+        catch (MissingReferenceException e) {
+
+        }
     }
 
     private void ConsumeOverTime()
     {
+        float consumoPorSegundo = 1 / duracion;
         if(!shield)
             if(fuelleSlider.value > 0) fuelleSlider.value -= consumoPorSegundo*(float)0.02;
     }

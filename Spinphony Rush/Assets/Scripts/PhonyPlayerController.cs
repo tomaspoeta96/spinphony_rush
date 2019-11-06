@@ -16,8 +16,10 @@ public class PhonyPlayerController : MonoBehaviour {
     private bool haveShield = false;
     private bool haveFuelle = false;
     private bool haveMove = false;
-    private KeysTable keys = new KeysTable();
+    //private KeysTable keys = new KeysTable("L","I","J","K","M","U");
     public RandomBoost boosts;
+    public Fuelle currentFuelle;
+    private bool muerto = false;
     public Fuelle phony_fuelle;
     private float elapsedTime = 0f;
     private float durationTime = 10f;
@@ -28,27 +30,29 @@ public class PhonyPlayerController : MonoBehaviour {
     public PhysicMaterial normalPhysic;
     public PhysicMaterial movePhysic;
 
-    private KeyCode right;
-    private KeyCode left;
-    private KeyCode up;
-    private KeyCode down;
-    private KeyCode hability;
-    private KeyCode boost;
-
+    public KeyCode right;
+    public KeyCode left;
+    public KeyCode up;
+    public KeyCode down;
+    public KeyCode hability;
+    public KeyCode boost;
     private int collisionCount = 0;
 
-    void Awake() {
-        right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
-        left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
-        up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
-        down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
-        hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
-        boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.BOOST()) ;
+    void Awake()
+    {
+        //right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
+        //left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
+        //up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
+        //down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
+        //hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
+        //boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.BOOST()) ;
     }
 
-    void Start() {
+    void Start()
+    {
         phony_body = GetComponent<Rigidbody>();
     }
+
 
     private void Update() {
         //print(phony_body.velocity.magnitude);
@@ -75,13 +79,25 @@ public class PhonyPlayerController : MonoBehaviour {
             isJump = false;
         }
         
-        phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
-        if (Input.GetKey(boost)) {
-            if (haveJump) jump();
-            if (haveShield) shield();
-            if (haveFuelle) fuelle();
-            if (haveMove) move();
+        
+
+        //si la peonza se queda sin fuelle
+        if (currentFuelle.fuelleSlider.value <= 0)
+        {
+            muerto = true;
+            muerte();
+            phony_body.constraints = RigidbodyConstraints.None;
+        }
+        else {
+            phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
+            if (Input.GetKey(boost))
+            {
+                if (haveJump) jump();
+                if (haveShield) shield();
+                if (haveFuelle) fuelle();
+                if (haveMove) move();
             }
+        }
     }
 
     void FixedUpdate() {
@@ -186,15 +202,17 @@ public class PhonyPlayerController : MonoBehaviour {
      
 
     private void addMovement(float speed) {
-
-        if (Input.GetKey(left))
-            phony_body.AddForce(Vector3.left * speed);
-        if (Input.GetKey(right))
-            phony_body.AddForce(Vector3.right * speed);
-        if (Input.GetKey(down))
-            phony_body.AddForce(Vector3.back * speed);
-        if (Input.GetKey(up))
-            phony_body.AddForce(Vector3.forward * speed);
+        if (!muerto)
+        {
+            if (Input.GetKey(left))
+                phony_body.AddForce(Vector3.left * speed);
+            if (Input.GetKey(right))
+                phony_body.AddForce(Vector3.right * speed);
+            if (Input.GetKey(down))
+                phony_body.AddForce(Vector3.back * speed);
+            if (Input.GetKey(up))
+                phony_body.AddForce(Vector3.forward * speed);
+        }
     }
 
     private bool isOnLimits() {
@@ -205,6 +223,11 @@ public class PhonyPlayerController : MonoBehaviour {
         } else {
             print("Destroyed");
             return false;
+      }
+      else {
+        print("Destroyed");
+        muerte();
+        return false;
       }
     }
 
@@ -230,6 +253,14 @@ public class PhonyPlayerController : MonoBehaviour {
         GetComponent<Collider>().material = movePhysic;
     }
 
-    
+    private bool muerte()
+    {
+        muerto = true;
+        gameObject.tag = "Untagged";
+        Destroy(currentFuelle.gameObject, 1.0f);
+        this.enabled = false;
+        print("Destroyed");
+        return true;
+    }
 
 }
