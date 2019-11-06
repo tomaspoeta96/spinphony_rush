@@ -177,7 +177,7 @@ public class PhonyIAController : MonoBehaviour
             collisionCount--;
         }
 
-        if (col.gameObject.name == "Phony_Player2")
+        if (col.gameObject.name == "Phony_Player")
         {
             Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
             vel = vel * (this.phony_body.velocity.magnitude * 0.3f);

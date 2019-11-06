@@ -185,7 +185,7 @@ public class PhonyPlayerController : MonoBehaviour {
             collisionCount--;
         }
 
-        if (col.gameObject.name == "Phony_Player2") {
+        if (col.gameObject.name == "Phony_Player") {
             Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
             vel = vel * (this.phony_body.velocity.magnitude * 0.3f);
             if(Mathf.Abs(this.phony_body.velocity.magnitude - col.gameObject.GetComponent<Rigidbody>().velocity.magnitude) < 2)
@@ -222,12 +222,8 @@ public class PhonyPlayerController : MonoBehaviour {
             return true;
         } else {
             print("Destroyed");
+            muerte();
             return false;
-      }
-      else {
-        print("Destroyed");
-        muerte();
-        return false;
       }
     }
 
