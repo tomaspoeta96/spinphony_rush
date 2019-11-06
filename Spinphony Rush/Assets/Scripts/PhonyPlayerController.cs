@@ -18,8 +18,15 @@ public class PhonyPlayerController : MonoBehaviour {
     private bool haveMove = false;
     private KeysTable keys = new KeysTable();
     public RandomBoost boosts;
+    public Fuelle phony_fuelle;
+    private float elapsedTime = 0f;
+    private float durationTime = 10f;
+    private bool isShield = false;
+    private bool isJump = false;
+    private bool isMove = false;
 
-
+    public PhysicMaterial normalPhysic;
+    public PhysicMaterial movePhysic;
 
     private KeyCode right;
     private KeyCode left;
@@ -45,6 +52,29 @@ public class PhonyPlayerController : MonoBehaviour {
 
     private void Update() {
         //print(phony_body.velocity.magnitude);
+        if (isShield) {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= durationTime) {
+                phony_fuelle.shield = false;
+                isShield = false;
+                elapsedTime = 0;
+            }
+        }
+        if (isMove) {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= durationTime) {
+                GetComponent<Collider>().material = normalPhysic;
+                isMove = false;
+                elapsedTime = 0;
+            }
+        }
+
+
+        if(isJump) {
+            phony_body.AddForce(Vector3.up * 1000f);
+            isJump = false;
+        }
+        
         phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
         if (Input.GetKey(boost)) {
             if (haveJump) jump();
@@ -134,10 +164,10 @@ public class PhonyPlayerController : MonoBehaviour {
         }
     }
      void OnCollisionExit(Collision col)
-     {
-         if(col.gameObject.name == "Mapa_Arbol") {
+    {
+        if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount--;
-         }
+        }
 
         if (col.gameObject.name == "Phony_Player2") {
             Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
@@ -168,34 +198,38 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     private bool isOnLimits() {
-      if(Mathf.Abs(this.gameObject.transform.position.x) <= 300 &&
-         Mathf.Abs(this.gameObject.transform.position.y) <= 300 &&
-         Mathf.Abs(this.gameObject.transform.position.z) <= 300) {
-        
-        return true;
-      }
-      else {
-        print("Destroyed");
-        return false;
+        if(Mathf.Abs(this.gameObject.transform.position.x) <= 300 &&
+        Mathf.Abs(this.gameObject.transform.position.y) <= 300 &&
+        Mathf.Abs(this.gameObject.transform.position.z) <= 300) {
+            return true;
+        } else {
+            print("Destroyed");
+            return false;
       }
     }
 
     private void jump() {
         haveJump = false;
+        isJump = true;
     }
 
     private void shield(){
         haveShield = false;
+        isShield = true;
+        phony_fuelle.shield = true;
     }
 
     private void fuelle(){
+        phony_fuelle.fuelleSlider.value = 1;
         haveFuelle = false;
     }
 
     private void move(){
         haveMove = false;
+        isMove = true;
+        GetComponent<Collider>().material = movePhysic;
     }
 
-
+    
 
 }

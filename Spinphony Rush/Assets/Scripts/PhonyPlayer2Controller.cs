@@ -18,6 +18,15 @@ public class PhonyPlayer2Controller : MonoBehaviour {
     private bool haveMove = false;
     private KeysTable keys = new KeysTable("L","I","J","K","M","U");
     public RandomBoost boosts;
+    public Fuelle phony_fuelle;
+    private float elapsedTime = 0f;
+    private float durationTime = 10f;
+    private bool isShield = false;
+    private bool isJump = false;
+    private bool isMove = false;
+
+    public PhysicMaterial normalPhysic;
+    public PhysicMaterial movePhysic;
 
 
     private KeyCode right;
@@ -43,6 +52,29 @@ public class PhonyPlayer2Controller : MonoBehaviour {
     }
 
     private void Update() {
+        if (isShield) {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= durationTime) {
+                phony_fuelle.shield = false;
+                isShield = false;
+                elapsedTime = 0;
+            }
+        }
+
+        if (isMove) {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= durationTime) {
+                GetComponent<Collider>().material = normalPhysic;
+                isMove = false;
+                elapsedTime = 0;
+            }
+        }
+
+        if(isJump) {
+            phony_body.AddForce(Vector3.up * 1000f);
+            isJump = false;
+        }
+
         //print(phony_body.velocity.magnitude);
         phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
         if (Input.GetKey(boost)) {
@@ -133,7 +165,7 @@ public class PhonyPlayer2Controller : MonoBehaviour {
         }
     }
      void OnCollisionExit(Collision col)
-     {
+    {
          if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount--;
          }
@@ -152,8 +184,6 @@ public class PhonyPlayer2Controller : MonoBehaviour {
         }
     }
  
-     
-
     private void addMovement(float speed) {
 
         if (Input.GetKey(left))
@@ -181,18 +211,24 @@ public class PhonyPlayer2Controller : MonoBehaviour {
 
     private void jump() {
         haveJump = false;
+        isJump = true;
     }
 
     private void shield(){
         haveShield = false;
+        isShield = true;
+        phony_fuelle.shield = true;
     }
 
     private void fuelle(){
+        phony_fuelle.fuelleSlider.value = 1;
         haveFuelle = false;
     }
 
     private void move(){
         haveMove = false;
+        isMove = true;
+        GetComponent<Collider>().material = movePhysic;
     }
 
 

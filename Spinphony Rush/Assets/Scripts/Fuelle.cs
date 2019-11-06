@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class Fuelle : MonoBehaviour
 {
-    private Slider fuelleSlider;
+    public Slider fuelleSlider;
     private Image fuelleFill;
     private float consumoPorSegundo = (float)0.01;
     private int UpdateCount = 0;
     public GameObject player;
+    public bool shield;
 
     Vector3 _followOffset;
 
@@ -36,6 +37,7 @@ public class Fuelle : MonoBehaviour
 
     private void ConsumeOverTime()
     {
+        if(!shield)
             if(fuelleSlider.value > 0) fuelleSlider.value -= consumoPorSegundo*(float)0.02;
     }
 

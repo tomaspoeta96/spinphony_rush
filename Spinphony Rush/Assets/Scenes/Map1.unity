@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4280521, g: 0.57227767, b: 0.31056803, a: 1}
+  m_IndirectSpecularColor: {r: 0.4280356, g: 0.57235134, b: 0.31061542, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1518,6 +1518,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1266324649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6223378855054532352, guid: 3c6c2090002694f43a8bc574b4df7920,
+    type: 3}
+  m_PrefabInstance: {fileID: 148436474}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cbfbc32cd4663945bf329b840f2874e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1276641611 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6223378855054532352, guid: 3c6c2090002694f43a8bc574b4df7920,
+    type: 3}
+  m_PrefabInstance: {fileID: 6223378856341212888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cbfbc32cd4663945bf329b840f2874e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1321957144
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,6 +1889,9 @@ MonoBehaviour:
   speed: 22
   maxSpeed: 30
   boosts: {fileID: 806159368}
+  phony_fuelle: {fileID: 1276641611}
+  normalPhysic: {fileID: 13400000, guid: fb9bec324b7a0964eb4017be23e415d6, type: 2}
+  movePhysic: {fileID: 13400000, guid: 402c0770fe7e55d44b5217a236f21326, type: 2}
 --- !u!1 &1586867312
 GameObject:
   m_ObjectHideFlags: 0
@@ -7352,6 +7379,9 @@ MonoBehaviour:
   speed: 22
   maxSpeed: 30
   boosts: {fileID: 806159368}
+  phony_fuelle: {fileID: 1266324649}
+  normalPhysic: {fileID: 13400000, guid: fb9bec324b7a0964eb4017be23e415d6, type: 2}
+  movePhysic: {fileID: 13400000, guid: 402c0770fe7e55d44b5217a236f21326, type: 2}
 --- !u!64 &1878179193
 MeshCollider:
   m_ObjectHideFlags: 0
