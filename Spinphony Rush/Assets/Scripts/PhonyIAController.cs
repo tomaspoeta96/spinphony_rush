@@ -52,6 +52,7 @@ public class PhonyIAController : MonoBehaviour
         if (currentFuelle.fuelleSlider.value <= 0)
         {
             muerto = true;
+            muerte();
             gameObject.tag = "Untagged";
             phony_body.constraints = RigidbodyConstraints.None;
         }
@@ -273,11 +274,19 @@ public class PhonyIAController : MonoBehaviour
         }
         else
         {
-            muerto = true;
-            gameObject.tag = "Untagged";
-            print("Destroyed");
+            muerte();
             return false;
         }
+    }
+
+    private bool muerte()
+    {
+        muerto = true;
+        gameObject.tag = "Untagged";
+        Destroy(currentFuelle.gameObject, 1.0f);
+        print("Destroyed");
+        this.enabled = false;
+        return true;
     }
 
     private void jump()

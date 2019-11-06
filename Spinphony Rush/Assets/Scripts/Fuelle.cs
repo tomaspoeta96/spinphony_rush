@@ -7,8 +7,8 @@ public class Fuelle : MonoBehaviour
 {
     public Slider fuelleSlider;
     private Image fuelleFill;
-    private float consumoPorSegundo = (float)0.1;
-    private int UpdateCount = 0;
+    private float duracion = (float)30; //segundos
+    //private int UpdateCount = 0;
     public GameObject player;
 
     Vector3 _followOffset;
@@ -42,7 +42,8 @@ public class Fuelle : MonoBehaviour
 
     private void ConsumeOverTime()
     {
-            if(fuelleSlider.value > 0) fuelleSlider.value -= consumoPorSegundo*(float)0.02;
+        float consumoPorSegundo = 1 / duracion;
+        if(fuelleSlider.value > 0) fuelleSlider.value -= consumoPorSegundo*(float)0.02;
     }
 
     private void changeColor()

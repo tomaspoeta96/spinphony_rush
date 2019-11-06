@@ -54,6 +54,7 @@ public class PhonyPlayerController : MonoBehaviour {
         if (currentFuelle.fuelleSlider.value <= 0)
         {
             muerto = true;
+            muerte();
             phony_body.constraints = RigidbodyConstraints.None;
         }
         else {
@@ -192,6 +193,7 @@ public class PhonyPlayerController : MonoBehaviour {
       }
       else {
         print("Destroyed");
+        muerte();
         return false;
       }
     }
@@ -212,6 +214,14 @@ public class PhonyPlayerController : MonoBehaviour {
         haveMove = false;
     }
 
-
+    private bool muerte()
+    {
+        muerto = true;
+        gameObject.tag = "Untagged";
+        Destroy(currentFuelle.gameObject, 1.0f);
+        this.enabled = false;
+        print("Destroyed");
+        return true;
+    }
 
 }
