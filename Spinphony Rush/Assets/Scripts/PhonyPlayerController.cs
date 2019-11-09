@@ -27,6 +27,11 @@ public class PhonyPlayerController : MonoBehaviour {
     private bool isJump = false;
     private bool isMove = false;
 
+    private bool isBeaten = false;
+    private float elapsedTimeBeat = 0f;
+    private float durationTimeBeat = 0.1f;
+    private bool keysDisabler = false;
+
     private bool isReverb = false;
     private float elapsedTimeReverb = 0f;
     private float durationTimeReverb = 0.8f;
@@ -93,8 +98,9 @@ public class PhonyPlayerController : MonoBehaviour {
         		elapsedTimeReverb = 0f;
         	}
         }
-        
-        
+
+
+
 
         //si la peonza se queda sin fuelle
         if (currentFuelle.fuelleSlider.value <= 0)
@@ -121,6 +127,21 @@ public class PhonyPlayerController : MonoBehaviour {
         }
         if(collisionCount == 0) {
           phony_body.AddForce(Vector3.down * 15);
+        }
+
+        if (isBeaten)
+        {
+            elapsedTimeBeat += Time.deltaTime;
+            if (elapsedTimeBeat >= durationTimeBeat)
+            {
+                keysDisabler = true;
+                isBeaten = false;
+                elapsedTimeBeat = 0f;
+            }
+            if(!isBeaten)
+            {
+                keysDisabler = false;
+            }
         }
         if (!onPush) {
             addMovement(speed);
@@ -185,7 +206,32 @@ public class PhonyPlayerController : MonoBehaviour {
 
     void OnCollisionEnter(Collision col) {
         if(col.gameObject.name == "Mapa_Arbol") {
+            phony_body.drag = 0;
             collisionCount++;
+        }
+        if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA")
+        {
+            print("vel phony: "+ col.gameObject.GetComponent<Rigidbody>().velocity);
+            print("vel enemy" + phony_body.velocity);
+            print("impactdir: " + Vector3.Dot(Vector3.Normalize(phony_body.velocity.normalized), Vector3.Normalize(col.gameObject.GetComponent<Rigidbody>().velocity.normalized)));
+            print("impactforce: " + col.relativeVelocity.magnitude);
+            Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
+            vel = vel * (this.phony_body.velocity.magnitude * 0.2f);
+            Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), true);
+            if (!Mathf.Approximately(Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized),1f) &&
+                !Mathf.Approximately(Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized), -1f))
+            {
+                if (col.relativeVelocity.magnitude > 15f)
+                {
+                    if ((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude))
+                    {
+                        phony_body.velocity = phony_body.velocity * 0.95f;
+                        col.gameObject.GetComponent<Rigidbody>().AddForce(vel);
+                        col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(vel, speed);
+                        col.gameObject.GetComponent<PhonyPlayerController>().isBeaten = true;
+                    }
+                }
+            }
         }
     }
 
@@ -193,45 +239,39 @@ public class PhonyPlayerController : MonoBehaviour {
         if(col.gameObject.name == "Mapa_Arbol") {
             collisionCount = 1;
         }
+        
     }
      void OnCollisionExit(Collision col)
     {
         if(col.gameObject.name == "Mapa_Arbol") {
+            phony_body.drag = 0.1f;
             collisionCount--;
-            print("CHAU");
         }
 
-        if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA") {
-        	print("HOLA");
-            Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
-            vel = vel * (this.phony_body.velocity.magnitude * 0.3f);
-            if(Mathf.Abs(this.phony_body.velocity.magnitude - col.gameObject.GetComponent<Rigidbody>().velocity.magnitude) < 2)
-            {
-                
-            }
-            else if((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)) {
-                col.gameObject.GetComponent<Rigidbody>().velocity = vel;
-                col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(col.gameObject.GetComponent<Rigidbody>().velocity, speed);
-
-            }
+        if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA")
+        {
+            Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), false);
         }
+
+
     }
  
      
 
     private void addMovement(float speed) {
-        if (!muerto)
-        {
-            if (Input.GetKey(left))
-                phony_body.AddForce(Vector3.left * speed);
-            if (Input.GetKey(right))
-                phony_body.AddForce(Vector3.right * speed);
-            if (Input.GetKey(down))
-                phony_body.AddForce(Vector3.back * speed);
-            if (Input.GetKey(up))
-                phony_body.AddForce(Vector3.forward * speed);
-            if (Input.GetKey(reverb))
-            	invokeReverb();
+        if (!muerto) {
+            if (!keysDisabler) {
+                if (Input.GetKey(left))
+                    phony_body.AddForce(Vector3.left * speed);
+                if (Input.GetKey(right))
+                    phony_body.AddForce(Vector3.right * speed);
+                if (Input.GetKey(down))
+                    phony_body.AddForce(Vector3.back * speed);
+                if (Input.GetKey(up))
+                    phony_body.AddForce(Vector3.forward * speed);
+                if (Input.GetKey(reverb))
+                    invokeReverb();
+            }
         }
     }
 
