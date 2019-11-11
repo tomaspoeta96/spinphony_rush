@@ -34,7 +34,7 @@ public class PhonyPlayerController : MonoBehaviour {
 
     private bool isReverb = false;
     private float elapsedTimeReverb = 0f;
-    private float durationTimeReverb = 0.8f;
+    private float durationTimeReverb = 0.1f;
 
     public PhysicMaterial normalPhysic;
     public PhysicMaterial movePhysic;
@@ -66,7 +66,6 @@ public class PhonyPlayerController : MonoBehaviour {
 
 
     private void Update() {
-        //print(phony_body.velocity.magnitude);
         if (isShield) {
             elapsedTime += Time.deltaTime;
             if (elapsedTime >= durationTime) {
@@ -75,32 +74,6 @@ public class PhonyPlayerController : MonoBehaviour {
                 elapsedTime = 0;
             }
         }
-        if (isMove) {
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime >= durationTime) {
-                GetComponent<Collider>().material = normalPhysic;
-                isMove = false;
-                elapsedTime = 0;
-            }
-        }
-
-
-        if(isJump) {
-            phony_body.AddForce(Vector3.up * 1000f);
-            isJump = false;
-        }
-
-        if(isReverb) {
-        	elapsedTimeReverb += Time.deltaTime;
-        	if(elapsedTimeReverb >= durationTimeReverb) {
-        		phony_body.mass = 1f;
-        		isReverb = false;
-        		elapsedTimeReverb = 0f;
-        	}
-        }
-
-
-
 
         //si la peonza se queda sin fuelle
         if (currentFuelle.fuelleSlider.value <= 0)
@@ -128,6 +101,30 @@ public class PhonyPlayerController : MonoBehaviour {
         if(collisionCount == 0) {
           phony_body.AddForce(Vector3.down * 15);
         }
+
+        if (isMove) {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= durationTime) {
+                GetComponent<Collider>().material = normalPhysic;
+                isMove = false;
+                elapsedTime = 0;
+            }
+        }
+
+        if(isJump) {
+            phony_body.AddForce(Vector3.up * 1000f);
+            isJump = false;
+        }
+
+        if(isReverb) {
+        	elapsedTimeReverb += Time.deltaTime;
+        	if(elapsedTimeReverb >= durationTimeReverb) {
+        		phony_body.mass = 1f;
+        		isReverb = false;
+        		elapsedTimeReverb = 0f;
+        	}
+        }
+
 
         if (isBeaten)
         {
@@ -211,20 +208,13 @@ public class PhonyPlayerController : MonoBehaviour {
         }
         if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA")
         {
-            print("vel phony: "+ col.gameObject.GetComponent<Rigidbody>().velocity);
-            print("vel enemy" + phony_body.velocity);
-            print("impactdir: " + Vector3.Dot(Vector3.Normalize(phony_body.velocity.normalized), Vector3.Normalize(col.gameObject.GetComponent<Rigidbody>().velocity.normalized)));
-            print("impactforce: " + col.relativeVelocity.magnitude);
             Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
-            vel = vel * (this.phony_body.velocity.magnitude * 0.2f);
+            float dir = Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized);
+            vel *= (this.phony_body.velocity.magnitude * 0.2f);
             Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), true);
-            if (!Mathf.Approximately(Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized),1f) &&
-                !Mathf.Approximately(Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized), -1f))
-            {
-                if (col.relativeVelocity.magnitude > 15f)
-                {
-                    if ((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude))
-                    {
+            if (!Mathf.Approximately(dir,1f) && !Mathf.Approximately(dir, -1f)) {
+                if (col.relativeVelocity.magnitude > 15f) {
+                    if ((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)) {
                         phony_body.velocity = phony_body.velocity * 0.95f;
                         col.gameObject.GetComponent<Rigidbody>().AddForce(vel);
                         col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(vel, speed);
