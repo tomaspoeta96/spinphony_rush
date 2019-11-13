@@ -98,7 +98,8 @@ public class PhonyPlayerController : MonoBehaviour {
             else if(Input.GetKeyUp(hability)) onPush = true;
         }
 
-        else if (onPush) {           
+        else if (onPush) { 
+            phony_body.transform.Rotate(0f, 0f, 8f, Space.Self);
             pushTimer += Time.deltaTime;
             pushSeconds = (int)pushTimer % 60;
             if (pushSeconds >= 2) {
