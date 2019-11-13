@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomBoost : MonoBehaviour
-{
+public class RandomBoost : MonoBehaviour {
     public GameObject[] boosts = new GameObject[16];
     public PhonyPlayerController phony;
     private int index = 0;
@@ -14,14 +13,7 @@ public class RandomBoost : MonoBehaviour
     public bool on_map_Fuelle = false;
     public bool on_map_Move = false;
 
-
-    void Start() {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= repeatTime) {
             index = Random.Range (0, boosts.Length);
