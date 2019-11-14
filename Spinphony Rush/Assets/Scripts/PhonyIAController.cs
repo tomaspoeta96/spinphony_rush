@@ -32,11 +32,6 @@ public class PhonyIAController : MonoBehaviour
 
     private int collisionCount = 0;
 
-    void Awake()
-    {
-
-    }
-
     void Start()
     {
         phony_body = GetComponent<Rigidbody>();
