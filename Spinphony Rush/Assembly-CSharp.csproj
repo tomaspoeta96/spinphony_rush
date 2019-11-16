@@ -64,8 +64,11 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Fuelle.cs" />
     <Compile Include="Assets\Scripts\KeysTable.cs" />
+    <Compile Include="Assets\Scripts\Menus\FightConfiguration.cs" />
     <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Menus\PhonySelector.cs" />
     <Compile Include="Assets\Scripts\Menus\Returnable.cs" />
+    <Compile Include="Assets\Scripts\Menus\StartFightButton.cs" />
     <Compile Include="Assets\Scripts\PhonyActionFactory.cs" />
     <Compile Include="Assets\Scripts\PhonyBeaten.cs" />
     <Compile Include="Assets\Scripts\PhonyBoostHandling.cs" />
