@@ -98,8 +98,8 @@ public class PhonyPlayerController : MonoBehaviour {
             else if(Input.GetKeyUp(hability)) onPush = true;
         }
 
-        else if (onPush) { 
-            phony_body.transform.Rotate(0f, 0f, 8f, Space.Self);
+        else if (onPush) {
+            phony_body.transform.GetChild(0).Rotate(0f, 8f, 0f, Space.Self);
             pushTimer += Time.deltaTime;
             pushSeconds = (int)pushTimer % 60;
             if (pushSeconds >= 2) {
@@ -187,18 +187,124 @@ public class PhonyPlayerController : MonoBehaviour {
     }
  
     private void addMovement(float speed) {
+
+        bool condA = (phony_body.transform.localEulerAngles.z <= 15 && phony_body.transform.localEulerAngles.z >= 0);
+        bool condB = (360 - phony_body.transform.localEulerAngles.z <= 15 && 360f - phony_body.transform.localEulerAngles.z >= 0);
+
+        bool condC = (phony_body.transform.eulerAngles.x <= 15 && phony_body.transform.eulerAngles.x >= 0);
+        bool condD = (360 - phony_body.transform.localEulerAngles.x <= 15 && 360f - phony_body.transform.localEulerAngles.x >= 0);
+
         if (!muerto) {
             if (!keysDisabler) {
-                if (Input.GetKey(left))
+                if (Input.GetKey(left)) {
                     phony_body.AddForce(Vector3.left * speed);
+
+                    if (condA)
+                    {
+                        Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
+                        currentRotation.z += 2f;
+                        currentRotation.z = Mathf.Clamp(currentRotation.z, 0, 15);
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                    else if(Mathf.Round(phony_body.transform.localRotation.eulerAngles.z) >= 345f)
+                    {
+                        Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
+                        currentRotation.z += 2f; 
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    } 
+
+                }
                 if (Input.GetKey(right))
+                {
+                    
                     phony_body.AddForce(Vector3.right * speed);
-                if (Input.GetKey(down))
-                    phony_body.AddForce(Vector3.back * speed);
+
+                    if (condB || phony_body.transform.eulerAngles.z == 0)
+                    {
+
+                        Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
+                        currentRotation.z -= 2f;
+                        currentRotation.z = Mathf.Clamp(currentRotation.z, 345, 360);
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                    else if (Mathf.Round(phony_body.transform.localRotation.eulerAngles.z) <= 15f)
+                    {
+                        Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
+                        currentRotation.z -= 2f;
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+
+                }
                 if (Input.GetKey(up))
+                {
                     phony_body.AddForce(Vector3.forward * speed);
+                    if (condC)
+                    {
+                        Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
+                        currentRotation.x += 2f;
+                        currentRotation.x = Mathf.Clamp(currentRotation.x, 0, 15);
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                    else if (Mathf.Round(phony_body.transform.localRotation.eulerAngles.x) >= 345f)
+                    {
+                        Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
+                        currentRotation.x += 2f;
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+
+
+                }
+                if (Input.GetKey(down))
+                {
+                    phony_body.AddForce(Vector3.back * speed);
+                    if (condD || phony_body.transform.eulerAngles.x == 0)
+                    {
+                        Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
+                        currentRotation.x -= 2;
+                        currentRotation.x = Mathf.Clamp(currentRotation.x, 345, 360);
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                    else if (Mathf.Round(phony_body.transform.localRotation.eulerAngles.x) <= 15f)
+                    {
+                        Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
+                        currentRotation.x -= 2f;
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+
+                }
+                
                 if (Input.GetKey(reverb))
                     phonyReverb.reverb();
+
+                if(!Input.GetKey(left) && !Input.GetKey(right) && !Input.GetKey(down) && !Input.GetKey(up)) {
+                    Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
+                    if (Mathf.Round(currentRotation.z) != 0)
+                    {
+                        if (Mathf.Round(currentRotation.z) <= 15)
+                        {
+                            currentRotation.z -= 0.7f;
+                            phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                        }
+                        else if (Mathf.Round(currentRotation.z) >= 345)
+                        {
+                            currentRotation.z += 0.7f;
+                            phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                        }
+                    }
+                    if (Mathf.Round(currentRotation.x) != 0)
+                    {
+                        if (Mathf.Round(currentRotation.x) <= 15)
+                        {
+                            currentRotation.x -=0.7f;
+                            phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                        }
+                        else if (Mathf.Round(currentRotation.x) >= 345)
+                        {
+                            currentRotation.x += 0.7f;
+                            phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                        }
+                    }
+                }
             }
         }
     }
@@ -230,7 +336,7 @@ public class PhonyPlayerController : MonoBehaviour {
             phony_body.constraints = RigidbodyConstraints.None;
         }
         else {
-            phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
+            phony_body.transform.GetChild(0).Rotate(0f, 5f, 0f, Space.Self);
             if (Input.GetKey(boost)) {
                 if (haveJump) phonyBoostJump.jump();
                 if (haveShield) phonyBoostShield.shield();
@@ -289,5 +395,14 @@ public class PhonyPlayerController : MonoBehaviour {
 
     public void setKeysDisabler(bool keysDisabler) {
         this.keysDisabler = keysDisabler;
+    }
+
+    public bool getKeysDisabler()
+    {
+        return keysDisabler;
+    }
+    public bool getMuerto()
+    {
+        return muerto;
     }
 }

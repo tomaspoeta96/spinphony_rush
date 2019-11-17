@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\PhonyIAController.cs" />
     <Compile Include="Assets\Scripts\PhonyPlayerController.cs" />
     <Compile Include="Assets\Scripts\PhonyReverb.cs" />
+    <Compile Include="Assets\Scripts\PhonyRotation.cs" />
     <Compile Include="Assets\Scripts\RandomBoost.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/hp/Desktop/Spinphony Rush/spinphony_rush/Spinphony Rush/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
