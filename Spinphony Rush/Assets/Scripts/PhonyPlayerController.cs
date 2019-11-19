@@ -98,8 +98,8 @@ public class PhonyPlayerController : MonoBehaviour {
             else if(Input.GetKeyUp(hability)) onPush = true;
         }
 
-        else if (onPush) { 
-            phony_body.transform.Rotate(0f, 0f, 8f, Space.Self);
+        else if (onPush) {
+            phony_body.transform.GetChild(0).Rotate(0f, 8f, 0f, Space.Self);
             pushTimer += Time.deltaTime;
             pushSeconds = (int)pushTimer % 60;
             if (pushSeconds >= 2) {
@@ -187,18 +187,91 @@ public class PhonyPlayerController : MonoBehaviour {
     }
  
     private void addMovement(float speed) {
+        Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
+        bool checkLeftAngle=     (currentRotation.z <= 15 && currentRotation.z >= 0);
+        bool checkRightAngle=    ((360 - currentRotation.z <= 15 && 360f - currentRotation.z >= 0) || currentRotation.z == 0);
+        bool condForwardAngle =  (currentRotation.x <= 15 && currentRotation.x >= 0);
+        bool condBackwardAngle = ((360 - currentRotation.x <= 15 && 360f - currentRotation.x >= 0) || currentRotation.x == 0);
+
         if (!muerto) {
             if (!keysDisabler) {
-                if (Input.GetKey(left))
+                if (Input.GetKey(left)) {
                     phony_body.AddForce(Vector3.left * speed);
-                if (Input.GetKey(right))
+                    if (checkLeftAngle) {
+                        currentRotation.z += 2f;
+                        currentRotation.z = Mathf.Clamp(currentRotation.z, 0, 15);
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                    else if(Mathf.Round(currentRotation.z) >= 345f) {
+                        currentRotation.z += 2f; 
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    } 
+                }
+                if (Input.GetKey(right)) {
                     phony_body.AddForce(Vector3.right * speed);
-                if (Input.GetKey(down))
-                    phony_body.AddForce(Vector3.back * speed);
-                if (Input.GetKey(up))
+                    if (checkRightAngle) {
+                        currentRotation.z -= 2f;
+                        currentRotation.z = Mathf.Clamp(currentRotation.z, 345, 360);
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                    else if (Mathf.Round(currentRotation.z) <= 15f) {
+                        currentRotation.z -= 2f;
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                }
+                if (Input.GetKey(up)) {
                     phony_body.AddForce(Vector3.forward * speed);
-                if (Input.GetKey(reverb))
+                    if (condForwardAngle) {
+                        currentRotation.x += 2f;
+                        currentRotation.x = Mathf.Clamp(currentRotation.x, 0, 15);
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                    else if (Mathf.Round(currentRotation.x) >= 345f) {
+                        currentRotation.x += 2f;
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                }
+                if (Input.GetKey(down)) {
+                    phony_body.AddForce(Vector3.back * speed);
+                    if (condBackwardAngle) {
+                        currentRotation.x -= 2;
+                        currentRotation.x = Mathf.Clamp(currentRotation.x, 345, 360);
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                    else if (Mathf.Round(currentRotation.x) <= 15f) {
+                        currentRotation.x -= 2f;
+                        phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                    }
+                }
+
+                if (Input.GetKey(reverb)) {
                     phonyReverb.reverb();
+                }
+
+                if(!Input.GetKey(left) && !Input.GetKey(right)) {
+                    if (Mathf.Round(currentRotation.z) != 0) {
+                        if (Mathf.Round(currentRotation.z) <= 15) {
+                            currentRotation.z -= 0.7f;
+                            phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                        }
+                        else if (Mathf.Round(currentRotation.z) >= 345) {
+                            currentRotation.z += 0.7f;
+                            phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                        }
+                    }
+                }
+                if (!Input.GetKey(down) && !Input.GetKey(up)) {
+                    if (Mathf.Round(currentRotation.x) != 0) {
+                        if (Mathf.Round(currentRotation.x) <= 15) {
+                            currentRotation.x -= 0.7f;
+                            phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                        }
+                        else if (Mathf.Round(currentRotation.x) >= 345) {
+                            currentRotation.x += 0.7f;
+                            phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
+                        }
+                    }
+                }
             }
         }
     }
@@ -230,7 +303,7 @@ public class PhonyPlayerController : MonoBehaviour {
             phony_body.constraints = RigidbodyConstraints.None;
         }
         else {
-            phony_body.transform.Rotate(0f, 0f, 5f, Space.Self);
+            phony_body.transform.GetChild(0).Rotate(0f, 5f, 0f, Space.Self);
             if (Input.GetKey(boost)) {
                 if (haveJump) phonyBoostJump.jump();
                 if (haveShield) phonyBoostShield.shield();
@@ -249,45 +322,44 @@ public class PhonyPlayerController : MonoBehaviour {
         return true;
     }
 
+    //Getters y setters(agregar segun se necesiten)
     public void setIsMove(bool isMove) {
         this.isMove = isMove;
     }
-
     public void setHaveMove(bool haveMove) {
         this.haveMove = haveMove;
     }
-
     public void setIsShield(bool isShield) {
         this.isShield = isShield;
     }
-
     public void setHaveShield(bool haveShield) {
         this.haveShield = haveShield;
     }
-
     public void setIsJump(bool isJump) {
         this.isJump = isJump;
     }
-
     public void setHaveJump(bool haveJump) {
         this.haveJump = haveJump;
     }
-
     public void setIsReverb(bool isReverb) {
         this.isReverb = isReverb;
     }
     public Rigidbody getPhony() {
         return phony_body;
     }
-
     public void setIsBeaten(bool isBeaten) {
         this.isBeaten = isBeaten;
     }
     public bool getIsBeaten() {
         return isBeaten;
     }
-
     public void setKeysDisabler(bool keysDisabler) {
         this.keysDisabler = keysDisabler;
+    }
+    public bool getKeysDisabler() {
+        return keysDisabler;
+    }
+    public bool getMuerto() {
+        return muerto;
     }
 }
