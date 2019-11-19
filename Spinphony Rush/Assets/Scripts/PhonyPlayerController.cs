@@ -74,7 +74,7 @@ public class PhonyPlayerController : MonoBehaviour {
         phonyBoostHandling.actionTime(isMove, 5f);
         phonyBoostJump.actionTime(isJump);
         phonyReverb.actionTime(isReverb, 0.1f);
-        phonyBeaten.actionTime(isBeaten, 0.1f);
+        phonyBeaten.actionTime(isBeaten, 0.2f);
 
         checkFuelle();
     }
@@ -84,7 +84,7 @@ public class PhonyPlayerController : MonoBehaviour {
           Destroy(this.gameObject);
         }
         if(collisionCount == 0) {
-          phony_body.AddForce(Vector3.down * 15);
+          phony_body.AddForce(Physics.gravity * 3);
         }
 
         if (!onPush) {
@@ -154,7 +154,7 @@ public class PhonyPlayerController : MonoBehaviour {
         if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA") {
             Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
             float dir = Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized);
-            vel *= (this.phony_body.velocity.magnitude * 0.2f);
+            vel *= (this.phony_body.velocity.magnitude * 0.25f);
             Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), true);
             if (!Mathf.Approximately(dir,1f) && !Mathf.Approximately(dir, -1f)) {
                 if (col.relativeVelocity.magnitude > 15f) {
