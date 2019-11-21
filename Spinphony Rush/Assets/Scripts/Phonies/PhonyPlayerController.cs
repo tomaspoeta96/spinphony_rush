@@ -49,14 +49,18 @@ public class PhonyPlayerController : MonoBehaviour {
     private PhonyReverb phonyReverb;
     private PhonyBeaten phonyBeaten;
 
+    private AudioSource[] sounds;
+    private AudioSource peonzaDragSound;
+    private AudioSource peonzaCrashSound;
+
     //void Awake()
     //{
-        //right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
-        //left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
-        //up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
-        //down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
-        //hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
-        //boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.BOOST()) ;
+    //right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
+    //left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
+    //up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
+    //down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
+    //hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
+    //boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.BOOST()) ;
     //}
 
     void Start() {
@@ -66,6 +70,9 @@ public class PhonyPlayerController : MonoBehaviour {
         phonyBoostJump = gameObject.AddComponent<PhonyBoostJump>() as PhonyBoostJump;
         phonyReverb = gameObject.AddComponent<PhonyReverb>() as PhonyReverb;
         phonyBeaten = gameObject.AddComponent<PhonyBeaten>() as PhonyBeaten;
+        sounds = GetComponents<AudioSource>();
+        peonzaDragSound = sounds[0];
+        peonzaCrashSound = sounds[1];
     }
 
 
@@ -77,10 +84,18 @@ public class PhonyPlayerController : MonoBehaviour {
         phonyBeaten.actionTime(isBeaten, 0.2f);
 
         checkFuelle();
+        
     }
 
     void FixedUpdate() {
-        if(!isOnLimits()) {
+        print(phony_body.velocity.magnitude);
+        if (phony_body.velocity.magnitude > 2 && peonzaDragSound.isPlaying == false && collisionCount > 0)
+        {
+            peonzaDragSound.volume = 1 * (phony_body.velocity.magnitude / maxSpeed);
+            peonzaDragSound.Play();
+        }
+
+        if (!isOnLimits()) {
           Destroy(this.gameObject);
         }
         if(collisionCount == 0) {
@@ -147,7 +162,7 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision col) {
-        if(col.gameObject.name == "Mapa_Arbol") {
+        if(col.gameObject.name == "Tronco") {
             phony_body.drag = 0;
             collisionCount++;
         }
@@ -156,6 +171,14 @@ public class PhonyPlayerController : MonoBehaviour {
             float dir = Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized);
             vel *= (this.phony_body.velocity.magnitude * 0.25f);
             Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), true);
+
+            if (peonzaCrashSound.isPlaying == false)
+            {
+                print(col.relativeVelocity.magnitude);
+                peonzaCrashSound.volume = 1 * (col.relativeVelocity.magnitude/70f);
+                peonzaCrashSound.Play();
+            }
+
             if (!Mathf.Approximately(dir,1f) && !Mathf.Approximately(dir, -1f)) {
                 if (col.relativeVelocity.magnitude > 15f) {
                     if ((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)) {
@@ -166,16 +189,24 @@ public class PhonyPlayerController : MonoBehaviour {
                     }
                 }
             }
+            else
+            {
+                if (peonzaCrashSound.isPlaying == false)
+                {
+                    peonzaCrashSound.volume = 0.5f;
+                    peonzaCrashSound.Play();
+                }
+            }
         }
     }
 
     void OnCollisionStay(Collision col) {
-        if(col.gameObject.name == "Mapa_Arbol") {
+        if(col.gameObject.name == "Tronco") {
             collisionCount = 1;
         }      
     }
      void OnCollisionExit(Collision col) {
-        if(col.gameObject.name == "Mapa_Arbol") {
+        if(col.gameObject.name == "Tronco") {
             phony_body.drag = 0.1f;
             collisionCount--;
         }
@@ -274,6 +305,8 @@ public class PhonyPlayerController : MonoBehaviour {
                 }
             }
         }
+
+
     }
 
     private bool isOnLimits() {
@@ -303,7 +336,7 @@ public class PhonyPlayerController : MonoBehaviour {
             phony_body.constraints = RigidbodyConstraints.None;
         }
         else {
-            phony_body.transform.GetChild(0).Rotate(0f, 5f, 0f, Space.Self);
+            phony_body.transform.GetChild(0).Rotate(0f, 6f, 0f, Space.Self);
             if (Input.GetKey(boost)) {
                 if (haveJump) phonyBoostJump.jump();
                 if (haveShield) phonyBoostShield.shield();

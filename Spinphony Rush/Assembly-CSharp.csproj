@@ -62,22 +62,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Camera\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Fuelle.cs" />
     <Compile Include="Assets\Scripts\KeysTable.cs" />
+    <Compile Include="Assets\Scripts\Maps\UntagPlayer.cs" />
     <Compile Include="Assets\Scripts\Menus\FightConfiguration.cs" />
     <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\PhonySelector.cs" />
     <Compile Include="Assets\Scripts\Menus\Returnable.cs" />
     <Compile Include="Assets\Scripts\Menus\StartFightButton.cs" />
-    <Compile Include="Assets\Scripts\PhonyActionFactory.cs" />
-    <Compile Include="Assets\Scripts\PhonyBeaten.cs" />
-    <Compile Include="Assets\Scripts\PhonyBoostHandling.cs" />
-    <Compile Include="Assets\Scripts\PhonyBoostJump.cs" />
-    <Compile Include="Assets\Scripts\PhonyBoostShield.cs" />
-    <Compile Include="Assets\Scripts\PhonyIAController.cs" />
-    <Compile Include="Assets\Scripts\PhonyPlayerController.cs" />
-    <Compile Include="Assets\Scripts\PhonyReverb.cs" />
-    <Compile Include="Assets\Scripts\PhonyRotation.cs" />
+    <Compile Include="Assets\Scripts\Phonies\PhonyActionFactory.cs" />
+    <Compile Include="Assets\Scripts\Phonies\PhonyBeaten.cs" />
+    <Compile Include="Assets\Scripts\Phonies\PhonyBoostHandling.cs" />
+    <Compile Include="Assets\Scripts\Phonies\PhonyBoostJump.cs" />
+    <Compile Include="Assets\Scripts\Phonies\PhonyBoostShield.cs" />
+    <Compile Include="Assets\Scripts\Phonies\PhonyIAController.cs" />
+    <Compile Include="Assets\Scripts\Phonies\PhonyPlayerController.cs" />
+    <Compile Include="Assets\Scripts\Phonies\PhonyReverb.cs" />
+    <Compile Include="Assets\Scripts\Phonies\PhonyRotation.cs" />
     <Compile Include="Assets\Scripts\RandomBoost.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/hp/Desktop/Spinphony Rush/spinphony_rush/Spinphony Rush/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
