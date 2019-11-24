@@ -825,6 +825,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351841304}
   m_CullTransparentMesh: 0
+--- !u!114 &414395040 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2799748846517200543, guid: e09ec81ece80e8742be11915bb765364,
+    type: 3}
+  m_PrefabInstance: {fileID: 1614793879}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5ed8331557bbcf4f97943ec4829237f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &426513665
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,13 +920,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 455004330}
+  - component: {fileID: 455004331}
   m_Layer: 0
   m_Name: Player2HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &455004330
 Transform:
   m_ObjectHideFlags: 0
@@ -932,6 +945,26 @@ Transform:
   m_Father: {fileID: 291024422}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &455004331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455004329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da9ed14279ec90941a1fc08dabe751bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boost: {fileID: 426513667}
+  name: {fileID: 1423937723}
+  text_points: {fileID: 1075840784}
+  phony: {fileID: 414395040}
+  jump: {fileID: 2100000, guid: 053326d55df5263488be31f8076ab312, type: 2}
+  shield: {fileID: 2100000, guid: a6159fa87f5760b44aeb6b490abfa5c8, type: 2}
+  fuelle: {fileID: 2100000, guid: d9f6caea3a099cc4ea2a8aaf6870e1cc, type: 2}
+  move: {fileID: 2100000, guid: bcdb740707a13714c8e89d95f8bd3e2b, type: 2}
 --- !u!1 &474260206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2565,7 +2598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boost: {fileID: 351841306}
   name: {fileID: 2118306127}
-  points: {fileID: 487578798}
+  text_points: {fileID: 487578798}
   phony: {fileID: 1548160414}
   jump: {fileID: 2100000, guid: 053326d55df5263488be31f8076ab312, type: 2}
   shield: {fileID: 2100000, guid: a6159fa87f5760b44aeb6b490abfa5c8, type: 2}
@@ -2678,7 +2711,7 @@ PrefabInstance:
     - target: {fileID: 2799748846614241754, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2799748846517200543, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
@@ -2800,7 +2833,7 @@ PrefabInstance:
     - target: {fileID: 2799748846614241757, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2799748846614241757, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
@@ -2820,12 +2853,12 @@ PrefabInstance:
     - target: {fileID: 2799748846619363733, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2799748846619363733, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2799748847389610821, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
@@ -9187,7 +9220,7 @@ PrefabInstance:
     - target: {fileID: 2799748846614241757, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2799748846614241757, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
