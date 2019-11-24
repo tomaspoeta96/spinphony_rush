@@ -13,14 +13,14 @@ public class PhonyPlayerController : MonoBehaviour {
     private int pushSeconds;
     private float pushSpeed;
     private bool onPush = false;
-    private bool haveJump = false;
-    private bool haveShield = false;
-    private bool haveFuelle = false;
-    private bool haveMove = false;
+    public bool haveJump = false;
+    public bool haveShield = false;
+    public bool haveFuelle = false;
+    public bool haveMove = false;
     //private KeysTable keys = new KeysTable("L","I","J","K","M","U");
     public RandomBoost boosts;
     public Fuelle currentFuelle;
-    private bool muerto = false;
+    public bool muerto = false;
     public Fuelle phony_fuelle;
     private bool isShield = false;
     private bool isJump = false;
@@ -48,6 +48,9 @@ public class PhonyPlayerController : MonoBehaviour {
     private PhonyBoostJump phonyBoostJump;
     private PhonyReverb phonyReverb;
     private PhonyBeaten phonyBeaten;
+
+    public int points = 0;
+
 
     //void Awake()
     //{
@@ -153,6 +156,12 @@ public class PhonyPlayerController : MonoBehaviour {
         }
         if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA") {
             Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
+
+            //puntaje
+            if(phony_body.velocity.magnitude <= vel.magnitude) {
+                points += 100;
+            }
+                
             float dir = Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized);
             vel *= (this.phony_body.velocity.magnitude * 0.25f);
             Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), true);
@@ -174,7 +183,7 @@ public class PhonyPlayerController : MonoBehaviour {
             collisionCount = 1;
         }      
     }
-     void OnCollisionExit(Collision col) {
+    void OnCollisionExit(Collision col) {
         if(col.gameObject.name == "Mapa_Arbol") {
             phony_body.drag = 0.1f;
             collisionCount--;
@@ -277,7 +286,7 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     private bool isOnLimits() {
-        if(
+        /*if(
         Mathf.Abs(this.gameObject.transform.position.x) <= 300 &&
         Mathf.Abs(this.gameObject.transform.position.y) <= 300 &&
         Mathf.Abs(this.gameObject.transform.position.z) <= 300) {
@@ -287,6 +296,14 @@ public class PhonyPlayerController : MonoBehaviour {
             print("Player Destroyed");
             muerte();
             return false;
+        }
+        */
+        if(Mathf.Abs(this.gameObject.transform.position.y) <= 5) {
+            print("Player Destroyed");
+            muerte();
+            return false;
+        } else {
+            return true;
         }
     }
     
