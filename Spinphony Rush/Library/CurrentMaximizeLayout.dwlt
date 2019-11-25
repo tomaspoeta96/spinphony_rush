@@ -19,10 +19,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 1920
-    height: 947
-  m_MinSize: {x: 683, y: 494}
-  m_MaxSize: {x: 14004, y: 14044}
+    width: 1522
+    height: 717
+  m_MinSize: {x: 685, y: 344}
+  m_MaxSize: {x: 12010, y: 8044}
   vertical: 0
   controlID: 22502
 --- !u!114 &2
@@ -52,7 +52,7 @@ MonoBehaviour:
     height: 554
   m_ViewDataDictionary: {fileID: 0}
   m_VSyncEnabled: 0
-  m_MaximizeOnPlay: 1
+  m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 08000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -236,7 +236,7 @@ MonoBehaviour:
     m_LockTracker:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
-  m_WindowGUID: df26dd181bd105e468722794abf62693
+  m_WindowGUID: 733b546cfff9f4945ae1d25494a22d11
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -292,7 +292,7 @@ MonoBehaviour:
     height: 554
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
-  m_WindowGUID: 8344a18458dec534ba0c3f5bc2d93172
+  m_WindowGUID: c89126582acc40c4b89e2f2c47850c8c
   m_Gizmos: 1
   m_SceneIsLit: 1
   m_SceneLighting: 1
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
-  m_Selected: 0
+  m_Selected: 1
   m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -460,7 +460,8 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts/Camera
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\hp\Desktop\Spinphony Rush\spinphony_rush\Spinphony Rush
+  m_LastProjectPath: C:\Users\User\Desktop\UNIVERSIDAD\4.CUARTO\IPV\spinphony_rush\Spinphony
+    Rush
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -523,7 +524,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: c4af0300
     m_LastClickedInstanceID: 241604
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000482d0000
+    m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -571,10 +572,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 8
-    y: 718
-    width: 1366
-    height: 308
+    x: 7.2000003
+    y: 514.4
+    width: 1213
+    height: 264
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &13
 MonoBehaviour:

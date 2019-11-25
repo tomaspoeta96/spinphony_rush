@@ -10,6 +10,15 @@ public class PhonySelector : MonoBehaviour
     public GameObject tarjeta;
     public Button readyButton;
 
+    public int phony_count = 1;
+
+    public static PhonySelector Instance;
+
+    void Awake() {
+        DontDestroyOnLoad(gameObject);
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +30,16 @@ public class PhonySelector : MonoBehaviour
     {
         addButton.gameObject.SetActive(false);
         tarjeta.SetActive(true);
+        phony_count++;
     }
 
     private void ready()
     {
         if (readyButton.interactable == true) readyButton.interactable = false;
+    }
+
+    public int getPhonyCount() {
+        return phony_count;
     }
 
 }
