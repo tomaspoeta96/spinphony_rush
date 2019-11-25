@@ -83,7 +83,7 @@ public class PhonyPlayerController : MonoBehaviour {
         phonyBoostHandling.actionTime(isMove, 5f);
         phonyBoostJump.actionTime(isJump);
         phonyReverb.actionTime(isReverb, 0.1f);
-        phonyBeaten.actionTime(isBeaten, 0.2f);
+        phonyBeaten.actionTime(isBeaten, 0.35f);
 
         checkFuelle();
 
@@ -169,7 +169,7 @@ public class PhonyPlayerController : MonoBehaviour {
         }
         if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA") {
             Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
-            if (phony_body.velocity.magnitude <= vel.magnitude)
+            if (phony_body.velocity.magnitude >= vel.magnitude)
             {
                 points += 100;
             }
