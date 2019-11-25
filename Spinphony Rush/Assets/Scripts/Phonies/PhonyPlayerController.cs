@@ -169,6 +169,10 @@ public class PhonyPlayerController : MonoBehaviour {
         }
         if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA") {
             Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
+            if (phony_body.velocity.magnitude <= vel.magnitude)
+            {
+                points += 100;
+            }
             float dir = Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized);
             vel *= (this.phony_body.velocity.magnitude * 0.25f);
             Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), true);
