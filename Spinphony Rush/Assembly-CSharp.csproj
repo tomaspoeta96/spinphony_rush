@@ -70,6 +70,8 @@
     <Compile Include="Assets\Scripts\Maps\UntagPlayer.cs" />
     <Compile Include="Assets\Scripts\Menus\FightConfiguration.cs" />
     <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Menus\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Menus\PhonySelectioner.cs" />
     <Compile Include="Assets\Scripts\Menus\PhonySelector.cs" />
     <Compile Include="Assets\Scripts\Menus\Returnable.cs" />
     <Compile Include="Assets\Scripts\Menus\StartFightButton.cs" />
