@@ -25,6 +25,7 @@ public class PhonyPlayerController : MonoBehaviour {
     private bool isShield = false;
     private bool isJump = false;
     private bool isMove = false;
+    private int points;
 
     private bool isBeaten = false;
     private bool keysDisabler = false;
@@ -73,6 +74,7 @@ public class PhonyPlayerController : MonoBehaviour {
         sounds = GetComponents<AudioSource>();
         peonzaDragSound = sounds[0];
         peonzaCrashSound = sounds[1];
+        points = 0;
     }
 
 
@@ -84,7 +86,7 @@ public class PhonyPlayerController : MonoBehaviour {
         phonyBeaten.actionTime(isBeaten, 0.2f);
 
         checkFuelle();
-        
+
     }
 
     void FixedUpdate() {
@@ -95,10 +97,10 @@ public class PhonyPlayerController : MonoBehaviour {
         }
 
         if (!isOnLimits()) {
-          Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
-        if(collisionCount == 0) {
-          phony_body.AddForce(Physics.gravity * 3);
+        if (collisionCount == 0) {
+            phony_body.AddForce(Physics.gravity * 3);
         }
 
         if (!onPush) {
@@ -109,7 +111,7 @@ public class PhonyPlayerController : MonoBehaviour {
                 seconds = (int)timer % 60;
                 if (seconds >= 3) seconds = 3;
             }
-            else if(Input.GetKeyUp(hability)) onPush = true;
+            else if (Input.GetKeyUp(hability)) onPush = true;
         }
 
         else if (onPush) {
@@ -127,14 +129,14 @@ public class PhonyPlayerController : MonoBehaviour {
             }
             else {
                 phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed + 10);
-                pushSpeed = speed + (10f*(seconds/3));
+                pushSpeed = speed + (10f * (seconds / 3));
                 addMovement(pushSpeed);
             }
         }
     }
 
     void OnTriggerEnter(Collider c) {
-        if(!haveFuelle && !haveJump && !haveMove && !haveShield) {
+        if (!haveFuelle && !haveJump && !haveMove && !haveShield) {
             switch (c.gameObject.name) {
                 case "JumpBoost":
                     haveJump = true;
@@ -161,7 +163,7 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision col) {
-        if(col.gameObject.name == "Tronco") {
+        if (col.gameObject.name == "Tronco") {
             phony_body.drag = 0;
             collisionCount++;
         }
@@ -174,11 +176,11 @@ public class PhonyPlayerController : MonoBehaviour {
             if (peonzaCrashSound.isPlaying == false)
             {
                 print(col.relativeVelocity.magnitude);
-                peonzaCrashSound.volume = col.relativeVelocity.magnitude/70f ;
+                peonzaCrashSound.volume = col.relativeVelocity.magnitude / 70f;
                 peonzaCrashSound.Play();
             }
 
-            if (!Mathf.Approximately(dir,1f) && !Mathf.Approximately(dir, -1f)) {
+            if (!Mathf.Approximately(dir, 1f) && !Mathf.Approximately(dir, -1f)) {
                 if (col.relativeVelocity.magnitude > 15f) {
                     if ((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)) {
                         phony_body.velocity = phony_body.velocity * 0.95f;
@@ -200,12 +202,12 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     void OnCollisionStay(Collision col) {
-        if(col.gameObject.name == "Tronco") {
+        if (col.gameObject.name == "Tronco") {
             collisionCount = 1;
-        }      
+        }
     }
-     void OnCollisionExit(Collision col) {
-        if(col.gameObject.name == "Tronco") {
+    void OnCollisionExit(Collision col) {
+        if (col.gameObject.name == "Tronco") {
             phony_body.drag = 0.1f;
             collisionCount--;
         }
@@ -215,12 +217,12 @@ public class PhonyPlayerController : MonoBehaviour {
             Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), false);
         }
     }
- 
+
     private void addMovement(float speed) {
         Vector3 currentRotation = phony_body.transform.localRotation.eulerAngles;
-        bool checkLeftAngle=     (currentRotation.z <= 15 && currentRotation.z >= 0);
-        bool checkRightAngle=    ((360 - currentRotation.z <= 15 && 360f - currentRotation.z >= 0) || currentRotation.z == 0);
-        bool condForwardAngle =  (currentRotation.x <= 15 && currentRotation.x >= 0);
+        bool checkLeftAngle = (currentRotation.z <= 15 && currentRotation.z >= 0);
+        bool checkRightAngle = ((360 - currentRotation.z <= 15 && 360f - currentRotation.z >= 0) || currentRotation.z == 0);
+        bool condForwardAngle = (currentRotation.x <= 15 && currentRotation.x >= 0);
         bool condBackwardAngle = ((360 - currentRotation.x <= 15 && 360f - currentRotation.x >= 0) || currentRotation.x == 0);
 
         if (!muerto) {
@@ -232,10 +234,10 @@ public class PhonyPlayerController : MonoBehaviour {
                         currentRotation.z = Mathf.Clamp(currentRotation.z, 0, 15);
                         phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
                     }
-                    else if(Mathf.Round(currentRotation.z) >= 345f) {
-                        currentRotation.z += 2f; 
+                    else if (Mathf.Round(currentRotation.z) >= 345f) {
+                        currentRotation.z += 2f;
                         phony_body.transform.localRotation = Quaternion.Euler(currentRotation);
-                    } 
+                    }
                 }
                 if (Input.GetKey(right)) {
                     phony_body.AddForce(Vector3.right * speed);
@@ -278,7 +280,7 @@ public class PhonyPlayerController : MonoBehaviour {
                     phonyReverb.reverb();
                 }
 
-                if(!Input.GetKey(left) && !Input.GetKey(right)) {
+                if (!Input.GetKey(left) && !Input.GetKey(right)) {
                     if (Mathf.Round(currentRotation.z) != 0) {
                         if (Mathf.Round(currentRotation.z) <= 15) {
                             currentRotation.z -= 0.7f;
@@ -309,7 +311,7 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     private bool isOnLimits() {
-        if(
+        if (
         Mathf.Abs(this.gameObject.transform.position.x) <= 300 &&
         Mathf.Abs(this.gameObject.transform.position.y) <= 300 &&
         Mathf.Abs(this.gameObject.transform.position.z) <= 300) {
@@ -321,7 +323,7 @@ public class PhonyPlayerController : MonoBehaviour {
             return false;
         }
     }
-    
+
     private void fuelle() {
         phony_fuelle.fuelleSlider.value = 1;
         haveFuelle = false;
@@ -393,5 +395,30 @@ public class PhonyPlayerController : MonoBehaviour {
     }
     public bool getMuerto() {
         return muerto;
+    }
+    public bool getHaveJump()
+    {
+        return haveJump;
+    }
+
+    public bool getHaveShield()
+    {
+        return haveShield;
+    }
+
+    public bool getHaveFuelle() {
+        return haveFuelle;
+    }
+
+    public bool getHaveMove() {
+        return haveMove;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+    public void setPoints(int points)
+    {
+        this.points = points;
     }
 }

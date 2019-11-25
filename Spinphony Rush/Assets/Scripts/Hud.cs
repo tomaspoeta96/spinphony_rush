@@ -43,9 +43,9 @@ public class Hud : MonoBehaviour
     void incresePoints() {
         if (survive >= repeatTime) {
             survive = 0f;
-            if(!phony.muerto) phony.points += 50;
+            if(!phony.getMuerto()) phony.setPoints(phony.getPoints() + 50);
         }
-        text_points.text = (phony.points).ToString();
+        text_points.text = (phony.getPoints()).ToString();
     }
 
     void viewBoost() {
