@@ -13,10 +13,10 @@ public class PhonyPlayerController : MonoBehaviour {
     private int pushSeconds;
     private float pushSpeed;
     private bool onPush = false;
-    public bool haveJump = false;
-    public bool haveShield = false;
-    public bool haveFuelle = false;
-    public bool haveMove = false;
+    private bool haveJump = false;
+    private bool haveShield = false;
+    private bool haveFuelle = false;
+    private bool haveMove = false;
     //private KeysTable keys = new KeysTable("L","I","J","K","M","U");
     public RandomBoost boosts;
     public Fuelle currentFuelle;
@@ -340,43 +340,55 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     //Getters y setters(agregar segun se necesiten)
-    public void setIsMove(bool isMove) {
-        this.isMove = isMove;
-    }
-    public void setHaveMove(bool haveMove) {
-        this.haveMove = haveMove;
-    }
-    public void setIsShield(bool isShield) {
-        this.isShield = isShield;
-    }
-    public void setHaveShield(bool haveShield) {
-        this.haveShield = haveShield;
-    }
-    public void setIsJump(bool isJump) {
-        this.isJump = isJump;
-    }
-    public void setHaveJump(bool haveJump) {
-        this.haveJump = haveJump;
-    }
     public void setIsReverb(bool isReverb) {
         this.isReverb = isReverb;
-    }
-    public Rigidbody getPhony() {
-        return phony_body;
     }
     public void setIsBeaten(bool isBeaten) {
         this.isBeaten = isBeaten;
     }
-    public bool getIsBeaten() {
-        return isBeaten;
+    public void setIsMove(bool isMove) {
+        this.isMove = isMove;
+    }
+    public void setIsShield(bool isShield) {
+        this.isShield = isShield;
+    }
+    public void setIsJump(bool isJump) {
+        this.isJump = isJump;
+    }
+    public void setHaveShield(bool haveShield) {
+        this.haveShield = haveShield;
+    }
+    public void setHaveJump(bool haveJump) {
+        this.haveJump = haveJump;
+    }
+    public void setHaveMove(bool haveMove) {
+        this.haveMove = haveMove;
     }
     public void setKeysDisabler(bool keysDisabler) {
         this.keysDisabler = keysDisabler;
+    }
+    public Rigidbody getPhony() {
+        return phony_body;
+    }
+    public bool getIsBeaten() {
+        return isBeaten;
     }
     public bool getKeysDisabler() {
         return keysDisabler;
     }
     public bool getMuerto() {
         return muerto;
+    }
+    public bool getHaveJump() {
+        return haveJump;
+    }
+    public bool getHaveFuelle() {
+        return haveFuelle;
+    }
+    public bool getHaveMove() {
+        return haveMove;
+    }
+    public bool getHaveShield() {
+        return haveShield;
     }
 }

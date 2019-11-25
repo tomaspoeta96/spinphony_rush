@@ -34,9 +34,9 @@ public class Hud : MonoBehaviour
     }
 
     void controllerBoost() {
-        if(phony.haveJump || phony.haveShield || phony.haveFuelle || phony.haveMove)
+        if(phony.getHaveJump() || phony.getHaveShield() || phony.getHaveFuelle() || phony.getHaveMove())
             boost.enabled = true;
-        if(!phony.haveJump && !phony.haveShield && !phony.haveFuelle && !phony.haveMove)
+        if(!phony.getHaveJump() && !phony.getHaveShield() && !phony.getHaveFuelle() && !phony.getHaveMove())
             boost.enabled = false;
     }
 
@@ -49,13 +49,13 @@ public class Hud : MonoBehaviour
     }
 
     void viewBoost() {
-        if(phony.haveJump)
+        if(phony.getHaveJump())
             boost.material = jump;
-        if(phony.haveShield)
+        if(phony.getHaveShield())
             boost.material = shield;
-        if(phony.haveFuelle)
+        if(phony.getHaveFuelle())
             boost.material = fuelle;
-        if(phony.haveMove)
+        if(phony.getHaveMove())
             boost.material = move;
     }
         
