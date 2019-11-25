@@ -6,7 +6,7 @@ public class CameraMovement : MonoBehaviour
     public Vector3 offset;
     private Vector3 velocity;
     public float smoothTime = .5f;
-    public float algo;
+    public float cameraMovement;
     void LateUpdate()
     {
         phonies = GameObject.FindGameObjectsWithTag("Phony");
@@ -16,7 +16,7 @@ public class CameraMovement : MonoBehaviour
         }
         
         Vector3 centerPoint = calculatePhoniesCenter();
-        Vector3 newPos = (centerPoint * algo) + offset;
+        Vector3 newPos = (centerPoint * cameraMovement) + offset;
         newPos[1] = offset[1];
         transform.position = Vector3.SmoothDamp(transform.position, newPos, ref velocity, smoothTime);
     }

@@ -88,10 +88,9 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        print(phony_body.velocity.magnitude);
         if (phony_body.velocity.magnitude > 2 && peonzaDragSound.isPlaying == false && collisionCount > 0)
         {
-            peonzaDragSound.volume = 1 * (phony_body.velocity.magnitude / maxSpeed);
+            peonzaDragSound.volume = phony_body.velocity.magnitude / maxSpeed;
             peonzaDragSound.Play();
         }
 
@@ -175,7 +174,7 @@ public class PhonyPlayerController : MonoBehaviour {
             if (peonzaCrashSound.isPlaying == false)
             {
                 print(col.relativeVelocity.magnitude);
-                peonzaCrashSound.volume = 1 * (col.relativeVelocity.magnitude/70f);
+                peonzaCrashSound.volume = col.relativeVelocity.magnitude/70f ;
                 peonzaCrashSound.Play();
             }
 
