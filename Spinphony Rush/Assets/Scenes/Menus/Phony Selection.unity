@@ -1207,6 +1207,7 @@ MonoBehaviour:
   addButton: {fileID: 2013632307}
   tarjeta: {fileID: 597602015}
   readyButton: {fileID: 971177917}
+  phony_count: 1
 --- !u!1 &188374685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,6 +1863,7 @@ MonoBehaviour:
   addButton: {fileID: 462941106}
   tarjeta: {fileID: 1033423847}
   readyButton: {fileID: 76287253}
+  phony_count: 1
 --- !u!1 &277041758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,7 +2384,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start Fight!
+  m_Text: Start Fight
 --- !u!222 &359281584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6711,6 +6713,7 @@ MonoBehaviour:
   addButton: {fileID: 1572824472}
   tarjeta: {fileID: 1139461385}
   readyButton: {fileID: 513615510}
+  phony_count: 1
 --- !u!1 &1158858974
 GameObject:
   m_ObjectHideFlags: 0
@@ -9147,7 +9150,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start Fight!
+  m_Text: Continue
 --- !u!222 &1589194876
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9523,6 +9526,7 @@ MonoBehaviour:
   addButton: {fileID: 2111702688}
   tarjeta: {fileID: 1076433486}
   readyButton: {fileID: 1959196127}
+  phony_count: 1
 --- !u!1 &1760056727
 GameObject:
   m_ObjectHideFlags: 0
