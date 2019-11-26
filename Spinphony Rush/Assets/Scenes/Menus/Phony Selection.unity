@@ -292,6 +292,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
+    - m_Text: GamePad1
+      m_Image: {fileID: 0}
     - m_Text: IA
       m_Image: {fileID: 0}
   m_OnValueChanged:
@@ -4176,6 +4178,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
+    - m_Text: GamePad1
+      m_Image: {fileID: 0}
     - m_Text: IA
       m_Image: {fileID: 0}
   m_OnValueChanged:
@@ -4749,7 +4753,7 @@ GameObject:
   - component: {fileID: 752651219}
   - component: {fileID: 752651218}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5244,7 +5248,7 @@ GameObject:
   - component: {fileID: 868938742}
   - component: {fileID: 868938741}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5996,6 +6000,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
+    - m_Text: GamePad1
+      m_Image: {fileID: 0}
     - m_Text: IA
       m_Image: {fileID: 0}
   m_OnValueChanged:
@@ -6453,6 +6459,8 @@ MonoBehaviour:
     - m_Text: Keyboard1
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
+      m_Image: {fileID: 0}
+    - m_Text: GamePad1
       m_Image: {fileID: 0}
     - m_Text: IA
       m_Image: {fileID: 0}
@@ -8582,7 +8590,7 @@ GameObject:
   - component: {fileID: 1433557150}
   - component: {fileID: 1433557149}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11463,7 +11471,7 @@ GameObject:
   - component: {fileID: 2140954909}
   - component: {fileID: 2140954908}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
