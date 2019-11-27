@@ -67,6 +67,8 @@
     <Compile Include="Assets\Scripts\GameRules.cs" />
     <Compile Include="Assets\Scripts\Hud.cs" />
     <Compile Include="Assets\Scripts\KeysTable.cs" />
+    <Compile Include="Assets\Scripts\Maps\GenerateObstacle.cs" />
+    <Compile Include="Assets\Scripts\Maps\ObstacleBehaviour.cs" />
     <Compile Include="Assets\Scripts\Maps\UntagPlayer.cs" />
     <Compile Include="Assets\Scripts\Menus\FightConfiguration.cs" />
     <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
@@ -85,7 +87,7 @@
     <Compile Include="Assets\Scripts\Phonies\PhonyReverb.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyRotation.cs" />
     <Compile Include="Assets\Scripts\RandomBoost.cs" />
-    <Compile Include="Assets\Scripts\RandomObstacle.cs" />
+    <None Include="Assets\DataMaps\TreeRandomPoints.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/hp/Desktop/Spinphony Rush/spinphony_rush/Spinphony Rush/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
