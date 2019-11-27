@@ -4197,7 +4197,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3b24bfab195d8334e8e96083c1cf9d95, type: 2}
+      objectReference: {fileID: 2100000, guid: 70d04f1b6d6dc8645a63b37212ecaf77, type: 2}
     - target: {fileID: 2799748846641904342, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
       propertyPath: m_Name
@@ -5174,7 +5174,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 3613567641014311022, guid: 4a03ae1f952f8ca4ab8b9577198c9b76,
+      objectReference: {fileID: 3613567641014311022, guid: e682bee52e07c6f49aa08dee5b631ece,
         type: 3}
     - target: {fileID: 5604606199504489283, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
@@ -5200,12 +5200,18 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 149072229b5b93848bfad9fd6a5bcc1c, type: 2}
+      objectReference: {fileID: 2100000, guid: 0297177550928884481752f75d5c5a58, type: 2}
     - target: {fileID: 2799748846641904342, guid: e09ec81ece80e8742be11915bb765364,
         type: 3}
       propertyPath: m_Name
       value: Fuelle3
       objectReference: {fileID: 0}
+    - target: {fileID: 1816584034890127735, guid: e09ec81ece80e8742be11915bb765364,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3613567641014311022, guid: e682bee52e07c6f49aa08dee5b631ece,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 5736103357737346020, guid: e09ec81ece80e8742be11915bb765364, type: 3}
     - {fileID: 2901703437220995386, guid: e09ec81ece80e8742be11915bb765364, type: 3}
@@ -29976,6 +29982,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5334870985353880974, guid: e09ec81ece80e8742be11915bb765364,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 155b8371b5b1b1a4cbe576573738d98d, type: 2}
     m_RemovedComponents:
     - {fileID: 5736103357737346020, guid: e09ec81ece80e8742be11915bb765364, type: 3}
     - {fileID: 2901703437220995386, guid: e09ec81ece80e8742be11915bb765364, type: 3}
