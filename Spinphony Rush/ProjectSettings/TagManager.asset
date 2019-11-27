@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Phony
   - HUD
+  - Map
   layers:
   - Default
   - TransparentFX
