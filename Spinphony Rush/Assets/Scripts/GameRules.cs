@@ -5,7 +5,9 @@ using UnityEngine;
 public class GameRules : MonoBehaviour
 {
     //private PhonySelector selector = PhonySelector.Instance;
-    public int players;
+    private int players;
+    public DataObject Data;
+
     public GameObject player1;
     public GameObject player2;
     public GameObject player3;
@@ -16,32 +18,39 @@ public class GameRules : MonoBehaviour
     public GameObject hud3;
     public GameObject hud4;
 
-    private GameObject[] playerss;
-    private GameObject[] HUD;
-
     // Start is called before the first frame update
     void Start()
     {
-        //players = selector.phony_count;
-        //players=1;,
-        //playerss = GameObject.FindGameObjectsWithTag("Player");
-        //HUD = GameObject.FindGameObjectsWithTag("HUD");
-        //print(playerss.Length);
+        players = DataObject.numJugadores;
 
         player1.SetActive(true);
         hud1.SetActive(true);
+        //player1.GetComponentInChildren<PhonyPlayerController>().setKeys(DataObject.player1Keyboard);
+        /*player1.GetComponentInChildren<PhonyPlayerController>().right = (KeyCode)System.Enum.Parse(typeof(KeyCode), DataObject.player1Keyboard.RIGHT()) ;
+        player1.GetComponentInChildren<PhonyPlayerController>().left = (KeyCode)System.Enum.Parse(typeof(KeyCode), DataObject.player1Keyboard.LEFT()) ;
+        player1.GetComponentInChildren<PhonyPlayerController>().up = (KeyCode)System.Enum.Parse(typeof(KeyCode), DataObject.player1Keyboard.UP()) ;
+        player1.GetComponentInChildren<PhonyPlayerController>().down = (KeyCode)System.Enum.Parse(typeof(KeyCode), DataObject.player1Keyboard.DOWN()) ;
+        player1.GetComponentInChildren<PhonyPlayerController>().hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), DataObject.player1Keyboard.HABILITY()) ;
+        player1.GetComponentInChildren<PhonyPlayerController>().boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), DataObject.player1Keyboard.BOOST()) ;
+        player1.GetComponentInChildren<PhonyPlayerController>().reverb = (KeyCode)System.Enum.Parse(typeof(KeyCode), DataObject.player1Keyboard.REVERB()) ;
+        */
+
         if(players >= 2) {
             player2.SetActive(true);
             hud2.SetActive(true);
+            //player2.GetComponentInChildren<PhonyPlayerController>().setKeys(DataObject.player2Keyboard);
         }
         if(players >= 3) {
             player3.SetActive(true);
             hud3.SetActive(true);
+            //player3.GetComponentInChildren<PhonyPlayerController>().setKeys(DataObject.player3Keyboard);
         }
         if(players == 4) {
             player4.SetActive(true);
             hud4.SetActive(true);
+            //player4.GetComponentInChildren<PhonyPlayerController>().setKeys(DataObject.player4Keyboard);
         }
+
     }
 
     // Update is called once per frame
@@ -49,6 +58,7 @@ public class GameRules : MonoBehaviour
     {
         
     }
+    
 
 
 }

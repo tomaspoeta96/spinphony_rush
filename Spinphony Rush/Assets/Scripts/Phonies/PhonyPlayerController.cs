@@ -17,7 +17,7 @@ public class PhonyPlayerController : MonoBehaviour {
     private bool haveShield = false;
     private bool haveFuelle = false;
     private bool haveMove = false;
-    //private KeysTable keys = new KeysTable("L","I","J","K","M","U");
+    private KeysTable keys;
     public RandomBoost boosts;
     public Fuelle currentFuelle;
     private bool muerto = false;
@@ -54,17 +54,19 @@ public class PhonyPlayerController : MonoBehaviour {
     private AudioSource peonzaDragSound;
     private AudioSource peonzaCrashSound;
 
-    //void Awake()
-    //{
-    //right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
-    //left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
-    //up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
-    //down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
-    //hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
-    //boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.BOOST()) ;
-    //}
+    /*void Awake() {
+        right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
+        left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
+        up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
+        down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
+        hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
+        boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.BOOST()) ;
+        reverb = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.REVERB()) ;
+    }
+    */
 
     void Start() {
+
         phony_body = GetComponent<Rigidbody>();
         phonyBoostHandling = gameObject.AddComponent<PhonyBoostHandling>() as PhonyBoostHandling;
         phonyBoostShield = gameObject.AddComponent<PhonyBooostShield>() as PhonyBooostShield;
@@ -424,5 +426,9 @@ public class PhonyPlayerController : MonoBehaviour {
     public void setPoints(int points)
     {
         this.points = points;
+    }
+
+    public void setKeys(KeysTable k) {
+        this.keys = k;
     }
 }
