@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus/Phony Selection.unity
     guid: 60b7d73dd3e35ba4c879be74117eb925
   - enabled: 1
+    path: Assets/Scenes/Menus/Map Selection.unity
+    guid: 81e5471b7a83b414e94c30d44af0f5cd
+  - enabled: 1
     path: Assets/Scenes/Map1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Map2.unity
+    guid: a3663ca7edbfe5d4b8035ab06a3a76b9
   m_configObjects: {}

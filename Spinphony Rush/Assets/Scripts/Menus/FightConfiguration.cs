@@ -18,7 +18,7 @@ public class FightConfiguration : MonoBehaviour
 
     private void OnClickStart()
     {
-        SceneManager.LoadScene("Map1");
+        SceneManager.LoadScene("Map Selection");
     }
 
     private void OnClickBack()

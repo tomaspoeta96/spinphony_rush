@@ -47,4 +47,14 @@ public class StartFightButton : MonoBehaviour
         }
     }
 
+    public int numPlayers()
+    {
+        List<GameObject> players = new List<GameObject>();
+        if (tarjeta1.active == true) players.Add(tarjeta1);
+        if (tarjeta2.active == true) players.Add(tarjeta2);
+        if (tarjeta3.active == true) players.Add(tarjeta3);
+        if (tarjeta4.active == true) players.Add(tarjeta4);
+        return players.Count;
+    }
+
 }

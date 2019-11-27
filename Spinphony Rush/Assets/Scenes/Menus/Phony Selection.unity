@@ -292,6 +292,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
+    - m_Text: GamePad1
+      m_Image: {fileID: 0}
     - m_Text: IA
       m_Image: {fileID: 0}
   m_OnValueChanged:
@@ -1207,6 +1209,7 @@ MonoBehaviour:
   addButton: {fileID: 2013632307}
   tarjeta: {fileID: 597602015}
   readyButton: {fileID: 971177917}
+  phony_count: 1
 --- !u!1 &188374685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,6 +1865,7 @@ MonoBehaviour:
   addButton: {fileID: 462941106}
   tarjeta: {fileID: 1033423847}
   readyButton: {fileID: 76287253}
+  phony_count: 1
 --- !u!1 &277041758
 GameObject:
   m_ObjectHideFlags: 0
@@ -2382,7 +2386,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start Fight!
+  m_Text: Start Fight
 --- !u!222 &359281584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4174,6 +4178,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
+    - m_Text: GamePad1
+      m_Image: {fileID: 0}
     - m_Text: IA
       m_Image: {fileID: 0}
   m_OnValueChanged:
@@ -4747,7 +4753,7 @@ GameObject:
   - component: {fileID: 752651219}
   - component: {fileID: 752651218}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5242,7 +5248,7 @@ GameObject:
   - component: {fileID: 868938742}
   - component: {fileID: 868938741}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5994,6 +6000,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
+    - m_Text: GamePad1
+      m_Image: {fileID: 0}
     - m_Text: IA
       m_Image: {fileID: 0}
   m_OnValueChanged:
@@ -6452,6 +6460,8 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
+    - m_Text: GamePad1
+      m_Image: {fileID: 0}
     - m_Text: IA
       m_Image: {fileID: 0}
   m_OnValueChanged:
@@ -6711,6 +6721,7 @@ MonoBehaviour:
   addButton: {fileID: 1572824472}
   tarjeta: {fileID: 1139461385}
   readyButton: {fileID: 513615510}
+  phony_count: 1
 --- !u!1 &1158858974
 GameObject:
   m_ObjectHideFlags: 0
@@ -8579,7 +8590,7 @@ GameObject:
   - component: {fileID: 1433557150}
   - component: {fileID: 1433557149}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9147,7 +9158,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start Fight!
+  m_Text: Continue
 --- !u!222 &1589194876
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9523,6 +9534,7 @@ MonoBehaviour:
   addButton: {fileID: 2111702688}
   tarjeta: {fileID: 1076433486}
   readyButton: {fileID: 1959196127}
+  phony_count: 1
 --- !u!1 &1760056727
 GameObject:
   m_ObjectHideFlags: 0
@@ -11459,7 +11471,7 @@ GameObject:
   - component: {fileID: 2140954909}
   - component: {fileID: 2140954908}
   m_Layer: 5
-  m_Name: Label
+  m_Name: Label4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
