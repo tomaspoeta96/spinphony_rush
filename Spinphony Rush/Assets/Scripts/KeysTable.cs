@@ -12,19 +12,20 @@ public class KeysTable {
     private string downKey = "S";
     private string habilityKey = "P";
     private string boostKey = "Q";
+    private string reverbKey = "E";
 
     public KeysTable() {
 
     }
 
-    public KeysTable(string d, string w, string a, string s, string sp, string b) {
+    public KeysTable(string d, string w, string a, string s, string sp, string b, string r) {
         rightKey = d;
         leftKey = a;
         upKey = w;
         downKey = s;
         habilityKey = sp;
         boostKey = b;
-
+        reverbKey = r;
     }
 
     public string RIGHT() {
@@ -48,6 +49,8 @@ public class KeysTable {
         return boostKey;
     }
 
-
+    public string REVERB() {
+        return reverbKey;
+    }
 
 }
