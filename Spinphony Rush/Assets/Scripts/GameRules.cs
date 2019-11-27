@@ -18,8 +18,6 @@ public class GameRules : MonoBehaviour
 
     private GameObject[] playerss;
     private GameObject[] HUD;
-    private bool hasSum = false;
-    private float elapsedTime = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +47,8 @@ public class GameRules : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
+        
     }
+
 
 }

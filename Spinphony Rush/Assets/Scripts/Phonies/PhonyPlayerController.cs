@@ -25,15 +25,11 @@ public class PhonyPlayerController : MonoBehaviour {
     private bool isShield = false;
     private bool isJump = false;
     private bool isMove = false;
-
     private int points;
-    private bool hasSum = false;
-    private float elapsedTimeSum = 0f;
 
     private bool isBeaten = false;
     private bool keysDisabler = false;
     private bool isReverb = false;
-
 
     public PhysicMaterial normalPhysic;
     public PhysicMaterial movePhysic;
@@ -107,16 +103,6 @@ public class PhonyPlayerController : MonoBehaviour {
             phony_body.AddForce(Physics.gravity * 3);
         }
 
-        if (hasSum)
-        {
-            elapsedTimeSum += Time.deltaTime;
-            if (elapsedTimeSum >= 0.5f)
-            {
-                hasSum = false;
-                elapsedTimeSum = 0f;
-            }
-        }
-
         if (!onPush) {
             addMovement(speed);
             phony_body.velocity = Vector3.ClampMagnitude(phony_body.velocity, maxSpeed);
@@ -183,12 +169,17 @@ public class PhonyPlayerController : MonoBehaviour {
         }
         if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA") {
             Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
+            if (phony_body.velocity.magnitude >= vel.magnitude)
+            {
+                points += 100;
+            }
             float dir = Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized);
             vel *= (this.phony_body.velocity.magnitude * 0.25f);
             Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), true);
-            
+
             if (peonzaCrashSound.isPlaying == false)
             {
+                print(col.relativeVelocity.magnitude);
                 peonzaCrashSound.volume = col.relativeVelocity.magnitude / 70f;
                 peonzaCrashSound.Play();
             }
@@ -201,11 +192,6 @@ public class PhonyPlayerController : MonoBehaviour {
                         col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(vel, speed);
                         col.gameObject.GetComponent<PhonyPlayerController>().isBeaten = true;
                     }
-                }
-                if (!hasSum)
-                {
-                    phony_body.GetComponent<PhonyPlayerController>().points += ((int)((100 * this.phony_body.velocity.magnitude) / maxSpeed));
-                    hasSum = true;
                 }
             }
             else
@@ -234,7 +220,6 @@ public class PhonyPlayerController : MonoBehaviour {
         {
             Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), false);
         }
-        
     }
 
     private void addMovement(float speed) {
