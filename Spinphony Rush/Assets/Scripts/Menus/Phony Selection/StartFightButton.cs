@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StartFightButton : MonoBehaviour
@@ -8,7 +9,6 @@ public class StartFightButton : MonoBehaviour
     public Button readyButton1, readyButton2, readyButton3, readyButton4;
     public GameObject tarjeta1, tarjeta2, tarjeta3, tarjeta4;
     public Button startFightButton;
-    public GameObject fightConfiguration;
     private bool canStart;
 
     // Start is called before the first frame update
@@ -16,7 +16,7 @@ public class StartFightButton : MonoBehaviour
     {
         tarjeta1.active = true;
         canStart = false;
-        startFightButton.onClick.AddListener(openFightConfig);
+        startFightButton.onClick.AddListener(OnClickStart);
     }
 
     // Update is called once per frame
@@ -27,9 +27,9 @@ public class StartFightButton : MonoBehaviour
         else startFightButton.interactable = false;
     }
 
-    private void openFightConfig()
+    private void OnClickStart()
     {
-        fightConfiguration.SetActive(true);
+        SceneManager.LoadScene("Map Selection");
     }
 
     private void readyCheck()

@@ -7,18 +7,12 @@ using UnityEngine.UI;
 
 public class FightConfiguration : MonoBehaviour
 {
-    public Button backButton, startButton;
+    public Button backButton;
 
     // Start is called before the first frame update
     void Start()
     {
         backButton.onClick.AddListener(OnClickBack);
-        startButton.onClick.AddListener(OnClickStart);
-    }
-
-    private void OnClickStart()
-    {
-        SceneManager.LoadScene("Map Selection");
     }
 
     private void OnClickBack()

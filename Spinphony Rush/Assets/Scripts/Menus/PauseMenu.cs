@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    public Button OptionsButton, ResumeButton, MainMenuButton;
+    public Button OptionsButton, ResumeButton, MainMenuButton, PhonySelectButton;
     public GameObject pauseMenu;
 
     // Start is called before the first frame update
@@ -16,6 +16,7 @@ public class PauseMenu : MonoBehaviour
         OptionsButton.onClick.AddListener(OnClickOptions);
         ResumeButton.onClick.AddListener(OnClickResume);
         MainMenuButton.onClick.AddListener(OnClickMainMenu);
+        PhonySelectButton.onClick.AddListener(OnClickPhonySelect);
     }
 
     // Update is called once per frame
@@ -26,6 +27,13 @@ public class PauseMenu : MonoBehaviour
             if (pauseMenu.active == false) PauseGame();
             else ContinueGame();
         }
+    }
+
+
+    private void OnClickPhonySelect()
+    {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Phony Selection");
     }
 
     private void OnClickMainMenu()

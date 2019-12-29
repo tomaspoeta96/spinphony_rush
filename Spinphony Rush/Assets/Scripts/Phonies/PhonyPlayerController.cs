@@ -68,7 +68,6 @@ public class PhonyPlayerController : MonoBehaviour {
         points = 0;
     }
 
-
     private void Update() {
         phonyBoostShield.actionTime(isShield, 5f);
         phonyBoostHandling.actionTime(isMove, 5f);
@@ -77,7 +76,7 @@ public class PhonyPlayerController : MonoBehaviour {
         phonyBeaten.actionTime(isBeaten, 0.35f);
 
         checkFuelle();
-        checkKeys();
+        if(GameObject.Find("PhonySelectionData") != null) checkKeys();
     }
 
     void FixedUpdate() {
@@ -337,20 +336,26 @@ public class PhonyPlayerController : MonoBehaviour {
 
     private void checkFuelle() {
         //si la peonza se queda sin fuelle
-        if (currentFuelle.fuelleSlider.value <= 0) {
-            muerto = true;
-            muerte();
-            phony_body.constraints = RigidbodyConstraints.None;
-        }
-        else {
-            phony_body.transform.GetChild(0).Rotate(0f, 6f, 0f, Space.Self);
-            if (Input.GetKey(boost)) {
-                if (haveJump) phonyBoostJump.jump();
-                if (haveShield) phonyBoostShield.shield();
-                if (haveFuelle) fuelle();
-                if (haveMove) phonyBoostHandling.move();
+        if(currentFuelle.fuelleSlider != null)
+        {
+            if (currentFuelle.fuelleSlider.value <= 0)
+            {
+                muerto = true;
+                muerte();
+                phony_body.constraints = RigidbodyConstraints.None;
             }
-        }
+            else
+            {
+                phony_body.transform.GetChild(0).Rotate(0f, 6f, 0f, Space.Self);
+                if (Input.GetKey(boost))
+                {
+                    if (haveJump) phonyBoostJump.jump();
+                    if (haveShield) phonyBoostShield.shield();
+                    if (haveFuelle) fuelle();
+                    if (haveMove) phonyBoostHandling.move();
+                }
+            }
+        }      
     }
 
     private bool muerte() {

@@ -9,8 +9,13 @@ public class PhonyBeaten : PhonyActionFactory {
     }
     public override void actionTime(bool param, float durationTime) {
         base.actionTime(param, durationTime);
-        if(!phonyClass.getIsBeaten()) {
-            phonyClass.setKeysDisabler(false);
+        if(phonyClass != null)
+        {
+            if (!phonyClass.getIsBeaten())
+            {
+                phonyClass.setKeysDisabler(false);
+            }
         }
+
     }
 }
