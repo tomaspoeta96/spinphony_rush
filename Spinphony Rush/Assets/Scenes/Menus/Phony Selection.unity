@@ -292,9 +292,9 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
-    - m_Text: GamePad1
+    - m_Text: Keyboard3
       m_Image: {fileID: 0}
-    - m_Text: IA
+    - m_Text: GamePad1
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1209,7 +1209,6 @@ MonoBehaviour:
   addButton: {fileID: 2013632307}
   tarjeta: {fileID: 597602015}
   readyButton: {fileID: 971177917}
-  phony_count: 1
 --- !u!1 &188374685
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,7 +1864,6 @@ MonoBehaviour:
   addButton: {fileID: 462941106}
   tarjeta: {fileID: 1033423847}
   readyButton: {fileID: 76287253}
-  phony_count: 1
 --- !u!1 &277041758
 GameObject:
   m_ObjectHideFlags: 0
@@ -4178,9 +4176,9 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
-    - m_Text: GamePad1
+    - m_Text: Keyboard3
       m_Image: {fileID: 0}
-    - m_Text: IA
+    - m_Text: GamePad1
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6000,9 +5998,9 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
-    - m_Text: GamePad1
+    - m_Text: Keyboard3
       m_Image: {fileID: 0}
-    - m_Text: IA
+    - m_Text: GamePad1
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6460,9 +6458,9 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Keyboard2
       m_Image: {fileID: 0}
-    - m_Text: GamePad1
+    - m_Text: Keyboard3
       m_Image: {fileID: 0}
-    - m_Text: IA
+    - m_Text: GamePad1
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6721,7 +6719,6 @@ MonoBehaviour:
   addButton: {fileID: 1572824472}
   tarjeta: {fileID: 1139461385}
   readyButton: {fileID: 513615510}
-  phony_count: 1
 --- !u!1 &1158858974
 GameObject:
   m_ObjectHideFlags: 0
@@ -7326,6 +7323,7 @@ GameObject:
   - component: {fileID: 1209138528}
   - component: {fileID: 1209138527}
   - component: {fileID: 1209138531}
+  - component: {fileID: 1209138532}
   m_Layer: 5
   m_Name: PhonySelection Canvas
   m_TagString: Untagged
@@ -7433,6 +7431,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackButton: {fileID: 576821545}
+--- !u!114 &1209138532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209138526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20e7e7a5711a8dc47aca361340a77a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1215476625
 GameObject:
   m_ObjectHideFlags: 0
@@ -9534,7 +9544,6 @@ MonoBehaviour:
   addButton: {fileID: 2111702688}
   tarjeta: {fileID: 1076433486}
   readyButton: {fileID: 1959196127}
-  phony_count: 1
 --- !u!1 &1760056727
 GameObject:
   m_ObjectHideFlags: 0

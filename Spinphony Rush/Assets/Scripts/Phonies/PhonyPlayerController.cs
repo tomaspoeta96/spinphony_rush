@@ -54,17 +54,6 @@ public class PhonyPlayerController : MonoBehaviour {
     private AudioSource peonzaDragSound;
     private AudioSource peonzaCrashSound;
 
-    /*void Awake() {
-        right = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.RIGHT()) ;
-        left = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.LEFT()) ;
-        up = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.UP()) ;
-        down = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.DOWN()) ;
-        hability = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.HABILITY()) ;
-        boost = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.BOOST()) ;
-        reverb = (KeyCode)System.Enum.Parse(typeof(KeyCode), keys.REVERB()) ;
-    }
-    */
-
     void Start() {
 
         phony_body = GetComponent<Rigidbody>();
@@ -88,7 +77,7 @@ public class PhonyPlayerController : MonoBehaviour {
         phonyBeaten.actionTime(isBeaten, 0.35f);
 
         checkFuelle();
-
+        checkKeys();
     }
 
     void FixedUpdate() {
@@ -222,6 +211,17 @@ public class PhonyPlayerController : MonoBehaviour {
         {
             Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), false);
         }
+    }
+
+    private void checkKeys()
+    {
+        right = keys.RIGHT();
+        left = keys.LEFT();
+        up = keys.UP();
+        down = keys.DOWN();
+        hability = keys.HABILITY();
+        boost = keys.BOOST();
+        reverb = keys.REVERB();
     }
 
     private void addMovement(float speed) {

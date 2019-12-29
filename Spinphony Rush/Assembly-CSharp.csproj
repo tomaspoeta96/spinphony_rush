@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera\CameraMovement.cs" />
-    <Compile Include="Assets\Scripts\DataObject.cs" />
     <Compile Include="Assets\Scripts\Fuelle.cs" />
     <Compile Include="Assets\Scripts\GameRules.cs" />
     <Compile Include="Assets\Scripts\Hud.cs" />
@@ -71,14 +70,16 @@
     <Compile Include="Assets\Scripts\Maps\GenerateObstacle.cs" />
     <Compile Include="Assets\Scripts\Maps\ObstacleBehaviour.cs" />
     <Compile Include="Assets\Scripts\Maps\UntagPlayer.cs" />
-    <Compile Include="Assets\Scripts\Menus\FightConfiguration.cs" />
     <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\MapSelection.cs" />
     <Compile Include="Assets\Scripts\Menus\PauseMenu.cs" />
-    <Compile Include="Assets\Scripts\Menus\PhonySelectioner.cs" />
-    <Compile Include="Assets\Scripts\Menus\PhonySelector.cs" />
+    <Compile Include="Assets\Scripts\Menus\Phony Selection\FightConfiguration.cs" />
+    <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelection.cs" />
+    <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelectionData.cs" />
+    <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelectioner.cs" />
+    <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelector.cs" />
+    <Compile Include="Assets\Scripts\Menus\Phony Selection\StartFightButton.cs" />
     <Compile Include="Assets\Scripts\Menus\Returnable.cs" />
-    <Compile Include="Assets\Scripts\Menus\StartFightButton.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyActionFactory.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyBeaten.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyBoostHandling.cs" />

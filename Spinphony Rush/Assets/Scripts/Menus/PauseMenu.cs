@@ -30,6 +30,7 @@ public class PauseMenu : MonoBehaviour
 
     private void OnClickMainMenu()
     {
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -47,14 +48,12 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
-        //Disable scripts that still work while timescale is set to 0
     }
 
     private void ContinueGame()
     {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
-        //enable the scripts again
     }
 
 }

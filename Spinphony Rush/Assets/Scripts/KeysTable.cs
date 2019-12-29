@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class KeysTable {
 
-    
-    //codigo ascii de las teclas AWSD por defecto
-    private string rightKey = "D";
-    private string leftKey = "A";
-    private string upKey = "W";
-    private string downKey = "S";
-    private string habilityKey = "P";
-    private string boostKey = "Q";
-    private string reverbKey = "E";
+    private KeyCode rightKey = KeyCode.D;
+    private KeyCode leftKey = KeyCode.A;
+    private KeyCode upKey = KeyCode.W;
+    private KeyCode downKey = KeyCode.S;
+    private KeyCode habilityKey = KeyCode.P;
+    private KeyCode boostKey = KeyCode.Q;
+    private KeyCode reverbKey = KeyCode.E;
 
     public KeysTable() {
 
     }
 
-    public KeysTable(string d, string w, string a, string s, string sp, string b, string r) {
+    public KeysTable(KeyCode d, KeyCode w, KeyCode a, KeyCode s, KeyCode sp, KeyCode b, KeyCode r) {
         rightKey = d;
         leftKey = a;
         upKey = w;
@@ -28,28 +26,28 @@ public class KeysTable {
         reverbKey = r;
     }
 
-    public string RIGHT() {
+    public KeyCode RIGHT() {
         return rightKey;
     }
-    public string LEFT() {
+    public KeyCode LEFT() {
         return leftKey;
     }
-    public string UP() {
+    public KeyCode UP() {
         return upKey;
     }
-    public string DOWN() {
+    public KeyCode DOWN() {
         return downKey;
     }
 
-    public string HABILITY() {
+    public KeyCode HABILITY() {
         return habilityKey;
     }
 
-    public string BOOST() {
+    public KeyCode BOOST() {
         return boostKey;
     }
 
-    public string REVERB() {
+    public KeyCode REVERB() {
         return reverbKey;
     }
 
