@@ -7,6 +7,7 @@ public class GameRules : MonoBehaviour
 {
     //private PhonySelector selector = PhonySelector.Instance;
     public PhonySelectionData PhonySelectionData;
+    public OptionsData optionsData;
 
     public GameObject player1;
     public GameObject player2;
@@ -18,18 +19,22 @@ public class GameRules : MonoBehaviour
     public GameObject hud3;
     public GameObject hud4;
 
-    public KeysTable Keyboard1 =
-        new KeysTable(KeyCode.D, KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.Space, KeyCode.Q, KeyCode.E);
-    public KeysTable Keyboard2 =
-        new KeysTable(KeyCode.L, KeyCode.I, KeyCode.J, KeyCode.K, KeyCode.M, KeyCode.U, KeyCode.O);
-    public KeysTable Keyboard3 =
-        new KeysTable(KeyCode.Keypad6, KeyCode.Keypad8, KeyCode.Keypad4, KeyCode.Keypad5, KeyCode.Keypad0, KeyCode.Keypad7, KeyCode.Keypad9);
+    public KeysTable Keyboard1;
+    public KeysTable Keyboard2;
+    public KeysTable Keyboard3;
     public KeysTable GamePad1;
 
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
+
+        optionsData = GameObject.Find("OptionsData").GetComponent<OptionsData>();
+        Keyboard1 = optionsData.getKeyboard1();
+        Keyboard2 = optionsData.getKeyboard2();
+        Keyboard3 = optionsData.getKeyboard3();
+        GamePad1 = optionsData.getGamePad1();
+
         PhonySelectionData = GameObject.Find("PhonySelectionData").GetComponent<PhonySelectionData>();
         ConfigurePhonies();
     }
@@ -83,7 +88,7 @@ public class GameRules : MonoBehaviour
             case "Keyboard1": return Keyboard1;
             case "Keyboard2": return Keyboard2;
             case "Keyboard3": return Keyboard3;
-            case "GamePad1": return Keyboard3;
+            case "GamePad1": return GamePad1;
         }
         return Keyboard1;
     }

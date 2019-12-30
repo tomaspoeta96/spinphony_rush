@@ -72,14 +72,14 @@
     <Compile Include="Assets\Scripts\Maps\UntagPlayer.cs" />
     <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\MapSelection.cs" />
+    <Compile Include="Assets\Scripts\Menus\Options.cs" />
+    <Compile Include="Assets\Scripts\Menus\OptionsData.cs" />
     <Compile Include="Assets\Scripts\Menus\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\FightConfiguration.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelection.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelectionData.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelectioner.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelector.cs" />
-    <Compile Include="Assets\Scripts\Menus\Phony Selection\StartFightButton.cs" />
-    <Compile Include="Assets\Scripts\Menus\Returnable.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyActionFactory.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyBeaten.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyBoostHandling.cs" />

@@ -1022,7 +1022,6 @@ GameObject:
   - component: {fileID: 168640828}
   - component: {fileID: 168640827}
   - component: {fileID: 168640826}
-  - component: {fileID: 168640829}
   m_Layer: 5
   m_Name: Start Fight
   m_TagString: Untagged
@@ -1132,27 +1131,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168640824}
   m_CullTransparentMesh: 0
---- !u!114 &168640829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168640824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99b8e48cfbb3a9e40897fa7c955a2d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  readyButton1: {fileID: 1959196127}
-  readyButton2: {fileID: 76287253}
-  readyButton3: {fileID: 971177917}
-  readyButton4: {fileID: 513615510}
-  tarjeta1: {fileID: 1076433486}
-  tarjeta2: {fileID: 1033423847}
-  tarjeta3: {fileID: 597602015}
-  tarjeta4: {fileID: 1139461385}
-  startFightButton: {fileID: 168640826}
 --- !u!1 &179389111
 GameObject:
   m_ObjectHideFlags: 0
@@ -6767,8 +6745,8 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 168640824}
-  m_sendNavigationEvents: 1
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 0
   m_DragThreshold: 10
 --- !u!4 &1158858977
 Transform:
@@ -7321,7 +7299,6 @@ GameObject:
   - component: {fileID: 1209138529}
   - component: {fileID: 1209138528}
   - component: {fileID: 1209138527}
-  - component: {fileID: 1209138531}
   - component: {fileID: 1209138532}
   m_Layer: 5
   m_Name: PhonySelection Canvas
@@ -7418,19 +7395,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1209138531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209138526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf83657bc29fb604d978b674e653c8ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BackButton: {fileID: 576821545}
 --- !u!114 &1209138532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7443,8 +7407,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e7e7a5711a8dc47aca361340a77a13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BackButton: {fileID: 576821545}
+  startFightButton: {fileID: 168640826}
   openConfigButton: {fileID: 727142598}
   fightConfiguration: {fileID: 1677317989}
+  readyButton1: {fileID: 1959196127}
+  readyButton2: {fileID: 76287253}
+  readyButton3: {fileID: 971177917}
+  readyButton4: {fileID: 513615510}
+  tarjeta1: {fileID: 1076433486}
+  tarjeta2: {fileID: 1033423847}
+  tarjeta3: {fileID: 597602015}
+  tarjeta4: {fileID: 1139461385}
 --- !u!1 &1215476625
 GameObject:
   m_ObjectHideFlags: 0

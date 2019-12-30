@@ -9,7 +9,7 @@ public class PhonySelectionData : MonoBehaviour
 {
     public String Player1Controller, Player2Controller, Player3Controller, Player4Controller;
     public int numPlayers;
-    private StartFightButton startFightScript;
+    private PhonySelection phonySelectionScript;
 
     void Awake()
     {
@@ -26,8 +26,8 @@ public class PhonySelectionData : MonoBehaviour
     {
         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Phony Selection"))
         {
-            startFightScript = GameObject.Find("Start Fight").GetComponent<StartFightButton>();
-            numPlayers = startFightScript.numPlayers();
+            phonySelectionScript = GameObject.Find("PhonySelection Canvas").GetComponent<PhonySelection>();
+            numPlayers = phonySelectionScript.numPlayers();
             if(GameObject.Find("Label1") != null) {
                 Player1Controller = GameObject.Find("Label1").GetComponent<Text>().text;
             }

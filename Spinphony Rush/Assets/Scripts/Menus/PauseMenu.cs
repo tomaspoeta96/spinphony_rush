@@ -29,22 +29,19 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-
     private void OnClickPhonySelect()
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene("Phony Selection");
     }
 
     private void OnClickMainMenu()
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
         SceneManager.LoadScene("MainMenu");
     }
 
     private void OnClickOptions()
     {
-        SceneManager.LoadScene("Options");
+        SceneManager.LoadScene("Options", LoadSceneMode.Additive);
     }
 
     private void OnClickResume()
