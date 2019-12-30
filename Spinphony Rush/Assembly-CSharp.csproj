@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelectionData.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelectioner.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelector.cs" />
+    <Compile Include="Assets\Scripts\Menus\SoundSlider.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyActionFactory.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyBeaten.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyBoostHandling.cs" />

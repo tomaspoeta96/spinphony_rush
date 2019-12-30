@@ -18,21 +18,21 @@ public class OptionsData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        optionsScript = GameObject.Find("Canvas").GetComponent<Options>();
+        optionsScript = GameObject.Find("OptionsCanvas").GetComponent<Options>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetSceneByName("Options").isLoaded)
+        if (GameObject.Find("OptionsCanvas") != null)
         {
-            optionsScript = GameObject.Find("Canvas").GetComponent<Options>();
-        }
-
-        for(int i = 0; i <= 27; i++)
-        {
-            if(optionsScript.keyFields[i].text != ""){
-                keyFields[i] = (KeyCode)System.Enum.Parse(typeof(KeyCode), optionsScript.keyFields[i].text);
+            optionsScript = GameObject.Find("OptionsCanvas").GetComponent<Options>();
+            for (int i = 0; i <= 27; i++)
+            {
+                if (optionsScript.keyFields[i].text != "")
+                {
+                    keyFields[i] = (KeyCode)System.Enum.Parse(typeof(KeyCode), optionsScript.keyFields[i].text);
+                }
             }
         }
     }
