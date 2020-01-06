@@ -330,7 +330,7 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     private void fuelle() {
-        phony_fuelle.fuelleSlider.value = 1;
+        phony_fuelle.fuelleSlider.value += 0.25f;
         haveFuelle = false;
     }
 
