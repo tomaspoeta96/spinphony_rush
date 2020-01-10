@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Menus\Options.cs" />
     <Compile Include="Assets\Scripts\Menus\OptionsData.cs" />
     <Compile Include="Assets\Scripts\Menus\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\Menus\Phonies.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\FightConfiguration.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelection.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelectionData.cs" />

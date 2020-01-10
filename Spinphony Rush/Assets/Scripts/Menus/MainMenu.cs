@@ -36,7 +36,7 @@ public class MainMenu : MonoBehaviour
 
     void OnClickPhonies()
     {
-        SceneManager.LoadScene("Phonies");
+        SceneManager.LoadScene("Phonies", LoadSceneMode.Additive);
     }
 
     void OnClickExit()

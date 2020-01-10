@@ -8,6 +8,7 @@ public class PhonySelection : MonoBehaviour
 {
     public Button BackButton;
     public Button startFightButton;
+    public GameObject fightVision;
 
     public Button openConfigButton;
     public GameObject fightConfiguration;
@@ -33,8 +34,11 @@ public class PhonySelection : MonoBehaviour
     void Update()
     {
         readyCheck();
-        if (canStart) startFightButton.interactable = true;
-        else startFightButton.interactable = false;
+        if (canStart)
+        {
+            fightVision.SetActive(true);
+        }
+        else fightVision.SetActive(false);
     }
 
     private void readyCheck()
