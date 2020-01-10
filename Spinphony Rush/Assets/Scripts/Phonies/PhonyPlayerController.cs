@@ -162,6 +162,7 @@ public class PhonyPlayerController : MonoBehaviour {
             if (phony_body.velocity.magnitude >= vel.magnitude)
             {
                 points += 100;
+                currentFuelle.fuelleSlider.value -= 0.1f;
             }
             float dir = Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized);
             vel *= (this.phony_body.velocity.magnitude * 0.25f);
