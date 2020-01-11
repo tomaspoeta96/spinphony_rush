@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Fuelle : MonoBehaviour {
     public Slider fuelleSlider;
     private Image fuelleFill;
+    private Image fuelleIcon;
     private float duracion = (float)30; //segundos
     //private int UpdateCount = 0;
     public GameObject player;
@@ -17,6 +18,7 @@ public class Fuelle : MonoBehaviour {
         _followOffset = transform.position - player.transform.position;
         fuelleSlider = GetComponentInChildren<Slider>();
         fuelleFill = transform.GetChild(0).GetChild(0).GetChild(2).transform.Find("Fill").GetComponent<Image>();
+        fuelleIcon = transform.GetChild(0).GetChild(0).transform.Find("Icon").GetComponent<Image>();
     }
 
     private void FixedUpdate() {
@@ -58,5 +60,6 @@ public class Fuelle : MonoBehaviour {
         }
 
         fuelleFill.color = color;
+        fuelleIcon.color = color;
     }
 }
