@@ -10,6 +10,7 @@ public class MapSelection : MonoBehaviour
 {
     public Button[] maps;
     public Button BackButton;
+    public static String mapToLoad;
 
     // Start is called before the first frame update
     void Start()
@@ -36,12 +37,14 @@ public class MapSelection : MonoBehaviour
     private void ActionMap1()
     {
         chargeOptions();
-        SceneManager.LoadScene("Map1");
+        mapToLoad = "Map1";
+        SceneManager.LoadScene("LoadScreen");
     }
 
     private void ActionMap2()
     {
         chargeOptions();
+        mapToLoad = "Map2";
         SceneManager.LoadScene("Map2");
     }
 
