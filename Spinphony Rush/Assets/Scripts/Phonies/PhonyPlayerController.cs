@@ -17,6 +17,10 @@ public class PhonyPlayerController : MonoBehaviour {
     private bool haveShield = false;
     private bool haveFuelle = false;
     private bool haveMove = false;
+
+    private bool lockJump = true;
+    private GameObject pickedBoost = null;
+
     private KeysTable keys;
     public RandomBoost boosts;
     public Fuelle currentFuelle;
@@ -126,28 +130,40 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider c) {
-        if (!haveFuelle && !haveJump && !haveMove && !haveShield) {
+        if (!haveFuelle && !haveJump && !haveMove && !haveShield) { 
             switch (c.gameObject.name) {
                 case "JumpBoost":
                     haveJump = true;
                     boosts.on_map_Jump = false;
+                    playEffect(c.gameObject);
+                    c.gameObject.GetComponentInChildren<Animator>().SetBool("PickedSalto", true);
                     c.gameObject.SetActive(false);
                     break;
                 case "ShieldBoost":
                     haveShield = true;
                     boosts.on_map_Shield = false;
+                    playEffect(c.gameObject);
+                    c.gameObject.GetComponentInChildren<Animator>().SetBool("PickedShield", true);
                     c.gameObject.SetActive(false);
                     break;
                 case "FuelleBoost":
                     haveFuelle = true;
                     boosts.on_map_Fuelle = false;
+                    playEffect(c.gameObject);
+                    c.gameObject.GetComponentInChildren<Animator>().SetBool("PickedFuelle", true);
                     c.gameObject.SetActive(false);
                     break;
                 case "MoveBoost":
                     haveMove = true;
                     boosts.on_map_Move = false;
+                    playEffect(c.gameObject);
+                    c.gameObject.GetComponentInChildren<Animator>().SetBool("PickedHandle", true);
                     c.gameObject.SetActive(false);
                     break;
+            }
+            if (!pickedBoost.GetComponent<AudioSource>().isPlaying)
+            {
+                Destroy(pickedBoost);
             }
         }
     }
@@ -195,6 +211,13 @@ public class PhonyPlayerController : MonoBehaviour {
         }
     }
 
+    void playEffect(GameObject go)
+    {
+        pickedBoost = Instantiate(go);
+        pickedBoost.GetComponent<Renderer>().enabled = false;
+        pickedBoost.GetComponent<AudioSource>().volume = 0.3f;
+        pickedBoost.GetComponent<AudioSource>().Play();
+    }
     void OnCollisionStay(Collision col) {
         if (col.gameObject.name == "Tronco") {
             collisionCount = 1;
@@ -357,6 +380,8 @@ public class PhonyPlayerController : MonoBehaviour {
             }
         }      
     }
+
+
 
     private bool muerte() {
         muerto = true;

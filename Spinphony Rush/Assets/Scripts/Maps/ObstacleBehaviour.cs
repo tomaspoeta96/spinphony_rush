@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ObstacleBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
     private Vector3 startPosition;
     private bool destroySignal = false;
     private bool destroyed = false;
