@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
+using UnityEngine.SceneManagement;
 
 public class GameRules : MonoBehaviour
 {
-    //private PhonySelector selector = PhonySelector.Instance;
     public PhonySelectionData PhonySelectionData;
     public OptionsData optionsData;
+    private List<GameObject> phonyList = new List<GameObject>();
+
+    private CountDown c;
+    public Text texto;
+    private float time;
 
     public GameObject player1;
     public GameObject player2;
@@ -24,10 +30,14 @@ public class GameRules : MonoBehaviour
     public KeysTable Keyboard3;
     public KeysTable GamePad1;
 
+    private int cont = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        cont = 0;
         Time.timeScale = 1;
+        c = GameObject.Find("CountDown").GetComponent<CountDown>();
 
         if (GameObject.Find("OptionsData") != null)
         {
@@ -43,6 +53,11 @@ public class GameRules : MonoBehaviour
         }
         else print("No PhonySelectionData found, probably started without menu");
 
+        if(player1.activeSelf) phonyList.Add(player1);
+        if(player2.activeSelf) phonyList.Add(player2);
+        if(player3.activeSelf) phonyList.Add(player3);
+        if(player4.activeSelf) phonyList.Add(player4);
+
     }
 
     // Update is called once per frame
@@ -56,7 +71,26 @@ public class GameRules : MonoBehaviour
                 setKeysTables();
                 if(PhonySelectionData != null) setControllers();
             }
+        }   
+    
+        foreach(GameObject phony in phonyList) {
+            if(phony.tag == "Untagged") {
+                cont++;
+            }
         }
+
+        if(cont == phonyList.Count) {
+            time += Time.deltaTime;
+            texto.transform.position = new Vector3(950,600,0);
+            c.the_end(texto);
+            if(time >= 3.5) {
+                time = 0;
+                SceneManager.LoadScene("Map Selection");
+            }
+            
+        }
+        cont = 0;
+        
     }
     
     void ConfigurePhonies()
