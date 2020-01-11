@@ -94,62 +94,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 3613567641014311022, guid: 81d2ea5942fbac74dbfc288164573b85, type: 3}
---- !u!54 &8768837377942867530
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923802418077520210}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 5
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 48
-  m_CollisionDetection: 0
---- !u!64 &5736103357737346020
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923802418077520210}
-  m_Material: {fileID: 13400000, guid: fb9bec324b7a0964eb4017be23e415d6, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 3613567641014311022, guid: 4a03ae1f952f8ca4ab8b9577198c9b76, type: 3}
---- !u!114 &2901703437220995386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5923802418077520210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5ed8331557bbcf4f97943ec4829237f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 22
-  maxSpeed: 30
-  boosts: {fileID: 0}
-  currentFuelle: {fileID: 0}
-  phony_fuelle: {fileID: 0}
-  normalPhysic: {fileID: 0}
-  movePhysic: {fileID: 0}
-  right: 100
-  left: 97
-  up: 119
-  down: 115
-  hability: 122
-  boost: 120
-  reverb: 0
 --- !u!54 &2799748846517200538
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -353,12 +297,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81d2ea5942fbac74dbfc288164573b85, type: 3}
---- !u!1 &5923802418077520210 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 81d2ea5942fbac74dbfc288164573b85,
-    type: 3}
-  m_PrefabInstance: {fileID: 2383670838379612251}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7236945062788768577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 81d2ea5942fbac74dbfc288164573b85,
@@ -469,11 +407,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2799748846614241757}
     m_Modifications:
-    - target: {fileID: 5584837922455707879, guid: eb3f8d74b50076d4da77e936dce614b5,
-        type: 3}
-      propertyPath: m_Name
-      value: Fuelle
-      objectReference: {fileID: 0}
     - target: {fileID: 5584837922455707876, guid: eb3f8d74b50076d4da77e936dce614b5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -528,6 +461,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584837922455707879, guid: eb3f8d74b50076d4da77e936dce614b5,
+        type: 3}
+      propertyPath: m_Name
+      value: Fuelle
       objectReference: {fileID: 0}
     - target: {fileID: 5584837922300273644, guid: eb3f8d74b50076d4da77e936dce614b5,
         type: 3}

@@ -168,10 +168,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26,
+    m_HighlightedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 11cb9806c93526541a05494841e49165, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -304,7 +304,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -754, y: -295}
+  m_AnchoredPosition: {x: -730, y: -291}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &487378072
@@ -377,7 +377,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Options'
+  m_Text: '  Options'
 --- !u!222 &487378075
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -740,7 +740,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Phonies'
+  m_Text: '  Phonies'
 --- !u!222 &894016700
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1156,10 +1156,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26,
+    m_HighlightedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 11cb9806c93526541a05494841e49165, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1292,7 +1292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -754, y: -422}
+  m_AnchoredPosition: {x: -730, y: -418}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1446159644
@@ -1332,7 +1332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -754, y: -40}
+  m_AnchoredPosition: {x: -730, y: -36}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1446159646
@@ -1363,10 +1363,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26,
+    m_HighlightedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 11cb9806c93526541a05494841e49165, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1530,10 +1530,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26,
+    m_HighlightedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9,
       type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 19b9ddecde634f14ebf2cb46ac248b26, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: c943f708967c26840b4d56ddcd1faca9, type: 3}
     m_DisabledSprite: {fileID: 21300000, guid: 11cb9806c93526541a05494841e49165, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1666,7 +1666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -754, y: -166}
+  m_AnchoredPosition: {x: -730, y: -162}
   m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1704460250
@@ -1739,7 +1739,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Exit Game'
+  m_Text: '  Exit Game'
 --- !u!222 &1704460253
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1892,7 +1892,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '   Fight'
+  m_Text: '  Fight'
 --- !u!222 &1901235539
 CanvasRenderer:
   m_ObjectHideFlags: 0
