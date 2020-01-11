@@ -74,7 +74,6 @@ public class PhonyPlayerController : MonoBehaviour {
         phonyBoostJump.actionTime(isJump);
         phonyReverb.actionTime(isReverb, 0.1f);
         phonyBeaten.actionTime(isBeaten, 0.35f);
-
         checkFuelle();
         if(GameObject.Find("PhonySelectionData") != null) checkKeys();
     }
@@ -170,7 +169,7 @@ public class PhonyPlayerController : MonoBehaviour {
 
             if (peonzaCrashSound.isPlaying == false)
             {
-                print(col.relativeVelocity.magnitude);
+                //print(col.relativeVelocity.magnitude);
                 peonzaCrashSound.volume = col.relativeVelocity.magnitude / 70f;
                 peonzaCrashSound.Play();
             }
@@ -359,9 +358,10 @@ public class PhonyPlayerController : MonoBehaviour {
         }      
     }
 
-    private bool muerte() {
+    public bool muerte() {
         muerto = true;
         gameObject.tag = "Untagged";
+        gameObject.transform.parent.gameObject.tag = "Untagged";
         Destroy(currentFuelle.gameObject, 1.0f);
         this.enabled = false;
         print("Destroyed");

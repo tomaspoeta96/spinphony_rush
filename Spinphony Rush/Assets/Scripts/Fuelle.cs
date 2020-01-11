@@ -23,7 +23,7 @@ public class Fuelle : MonoBehaviour {
         FollowPlayer();
         changeColor();
         ConsumeOverTime();
-
+        
     }
 
     private void FollowPlayer() {
