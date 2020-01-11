@@ -7,12 +7,14 @@ using UnityEngine;
 public class GenerateObstacle : MonoBehaviour
 {
     public GameObject map;
+    public String fileName;
     private Mesh mapMesh;
     private Collider mapCollider;
     private Bounds colliderBounds;
     private Vector3 randomCoord;
     public Transform obstacle;
     public int maxCountObstacles;
+    public int distanceBetweenObstacles;
     private String obstacleName;
     public float position;
     public float howFarRayCast;
@@ -31,7 +33,7 @@ public class GenerateObstacle : MonoBehaviour
         mapCollider = map.GetComponent<Collider>();
         mapMesh = map.GetComponent<MeshFilter>().mesh;
         colliderBounds = mapCollider.bounds;
-        vectors = getPointsFromFile(Application.dataPath + "/DataMaps/TreeRandomPoints.txt");
+        vectors = getPointsFromFile(Application.dataPath + "/DataMaps/" + fileName);
         obstacleName = obstacle.name;
         timerDurationSpawn = UnityEngine.Random.Range(10, 20);
         timerDurationDelete = UnityEngine.Random.Range(12, 17);
@@ -57,7 +59,7 @@ public class GenerateObstacle : MonoBehaviour
                 auxPosition.y = position;
                 if (!(goList.Count == 0))
                 {
-                    if (Vector3.Distance(goList[goList.Count - 1].transform.position, auxPosition) >= 2)
+                    if (Vector3.Distance(goList[goList.Count - 1].transform.position, auxPosition) >= distanceBetweenObstacles)
                     {
                         obstacle = Instantiate(obstacle) as Transform;
                         obstacle.name = obstacleName;                            

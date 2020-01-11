@@ -17,29 +17,49 @@ public class RandomBoost : MonoBehaviour {
         elapsedTime += Time.deltaTime;
         if (elapsedTime >= repeatTime) {
             index = Random.Range (0, boosts.Length);
+            GameObject[] phonies = GameObject.FindGameObjectsWithTag("Phony");
+            float distance = Mathf.Infinity;
+            GameObject closest = null;
+            foreach (GameObject go in phonies)
+            {
+                Vector3 diff = go.transform.position - boosts[index].transform.position;
+                float curDistance = diff.sqrMagnitude;
+                if (curDistance < distance)
+                {
+                    closest = go;
+                    distance = curDistance;
+                }
+            }
             switch (boosts[index].name) {
                 case "JumpBoost":
                     if(!on_map_Jump) {
-                        boosts[index].SetActive(true);
+                        if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > 3)
+                        {
+                            boosts[index].SetActive(true);
+                        }
                         on_map_Jump = true;
+                        boosts[index].GetComponentInChildren<Animator>().SetBool("DisplaySalto", true);
                     } 
                     break;
                 case "ShieldBoost":
                     if(!on_map_Shield) {
                         boosts[index].SetActive(true);
                         on_map_Shield = true;
+                        boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayShield", true);
                     } 
                     break;
                 case "FuelleBoost":
                     if(!on_map_Fuelle) {
                         boosts[index].SetActive(true);
                         on_map_Fuelle = true;
+                        boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayFuelle", true);
                     } 
                     break;
                 case "MoveBoost":
                     if(!on_map_Move) {
                         boosts[index].SetActive(true);
                         on_map_Move = true;
+                        boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayHandle", true);
                     } 
                     break;
             }
