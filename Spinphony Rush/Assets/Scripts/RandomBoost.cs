@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RandomBoost : MonoBehaviour {
+    private const int DISTANCE_PHONY_BOOST = 3;
     public GameObject[] boosts = new GameObject[16];
     public PhonyPlayerController phony;
     private int index = 0;
@@ -33,7 +34,7 @@ public class RandomBoost : MonoBehaviour {
             switch (boosts[index].name) {
                 case "JumpBoost":
                     if(!on_map_Jump) {
-                        if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > 3)
+                        if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
                         {
                             boosts[index].SetActive(true);
                         }
@@ -43,21 +44,30 @@ public class RandomBoost : MonoBehaviour {
                     break;
                 case "ShieldBoost":
                     if(!on_map_Shield) {
-                        boosts[index].SetActive(true);
+                        if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+                        {
+                            boosts[index].SetActive(true);
+                        }
                         on_map_Shield = true;
                         boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayShield", true);
                     } 
                     break;
                 case "FuelleBoost":
                     if(!on_map_Fuelle) {
-                        boosts[index].SetActive(true);
+                        if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+                        {
+                            boosts[index].SetActive(true);
+                        }
                         on_map_Fuelle = true;
                         boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayFuelle", true);
                     } 
                     break;
                 case "MoveBoost":
                     if(!on_map_Move) {
-                        boosts[index].SetActive(true);
+                        if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+                        {
+                            boosts[index].SetActive(true);
+                        }
                         on_map_Move = true;
                         boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayHandle", true);
                     } 
