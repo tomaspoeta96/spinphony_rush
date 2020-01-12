@@ -48,6 +48,7 @@ public class CountDown : MonoBehaviour
         } else if((int)time > -3){
             the_end(count);
         } else {
+            GameRules.endGame = true;
             SceneManager.LoadScene("Map Selection");
         }
     }

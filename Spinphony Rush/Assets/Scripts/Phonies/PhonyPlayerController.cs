@@ -6,6 +6,7 @@ using UnityEngine;
 public class PhonyPlayerController : MonoBehaviour {
     public float speed;
     public float maxSpeed;
+    public float vel = 0;
     private Rigidbody phony_body;
     private float timer = 0.0f;
     private float pushTimer;
@@ -18,7 +19,9 @@ public class PhonyPlayerController : MonoBehaviour {
     private bool haveFuelle = false;
     private bool haveMove = false;
 
-    private bool lockJump = true;
+    private bool locked = false;
+    private float timeToLock = 0f;
+
     private GameObject pickedBoost = null;
 
     private KeysTable keys;
@@ -80,9 +83,21 @@ public class PhonyPlayerController : MonoBehaviour {
         phonyBeaten.actionTime(isBeaten, 0.35f);
         checkFuelle();
         if(GameObject.Find("PhonySelectionData") != null) checkKeys();
+
+        vel = phony_body.velocity.magnitude;
     }
 
     void FixedUpdate() {
+
+        if(locked)
+        {
+            timeToLock += Time.deltaTime;
+            if (timeToLock >= 0.2f)
+            {
+                locked = false;
+            }
+        }
+        
         if (phony_body.velocity.magnitude > 2 && peonzaDragSound.isPlaying == false && collisionCount > 0)
         {
             peonzaDragSound.volume = phony_body.velocity.magnitude / maxSpeed;
@@ -173,19 +188,32 @@ public class PhonyPlayerController : MonoBehaviour {
             collisionCount++;
         }
         if (col.gameObject.name == "Phony_Player" || col.gameObject.name == "Phony_IA") {
-            Vector3 vel = col.gameObject.GetComponent<Rigidbody>().velocity;
-            if (phony_body.velocity.magnitude >= vel.magnitude)
+            Vector3 velCol = Vector3.Scale(col.gameObject.GetComponent<Rigidbody>().velocity, new Vector3(1,0,1));
+            Vector3 velPhony = Vector3.Scale(phony_body.GetComponent<Rigidbody>().velocity, new Vector3(1, 0, 1));
+
+
+            /*FairPlay
+             *En esta seccion es donde la velocidad no se traslada con la fuerza. Es decir las magnitudes no cambian por el impacto
+             *===================================================================================================================
+             */
+            if (!locked)
             {
-                points += 100;
-                currentFuelle.fuelleSlider.value -= 0.1f;
+                if ((phony_body.gameObject.GetComponent<PhonyPlayerController>().vel >= col.gameObject.GetComponent<PhonyPlayerController>().vel) && col.relativeVelocity.magnitude > 15f)
+                {
+                    points += 100;
+                    col.gameObject.GetComponent<PhonyPlayerController>().currentFuelle.fuelleSlider.value -= 0.1f;
+                    locked = true;
+                }
             }
-            float dir = Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, phony_body.velocity.normalized);
-            vel *= (this.phony_body.velocity.magnitude * 0.25f);
+            /*
+             *===================================================================================================================
+             */
+            float dir = Vector3.Dot(col.gameObject.GetComponent<Rigidbody>().velocity.normalized, velPhony.normalized);
+            velCol *= (this.phony_body.velocity.magnitude * 0.25f);
             Physics.IgnoreCollision(col.collider, phony_body.gameObject.GetComponent<MeshCollider>(), true);
 
             if (peonzaCrashSound.isPlaying == false)
             {
-                //print(col.relativeVelocity.magnitude);
                 peonzaCrashSound.volume = col.relativeVelocity.magnitude / 70f;
                 peonzaCrashSound.Play();
             }
@@ -193,9 +221,9 @@ public class PhonyPlayerController : MonoBehaviour {
             if (!Mathf.Approximately(dir, 1f) && !Mathf.Approximately(dir, -1f)) {
                 if (col.relativeVelocity.magnitude > 15f) {
                     if ((this.phony_body.velocity.magnitude >= col.gameObject.GetComponent<Rigidbody>().velocity.magnitude)) {
-                        phony_body.velocity = phony_body.velocity * 0.95f;
-                        col.gameObject.GetComponent<Rigidbody>().AddForce(vel);
-                        col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(vel, speed);
+                        phony_body.velocity *= 0.95f;
+                        col.gameObject.GetComponent<Rigidbody>().AddForce(velCol);
+                        col.gameObject.GetComponent<Rigidbody>().velocity = Vector3.ClampMagnitude(velCol, speed);
                         col.gameObject.GetComponent<PhonyPlayerController>().isBeaten = true;
                     }
                 }
@@ -348,6 +376,7 @@ public class PhonyPlayerController : MonoBehaviour {
         else {
             print("Player Destroyed");
             muerte();
+            
             return false;
         }
     }
@@ -385,6 +414,7 @@ public class PhonyPlayerController : MonoBehaviour {
         muerto = true;
         gameObject.tag = "Untagged";
         gameObject.transform.parent.gameObject.tag = "Untagged";
+        phony_fuelle.fuelleSlider.value = 0f;
         Destroy(currentFuelle.gameObject, 1.0f);
         this.enabled = false;
         print("Destroyed");

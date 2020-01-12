@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameRules : MonoBehaviour
 {
+    public static bool endGame = false;
     public PhonySelectionData PhonySelectionData;
     public OptionsData optionsData;
     private List<GameObject> phonyList = new List<GameObject>();
@@ -85,6 +86,7 @@ public class GameRules : MonoBehaviour
             c.the_end(texto);
             if(time >= 3.5) {
                 time = 0;
+                endGame = true;
                 SceneManager.LoadScene("Map Selection");
             }
             

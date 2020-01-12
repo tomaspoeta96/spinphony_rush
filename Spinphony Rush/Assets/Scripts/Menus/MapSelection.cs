@@ -31,7 +31,8 @@ public class MapSelection : MonoBehaviour
     private void RandomMap()
     {
         chargeOptions();
-        SceneManager.LoadScene("Map" + UnityEngine.Random.Range(1, maps.Length));
+        mapToLoad = "Map" + UnityEngine.Random.Range(1, maps.Length);
+        SceneManager.LoadScene("LoadScreen");
     }
 
     private void ActionMap1()
@@ -45,12 +46,18 @@ public class MapSelection : MonoBehaviour
     {
         chargeOptions();
         mapToLoad = "Map2";
-        SceneManager.LoadScene("Map2");
+        SceneManager.LoadScene("LoadScreen");
     }
 
     void Return()
     {
         SceneManager.UnloadSceneAsync(this.gameObject.scene);
+        if (GameRules.endGame)
+        {
+            SceneManager.LoadScene("Phony Selection");
+            GameRules.endGame = false;
+        }
+        
     }
 
     void chargeOptions()

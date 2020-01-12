@@ -9,6 +9,10 @@ public class PauseMenu : MonoBehaviour
 {
     public Button OptionsButton, ResumeButton, MainMenuButton, PhonySelectButton;
     public GameObject pauseMenu;
+    public Animator[] animators;
+    public AudioSource[] audios;
+    
+    public List<float> animatorsSpeed = null;
 
     // Start is called before the first frame update
     void Start()
@@ -53,12 +57,39 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0;
         pauseMenu.SetActive(true);
+        animators = FindObjectsOfType(typeof(Animator)) as Animator[];
+        audios = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (Animator animatorItem in animators)
+        {
+            animatorsSpeed.Add(animatorItem.speed);
+            animatorItem.speed = 0f;
+
+        }
+        foreach (AudioSource audio in audios)
+        {
+            audio.Pause();
+
+        }
     }
 
     private void ContinueGame()
     {
         Time.timeScale = 1;
         pauseMenu.SetActive(false);
+        animators = FindObjectsOfType(typeof(Animator)) as Animator[];
+        audios = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+        foreach (Animator animatorItem in animators)
+        {
+            foreach (float speed in animatorsSpeed)
+            {
+                animatorItem.speed = speed;
+            }
+        }
+
+        foreach (AudioSource audio in audios)
+        {
+            audio.UnPause();
+        }
     }
 
 }
