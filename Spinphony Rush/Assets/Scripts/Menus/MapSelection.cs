@@ -15,10 +15,9 @@ public class MapSelection : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        chargeOptions();
-            maps[0].onClick.AddListener(RandomMap);
-            maps[1].onClick.AddListener(ActionMap1);
-            maps[2].onClick.AddListener(ActionMap2);
+        maps[0].onClick.AddListener(RandomMap);
+        maps[1].onClick.AddListener(ActionMap1);
+        maps[2].onClick.AddListener(ActionMap2);
         BackButton.onClick.AddListener(Return);
     }
 
@@ -30,21 +29,18 @@ public class MapSelection : MonoBehaviour
 
     private void RandomMap()
     {
-        chargeOptions();
         mapToLoad = "Map" + UnityEngine.Random.Range(1, maps.Length);
         SceneManager.LoadScene("LoadScreen");
     }
 
     private void ActionMap1()
     {
-        chargeOptions();
         mapToLoad = "Map1";
         SceneManager.LoadScene("LoadScreen");
     }
 
     private void ActionMap2()
     {
-        chargeOptions();
         mapToLoad = "Map2";
         SceneManager.LoadScene("LoadScreen");
     }
@@ -56,12 +52,7 @@ public class MapSelection : MonoBehaviour
         {
             SceneManager.LoadScene("Phony Selection");
             GameRules.endGame = false;
-        }
-        
+        }       
     }
 
-    void chargeOptions()
-    {
-        SceneManager.LoadSceneAsync("Options", LoadSceneMode.Additive);
-    }
 }
