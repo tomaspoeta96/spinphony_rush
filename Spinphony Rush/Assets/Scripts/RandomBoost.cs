@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RandomBoost : MonoBehaviour {
-    private const int DISTANCE_PHONY_BOOST = 3;
+    public int DISTANCE_PHONY_BOOST = 3;
     public GameObject[] boosts = new GameObject[16];
     public PhonyPlayerController phony;
     private int index = 0;
