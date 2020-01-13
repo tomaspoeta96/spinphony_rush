@@ -1225,7 +1225,7 @@ GameObject:
   - component: {fileID: 904755480}
   - component: {fileID: 904755479}
   m_Layer: 5
-  m_Name: Space (1)
+  m_Name: Food
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1620,6 +1620,7 @@ MonoBehaviour:
   - {fileID: 634862730}
   - {fileID: 1636096320}
   - {fileID: 1019292336}
+  - {fileID: 1486435048}
   BackButton: {fileID: 196760738}
 --- !u!1 &1338468098
 GameObject:
