@@ -13,6 +13,6 @@ public class MapSpace : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        this.transform.Rotate(0f, 0f, -0.3f, Space.Self);
     }
 }
