@@ -31,47 +31,58 @@ public class RandomBoost : MonoBehaviour {
                     distance = curDistance;
                 }
             }
-            switch (boosts[index].name) {
-                case "JumpBoost":
-                    if(!on_map_Jump) {
-                        if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+            try
+            {
+                switch (boosts[index].name)
+                {
+                    case "JumpBoost":
+                        if (!on_map_Jump)
                         {
-                            boosts[index].SetActive(true);
+                            if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+                            {
+                                boosts[index].SetActive(true);
+                            }
+                            on_map_Jump = true;
+                            boosts[index].GetComponentInChildren<Animator>().SetBool("DisplaySalto", true);
                         }
-                        on_map_Jump = true;
-                        boosts[index].GetComponentInChildren<Animator>().SetBool("DisplaySalto", true);
-                    } 
-                    break;
-                case "ShieldBoost":
-                    if(!on_map_Shield) {
-                        if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+                        break;
+                    case "ShieldBoost":
+                        if (!on_map_Shield)
                         {
-                            boosts[index].SetActive(true);
+                            if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+                            {
+                                boosts[index].SetActive(true);
+                            }
+                            on_map_Shield = true;
+                            boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayShield", true);
                         }
-                        on_map_Shield = true;
-                        boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayShield", true);
-                    } 
-                    break;
-                case "FuelleBoost":
-                    if(!on_map_Fuelle) {
-                        if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+                        break;
+                    case "FuelleBoost":
+                        if (!on_map_Fuelle)
                         {
-                            boosts[index].SetActive(true);
+                            if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+                            {
+                                boosts[index].SetActive(true);
+                            }
+                            on_map_Fuelle = true;
+                            boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayFuelle", true);
                         }
-                        on_map_Fuelle = true;
-                        boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayFuelle", true);
-                    } 
-                    break;
-                case "MoveBoost":
-                    if(!on_map_Move) {
-                        if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+                        break;
+                    case "MoveBoost":
+                        if (!on_map_Move)
                         {
-                            boosts[index].SetActive(true);
+                            if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
+                            {
+                                boosts[index].SetActive(true);
+                            }
+                            on_map_Move = true;
+                            boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayHandle", true);
                         }
-                        on_map_Move = true;
-                        boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayHandle", true);
-                    } 
-                    break;
+                        break;
+                }
+            } catch(System.NullReferenceException ex)
+            {
+
             }
             elapsedTime -= repeatTime;
         }
