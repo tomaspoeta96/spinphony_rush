@@ -62,10 +62,12 @@
      <Compile Include="Assets\Scripts\GIF.cs" />
      <Compile Include="Assets\Scripts\Hud.cs" />
      <Compile Include="Assets\Scripts\KeysTable.cs" />
-     <Compile Include="Assets\Scripts\Maps\SoundRing_Space.cs" />
-     <Compile Include="Assets\Scripts\Maps\ObstacleBehaviour.cs" />
-     <Compile Include="Assets\Scripts\Maps\MapSpace.cs" />
      <Compile Include="Assets\Scripts\Maps\GenerateObstacle.cs" />
+     <Compile Include="Assets\Scripts\Maps\MapSpace.cs" />
+     <Compile Include="Assets\Scripts\Maps\ObstacleBehaviour.cs" />
+     <Compile Include="Assets\Scripts\Maps\SoundRing_Space.cs" />
+     <Compile Include="Assets\Scripts\Maps\UntagPlayer.cs" />
+     <Compile Include="Assets\Scripts\Menus\LoadScreen.cs" />
      <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Menus\MapSelection.cs" />
      <Compile Include="Assets\Scripts\Menus\Options.cs" />

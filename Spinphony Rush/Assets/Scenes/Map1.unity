@@ -2353,6 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69fb554d8c246e3429285de68ac9d6b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DISTANCE_PHONY_BOOST: 3
   boosts:
   - {fileID: 1037591681}
   - {fileID: 600030152}
@@ -67562,6 +67563,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4773336876162876552, guid: 26b5dc3f414f5394aa1e8f081173a41e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1254877295358905822, guid: 26b5dc3f414f5394aa1e8f081173a41e,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -67576,11 +67582,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.1
-      objectReference: {fileID: 0}
-    - target: {fileID: -4773336876162876552, guid: 26b5dc3f414f5394aa1e8f081173a41e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26b5dc3f414f5394aa1e8f081173a41e, type: 3}
