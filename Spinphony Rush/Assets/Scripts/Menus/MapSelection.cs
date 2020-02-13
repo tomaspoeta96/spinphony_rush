@@ -18,6 +18,7 @@ public class MapSelection : MonoBehaviour
         maps[0].onClick.AddListener(RandomMap);
         maps[1].onClick.AddListener(ActionMap1);
         maps[2].onClick.AddListener(ActionMap2);
+        maps[3].onClick.AddListener(ActionMap3);
         BackButton.onClick.AddListener(Return);
     }
 
@@ -42,6 +43,12 @@ public class MapSelection : MonoBehaviour
     private void ActionMap2()
     {
         mapToLoad = "Map2";
+        SceneManager.LoadScene("LoadScreen");
+    }
+
+    private void ActionMap3()
+    {
+        mapToLoad = "Map3";
         SceneManager.LoadScene("LoadScreen");
     }
 

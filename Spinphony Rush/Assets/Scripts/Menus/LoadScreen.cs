@@ -11,14 +11,17 @@ public class LoadScreen : MonoBehaviour
     {
         chargeOptions();
     }
-
     // Update is called once per frame
     void Update()
     {
+
         waitTime += Time.deltaTime;
         if (waitTime >= 3f) {
             SceneManager.LoadScene(MapSelection.mapToLoad);
+            waitTime = 0;
         }
+
+        
     }
 
     void chargeOptions()
