@@ -6,7 +6,7 @@ using System;
 using UnityEngine.SceneManagement;
 
 public class GameRules : MonoBehaviour
-{
+{    
     public static bool endGame = false;
     public PhonySelectionData PhonySelectionData;
     public OptionsData optionsData;
