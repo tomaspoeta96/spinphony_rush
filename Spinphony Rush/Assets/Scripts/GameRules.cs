@@ -12,7 +12,7 @@ public class GameRules : MonoBehaviour
     public OptionsData optionsData;
     private List<GameObject> phonyList = new List<GameObject>();
 
-    private CountDown c;
+    private CountDown countDown;
     public Text texto;
     private float time;
 
@@ -38,7 +38,7 @@ public class GameRules : MonoBehaviour
     {
         cont = 0;
         Time.timeScale = 1;
-        c = GameObject.Find("CountDown").GetComponent<CountDown>();
+        countDown = GameObject.Find("CountDown").GetComponent<CountDown>();
 
         if (GameObject.Find("OptionsData") != null)
         {
@@ -83,7 +83,7 @@ public class GameRules : MonoBehaviour
         if(cont == phonyList.Count) {
             time += Time.deltaTime;
             texto.transform.position = new Vector3(950,600,0);
-            c.the_end(texto);
+            countDown.printTheEnd(texto);
             if(time >= 3.5) {
                 time = 0;
                 endGame = true;

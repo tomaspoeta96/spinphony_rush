@@ -64,7 +64,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\CountDown.cs" />
-    <Compile Include="Assets\Scripts\Fuelle.cs" />
     <Compile Include="Assets\Scripts\GameRules.cs" />
     <Compile Include="Assets\Scripts\GIF.cs" />
     <Compile Include="Assets\Scripts\Hud.cs" />
@@ -87,6 +86,7 @@
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelectioner.cs" />
     <Compile Include="Assets\Scripts\Menus\Phony Selection\PhonySelector.cs" />
     <Compile Include="Assets\Scripts\Menus\SoundSlider.cs" />
+    <Compile Include="Assets\Scripts\Phonies\Fuelle.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyActionFactory.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyBeaten.cs" />
     <Compile Include="Assets\Scripts\Phonies\PhonyBoostHandling.cs" />

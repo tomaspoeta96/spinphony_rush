@@ -5,13 +5,20 @@ using UnityEngine.UI;
 
 public class GIF : MonoBehaviour
 {
-    public Texture2D[] frames;
+    private Object[] frames;
     public int fps = 24;
 
-    // Update is called once per frame
+    private void Start() {
+        frames = Resources.LoadAll("LoadScreen/LoadingGifLogo/", typeof(Texture2D));
+        print(frames.Length);
+    }
+
     void Update()
     {
         int index = (int)(Time.time * fps) % frames.Length;
-        GetComponent<RawImage>().texture = frames[index];
+        GetComponent<RawImage>().texture = (Texture2D)frames[index];
     }
+
+
+
 }
