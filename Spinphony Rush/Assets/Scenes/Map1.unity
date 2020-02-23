@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4280521, g: 0.57227767, b: 0.31056803, a: 1}
+  m_IndirectSpecularColor: {r: 0.4280356, g: 0.57235134, b: 0.31061542, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -77030,13 +77030,26 @@ GameObject:
   - component: {fileID: 6042065995948559372}
   - component: {fileID: 2103834677}
   - component: {fileID: 2103834675}
+  - component: {fileID: 8209064200081826514}
   m_Layer: 9
-  m_Name: Tronco
+  m_Name: Ring
   m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8209064200081826514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8209064200081826513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf555f92b58213a4bb14d0249098a630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8216857937604743879
 Transform:
   m_ObjectHideFlags: 0

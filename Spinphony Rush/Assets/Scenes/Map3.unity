@@ -4288,6 +4288,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1850817111}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1584519552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584519551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb0249209bc9c574ca460837434e29f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &1584519555
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4495,6 +4507,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2502203975881118265, guid: f89032db1ac1eea4a940980f0f579794,
+        type: 3}
+      propertyPath: m_Name
+      value: Ring
       objectReference: {fileID: 0}
     - target: {fileID: 4695666576454475813, guid: f89032db1ac1eea4a940980f0f579794,
         type: 3}

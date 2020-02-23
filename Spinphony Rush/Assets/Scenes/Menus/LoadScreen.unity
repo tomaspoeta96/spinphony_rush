@@ -457,31 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4869bd306f9ddb49961555cc072114a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frames:
-  - {fileID: 2800000, guid: 9943564a0aace1a47b14f3094604ef83, type: 3}
-  - {fileID: 2800000, guid: 8fa136d4c1a3bc548938c721ed3f9e47, type: 3}
-  - {fileID: 2800000, guid: 071c90a9bd8812d4284aa7f7660da821, type: 3}
-  - {fileID: 2800000, guid: fb38e75a0454ecd4b8550a0698346e0c, type: 3}
-  - {fileID: 2800000, guid: 125a756fc1c9ea240bcbff8d72ca2c5a, type: 3}
-  - {fileID: 2800000, guid: 82e764916f61e4e4ea6a15ee12d5e607, type: 3}
-  - {fileID: 2800000, guid: 4d52f8f88d8e60b429c4140ba44f7382, type: 3}
-  - {fileID: 2800000, guid: db348c0b30db6cd4ead13ba78e1d2fb9, type: 3}
-  - {fileID: 2800000, guid: f0429754f7a97c34b8c4a5fbe0623710, type: 3}
-  - {fileID: 2800000, guid: 80d21b6f15f0b1045ad13b494c325a41, type: 3}
-  - {fileID: 2800000, guid: 18d1bd3f1e7de4144b11fb15277884ef, type: 3}
-  - {fileID: 2800000, guid: dc99ecf0124b07e438b700de8a137263, type: 3}
-  - {fileID: 2800000, guid: 0658a9c06294bab489dff8a139187ee9, type: 3}
-  - {fileID: 2800000, guid: 511db5b87cbec304699810c2c0efb1b6, type: 3}
-  - {fileID: 2800000, guid: 8e9a96afa6b9272468416cbcaacbfa3b, type: 3}
-  - {fileID: 2800000, guid: 8a651e26a797bd942a6cac0b46f6539b, type: 3}
-  - {fileID: 2800000, guid: 87050775d54000644a8d0ab7d9e1fe94, type: 3}
-  - {fileID: 2800000, guid: d7d997d36f1469c47a1154693800f49e, type: 3}
-  - {fileID: 2800000, guid: 1b43a95dd8b6a1b43a433724d2df3478, type: 3}
-  - {fileID: 2800000, guid: 1d271942c3e06bd4daab1a8a35c2eb24, type: 3}
-  - {fileID: 2800000, guid: ea36e99b9fb0bd243b1864881905ae4e, type: 3}
-  - {fileID: 2800000, guid: 0265bc97181e3f143997d63d777f3937, type: 3}
-  - {fileID: 2800000, guid: b285f02050752134b9a1af61cc2c0eaa, type: 3}
-  - {fileID: 2800000, guid: bda5f1116d646404cbbd0a2591012e1b, type: 3}
   fps: 24
 --- !u!114 &1609958829
 MonoBehaviour:
@@ -641,7 +616,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Texture: {fileID: 2800000, guid: 4ca28b2d541effe4da37449c9942661f, type: 3}
+  m_Texture: {fileID: 0}
   m_UVRect:
     serializedVersion: 2
     x: 0

@@ -2,25 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadScreen : MonoBehaviour
 {
     private float waitTime = 0f;
+    private Texture texture_;
     // Start is called before the first frame update
     void Start()
     {
+        texture_ = GameObject.Find("Canvas").transform.Find("Background").GetComponent<RawImage>().texture;
+        switch (MapSelection.mapToLoad)
+        {
+            case "Map1":
+                texture_ = Resources.Load<Texture>("LoadScreen/Charge1");
+                print(texture_);
+                break;
+            case "Map2":
+                texture_ = Resources.Load<Texture>("LoadScreen/Charge2");
+                break;
+            case "Map3":
+                texture_ = Resources.Load<Texture>("LoadScreen/Charge3");
+                break;
+        }
+        GameObject.Find("Canvas").transform.Find("Background").GetComponent<RawImage>().texture = texture_;
         chargeOptions();
     }
     // Update is called once per frame
     void Update()
     {
-
         waitTime += Time.deltaTime;
         if (waitTime >= 3f) {
             SceneManager.LoadScene(MapSelection.mapToLoad);
             waitTime = 0;
         }
-
         
     }
 
