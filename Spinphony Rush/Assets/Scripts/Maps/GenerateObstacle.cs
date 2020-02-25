@@ -26,6 +26,7 @@ public class GenerateObstacle : MonoBehaviour
     private float timerDurationSpawn;
     private float elapsedTimeDelete = 0f;
     private float timerDurationDelete;
+    private List<Vector3> listV = new List<Vector3>();
 
     void Start()
     {
@@ -41,78 +42,99 @@ public class GenerateObstacle : MonoBehaviour
 
     void Update()
     {
-
-        elapsedTimeSpawn += Time.deltaTime;
-        if (elapsedTimeSpawn >= timerDurationSpawn)
-        {
-            if (goList.Count < maxCountObstacles)
+            elapsedTimeSpawn += Time.deltaTime;
+            if (elapsedTimeSpawn >= timerDurationSpawn)
             {
-                foreach (GameObject go in GameObject.FindObjectsOfType(typeof(GameObject)))
+                if (goList.Count < maxCountObstacles)
                 {
-                    if (go.name == obstacleName)
+                    foreach (GameObject go in GameObject.FindObjectsOfType(typeof(GameObject)))
                     {
-                        goList.Add(go);
-                    }
+                        if (go.name == obstacleName)
+                        {
+                            goList.Add(go);
+                        }
 
-                }
-                Vector3 auxPosition = vectors[UnityEngine.Random.Range(0, vectors.Count - 1)];
-                auxPosition.y = position;
-                if (!(goList.Count == 0))
-                {
-                    if (Vector3.Distance(goList[goList.Count - 1].transform.position, auxPosition) >= distanceBetweenObstacles)
+                    }
+                    Vector3 auxPosition = vectors[UnityEngine.Random.Range(0, vectors.Count - 1)];
+                    auxPosition.y = position;
+                    if (!(goList.Count == 0))
+                    {
+                        if (Vector3.Distance(goList[goList.Count - 1].transform.position, auxPosition) >= distanceBetweenObstacles)
+                        {
+                            obstacle = Instantiate(obstacle) as Transform;
+                            obstacle.name = obstacleName;                            
+                            obstacle.position = auxPosition;
+                        }
+                    }
+                    else
                     {
                         obstacle = Instantiate(obstacle) as Transform;
-                        obstacle.name = obstacleName;                            
+                        obstacle.name = obstacleName;
                         obstacle.position = auxPosition;
                     }
                 }
-                else
-                {
-                    obstacle = Instantiate(obstacle) as Transform;
-                    obstacle.name = obstacleName;
-                    obstacle.position = auxPosition;
-                }
+                timerDurationSpawn = UnityEngine.Random.Range(5, 10);
+                elapsedTimeSpawn = 0f;
             }
-            timerDurationSpawn = UnityEngine.Random.Range(5, 10);
-            elapsedTimeSpawn = 0f;
-        }
 
-        elapsedTimeDelete += Time.deltaTime;
-        if(elapsedTimeDelete >= timerDurationDelete)
-        {
-            if(goList.Count > 0)
+            elapsedTimeDelete += Time.deltaTime;
+            if(elapsedTimeDelete >= timerDurationDelete)
             {
-                int indexRemoved = UnityEngine.Random.Range(0, goList.Count);
-                GameObject toDestroy = goList[indexRemoved];
-                goList.RemoveAt(indexRemoved);
-                try
+                if(goList.Count > 0)
                 {
-                    toDestroy.GetComponent<ObstacleBehaviour>().setDestroySignal(true);
-                } catch(NullReferenceException e)
-                {
+                    int indexRemoved = UnityEngine.Random.Range(0, goList.Count);
+                    GameObject toDestroy = goList[indexRemoved];
+                    goList.RemoveAt(indexRemoved);
+                    try
+                    {
+                        toDestroy.GetComponent<ObstacleBehaviour>().setDestroySignal(true);
+                    } catch(NullReferenceException e)
+                    {
+
+                    }
 
                 }
-                
-            }
-            timerDurationDelete = UnityEngine.Random.Range(5, 10);
-            elapsedTimeDelete = 0f;
-        }
+                timerDurationDelete = UnityEngine.Random.Range(5, 10);
+                elapsedTimeDelete = 0f;
+            } 
+
+        //generatePoints();
         
     }
 
     private void generatePoints()
     {
         RaycastHit hit;
-        if (Physics.Raycast(new Vector3(UnityEngine.Random.Range(colliderBounds.min.x, colliderBounds.max.x), position, UnityEngine.Random.Range(colliderBounds.min.z, colliderBounds.max.z)), -Vector3.up, out hit, howFarRayCast))
+        bool entr = true;
+        if (Physics.Raycast(new Vector3(UnityEngine.Random.Range(colliderBounds.min.x, colliderBounds.max.x), 500, UnityEngine.Random.Range(colliderBounds.min.z, colliderBounds.max.z)), -Vector3.up, out hit, Mathf.Infinity))
         {
-            if (hit.point.y == 68.46669f)
-            {
-                obstacle = Instantiate(obstacle) as Transform;
-                obstacle.transform.position = hit.point;
-                i += 1;
-                if (i <= 200)
+
+            if ((68.3f <=hit.point.y && hit.point.y <= 68.6f)) {
+                if (listV.Count == 0)
                 {
-                    savePreset(Application.dataPath + "/DataMaps/TreeRandomPoints.txt", hit.point);
+                    print(hit.point);
+                    listV.Add(hit.point);
+                }
+                for (int i = 0; i<listV.Count;i++) {
+                    if(Vector3.Distance(listV[i], hit.point) < 1) {
+                        print("hola");
+                        entr = false;
+                    }
+                }
+                if(entr)
+                {
+                    print(hit.point);
+                    listV.Add(hit.point);
+                }
+                i += 1;
+                print(i);
+                if (i == 500)
+                {
+                    foreach(Vector3 vec in listV)
+                    {
+                        savePreset(Application.dataPath + "/DataMaps/TreeRandomPoints.txt", vec);
+                    }
+                    
                 }
             }
         }
