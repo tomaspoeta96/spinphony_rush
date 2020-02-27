@@ -13,7 +13,7 @@ public class CountDown : MonoBehaviour {
     public Font font;
 
     void Start() {
-        time = 30;
+        time = 31;
         trans[3] = 0.6f;
         trans[0] = 1;
     }
@@ -50,7 +50,6 @@ public class CountDown : MonoBehaviour {
                 }
                 else {
                     GameRules.endGame = true;
-                    SceneManager.LoadScene("Map Selection");
                 }
             } catch (Exception) {
                 print("Time must be a number");
