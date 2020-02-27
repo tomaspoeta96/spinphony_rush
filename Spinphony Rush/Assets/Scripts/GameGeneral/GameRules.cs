@@ -87,11 +87,24 @@ public class GameRules : MonoBehaviour
             if(time >= 3.5) {
                 time = 0;
                 endGame = true;
-                SceneManager.LoadScene("Map Selection");
             }
             
         }
         cont = 0;
+
+        if(endGame == true) {
+            try
+            {
+                for (int i = 0; i < phonyList.Count; i++)
+                {
+                    phonyList[i].GetComponent<PhonyPlayerController>().pseudoMuerte();
+                }
+            } catch(Exception e)
+            {
+                print("Phonies already dead");
+            }
+            SceneManager.LoadScene("Map Selection");
+        }
         
     }
     

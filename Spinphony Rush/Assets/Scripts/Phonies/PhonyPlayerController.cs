@@ -144,37 +144,9 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider c) {
-        if (!haveFuelle && !haveJump && !haveMove && !haveShield) { 
-            switch (c.gameObject.name) {
-                case "JumpBoost":
-                    haveJump = true;
-                    boosts.on_map_Jump = false;
-                    playEffect(c.gameObject);
-                    c.gameObject.GetComponentInChildren<Animator>().SetBool("PickedSalto", true);
-                    c.gameObject.SetActive(false);
-                    break;
-                case "ShieldBoost":
-                    haveShield = true;
-                    boosts.on_map_Shield = false;
-                    playEffect(c.gameObject);
-                    c.gameObject.GetComponentInChildren<Animator>().SetBool("PickedShield", true);
-                    c.gameObject.SetActive(false);
-                    break;
-                case "FuelleBoost":
-                    haveFuelle = true;
-                    boosts.on_map_Fuelle = false;
-                    playEffect(c.gameObject);
-                    c.gameObject.GetComponentInChildren<Animator>().SetBool("PickedFuelle", true);
-                    c.gameObject.SetActive(false);
-                    break;
-                case "MoveBoost":
-                    haveMove = true;
-                    boosts.on_map_Move = false;
-                    playEffect(c.gameObject);
-                    c.gameObject.GetComponentInChildren<Animator>().SetBool("PickedHandle", true);
-                    c.gameObject.SetActive(false);
-                    break;
-            }
+        if (!haveFuelle && !haveJump && !haveMove && !haveShield) {
+            boosts.boostPicked(this,c);
+            
             if (!pickedBoost.GetComponent<AudioSource>().isPlaying)
             {
                 Destroy(pickedBoost);
@@ -198,7 +170,7 @@ public class PhonyPlayerController : MonoBehaviour {
              */
             if (!locked)
             {
-                if ((phony_body.gameObject.GetComponent<PhonyPlayerController>().vel >= col.gameObject.GetComponent<PhonyPlayerController>().vel) && col.relativeVelocity.magnitude > 15f)
+                if ((phony_body.gameObject.GetComponent<PhonyPlayerController>().vel >= col.gameObject.GetComponent<PhonyPlayerController>().vel) && col.relativeVelocity.magnitude > 15f && !col.gameObject.GetComponent<PhonyPlayerController>().phony_fuelle.getHasShield())
                 {
                     points += 100;
                     col.gameObject.GetComponent<PhonyPlayerController>().currentFuelle.fuelleSlider.value -= 0.1f;
@@ -239,7 +211,7 @@ public class PhonyPlayerController : MonoBehaviour {
         }
     }
 
-    void playEffect(GameObject go)
+    public void playEffect(GameObject go)
     {
         pickedBoost = Instantiate(go);
         pickedBoost.GetComponent<Renderer>().enabled = false;
@@ -410,6 +382,15 @@ public class PhonyPlayerController : MonoBehaviour {
         }      
     }
 
+    public bool pseudoMuerte() {
+        muerto = true;
+        gameObject.tag = "Untagged";
+        gameObject.transform.parent.gameObject.tag = "Untagged";
+        phony_fuelle.fuelleSlider.value = 0f;
+        this.enabled = false;
+        return true;
+    }
+
     public bool muerte() {
         muerto = true;
         gameObject.tag = "Untagged";
@@ -433,6 +414,9 @@ public class PhonyPlayerController : MonoBehaviour {
     }
     public void setHaveShield(bool haveShield) {
         this.haveShield = haveShield;
+    }
+    public void setHaveFuelle(bool haveFuelle) {
+        this.haveFuelle = haveFuelle;
     }
     public void setIsJump(bool isJump) {
         this.isJump = isJump;
