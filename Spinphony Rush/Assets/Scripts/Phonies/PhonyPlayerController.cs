@@ -347,8 +347,7 @@ public class PhonyPlayerController : MonoBehaviour {
         }
         else {
             print("Player Destroyed");
-            muerte();
-            
+            muerte();       
             return false;
         }
     }

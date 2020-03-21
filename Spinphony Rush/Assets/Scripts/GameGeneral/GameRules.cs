@@ -36,6 +36,7 @@ public class GameRules : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        endGame = false;
         cont = 0;
         Time.timeScale = 1;
         countDown = GameObject.Find("CountDown").GetComponent<CountDown>();

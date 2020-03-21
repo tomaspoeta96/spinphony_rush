@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 494}
   m_MaxSize: {x: 14002, y: 14044}
   vertical: 1
-  controlID: 33
+  controlID: 36
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 222}
   m_MaxSize: {x: 8006, y: 4022}
   vertical: 0
-  controlID: 34
+  controlID: 37
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -289,8 +289,8 @@ MonoBehaviour:
     y: 0
     width: 634
     height: 413
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 104, y: 122}
+  m_MaxSize: {x: 4004, y: 4022}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -371,7 +371,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -432,9 +432,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 46310000
+      m_SelectedIDs: aa240000
       m_LastClickedID: 0
-      m_ExpandedIDs: 6e96ffffd29fffffe8a2ffff76a3fffff6a8ffffcaadffff28aeffffe0c1ffff18c5ffff4cc5ffff4cf7ffffaafaffffb251020082ee020096ee020006ef020036ef02005aef0200763b0300823b0300
+      m_ExpandedIDs: 12d5ffff32ddffffa4faffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -494,9 +494,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -11.374218, y: 32.04451, z: 35.845695}
+    m_Target: {x: 142.51361, y: 737.6421, z: -182.50723}
     speed: 2
-    m_Value: {x: -11.374218, y: 32.04451, z: 35.845695}
+    m_Value: {x: 142.51361, y: 737.6421, z: -182.50723}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -525,13 +525,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: 0.37252215, y: -0.05813011, z: 0.023363538, w: 0.9259176}
+    m_Target: {x: -0.3480661, y: -0.005062477, z: 0.001886822, w: -0.93746406}
     speed: 2
-    m_Value: {x: 0.37251818, y: -0.058129493, z: 0.02336329, w: 0.9259078}
+    m_Value: {x: -0.348063, y: -0.005062432, z: 0.0018868052, w: -0.93745565}
   m_Size:
-    m_Target: 120.52044
+    m_Target: 540.94275
     speed: 2
-    m_Value: 120.52044
+    m_Value: 540.94275
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -743,20 +743,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Menus
+    - Assets/Scripts/GameGeneral
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Menus
+  - Assets/Scripts/GameGeneral
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\hp\Desktop\Spinphony Rush\spinphony_rush\Spinphony Rush
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 44320000
-    m_LastClickedID: 12868
-    m_ExpandedIDs: 00000000402b0000482b00005c2e0000ba2e0000ee2e0000782f00006a300000cc300000ea3000002631000000ca9a3b
+    scrollPos: {x: 0, y: 150}
+    m_SelectedIDs: c62c0000
+    m_LastClickedID: 11462
+    m_ExpandedIDs: 000000005a2b0000622b0000762e0000d42e0000082f0000922f000084300000e6300000043100004031000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -784,7 +784,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000402b0000482b0000ba2e0000ee2e0000782f00006a300000cc300000ea30000026310000
+    m_ExpandedIDs: 000000005a2b0000622b0000d42e0000082f0000922f000084300000e63000000431000040310000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
