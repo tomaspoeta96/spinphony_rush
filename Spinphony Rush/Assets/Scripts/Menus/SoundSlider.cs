@@ -15,6 +15,7 @@ public class SoundSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.GetComponent<Slider>().value = AudioListener.volume;
     }
 
     public void OnValueChanged()
