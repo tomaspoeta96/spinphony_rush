@@ -525,9 +525,9 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.3480661, y: -0.005062477, z: 0.001886822, w: -0.93746406}
+    m_Target: {x: 0.37252215, y: -0.05813011, z: 0.023363538, w: 0.9259176}
     speed: 2
-    m_Value: {x: -0.348063, y: -0.005062432, z: 0.0018868052, w: -0.93745565}
+    m_Value: {x: 0.37251818, y: -0.058129493, z: 0.02336329, w: 0.9259078}
   m_Size:
     m_Target: 540.94275
     speed: 2
@@ -743,11 +743,11 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/GameGeneral
+    - Assets/Scenes/Menus
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts/GameGeneral
+  - Assets/Scenes/Menus
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\hp\Desktop\Spinphony Rush\spinphony_rush\Spinphony Rush
   m_LockTracker:
