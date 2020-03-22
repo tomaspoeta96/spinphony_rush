@@ -41,6 +41,8 @@ public class PauseMenu : MonoBehaviour
     private void OnClickMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        Destroy(GameObject.Find("PhonySelectionData"));
+        Destroy(GameObject.Find("OptionsData"));
     }
 
     private void OnClickOptions()
