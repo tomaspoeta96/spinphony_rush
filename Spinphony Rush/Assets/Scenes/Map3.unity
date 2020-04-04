@@ -1190,14 +1190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9ed14279ec90941a1fc08dabe751bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boost: {fileID: 190405072}
-  name: {fileID: 351856236}
-  text_points: {fileID: 787003192}
   phony: {fileID: 1517811489}
-  jump: {fileID: 2100000, guid: 053326d55df5263488be31f8076ab312, type: 2}
-  shield: {fileID: 2100000, guid: a6159fa87f5760b44aeb6b490abfa5c8, type: 2}
-  fuelle: {fileID: 2100000, guid: d9f6caea3a099cc4ea2a8aaf6870e1cc, type: 2}
-  move: {fileID: 2100000, guid: bcdb740707a13714c8e89d95f8bd3e2b, type: 2}
 --- !u!4 &224755815
 Transform:
   m_ObjectHideFlags: 0
@@ -1360,14 +1353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9ed14279ec90941a1fc08dabe751bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boost: {fileID: 1945928325}
-  name: {fileID: 1365370142}
-  text_points: {fileID: 629182959}
   phony: {fileID: 1625194432}
-  jump: {fileID: 2100000, guid: 053326d55df5263488be31f8076ab312, type: 2}
-  shield: {fileID: 2100000, guid: a6159fa87f5760b44aeb6b490abfa5c8, type: 2}
-  fuelle: {fileID: 2100000, guid: d9f6caea3a099cc4ea2a8aaf6870e1cc, type: 2}
-  move: {fileID: 2100000, guid: bcdb740707a13714c8e89d95f8bd3e2b, type: 2}
 --- !u!1001 &456196469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2062,6 +2048,21 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 4735985174503639974, guid: 1fce899ccdd3fc24aa82eabcf6bbf96b,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735985174503639974, guid: 1fce899ccdd3fc24aa82eabcf6bbf96b,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735985174503639974, guid: 1fce899ccdd3fc24aa82eabcf6bbf96b,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fce899ccdd3fc24aa82eabcf6bbf96b, type: 3}
 --- !u!1 &760294110
@@ -2250,14 +2251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9ed14279ec90941a1fc08dabe751bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boost: {fileID: 872454015}
-  name: {fileID: 1347123925}
-  text_points: {fileID: 114369199}
   phony: {fileID: 1039770735}
-  jump: {fileID: 2100000, guid: 053326d55df5263488be31f8076ab312, type: 2}
-  shield: {fileID: 2100000, guid: a6159fa87f5760b44aeb6b490abfa5c8, type: 2}
-  fuelle: {fileID: 2100000, guid: d9f6caea3a099cc4ea2a8aaf6870e1cc, type: 2}
-  move: {fileID: 2100000, guid: bcdb740707a13714c8e89d95f8bd3e2b, type: 2}
 --- !u!1001 &816648897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2878,14 +2872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9ed14279ec90941a1fc08dabe751bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boost: {fileID: 865360552}
-  name: {fileID: 194040680}
-  text_points: {fileID: 1480860012}
   phony: {fileID: 130242196}
-  jump: {fileID: 2100000, guid: 053326d55df5263488be31f8076ab312, type: 2}
-  shield: {fileID: 2100000, guid: a6159fa87f5760b44aeb6b490abfa5c8, type: 2}
-  fuelle: {fileID: 2100000, guid: d9f6caea3a099cc4ea2a8aaf6870e1cc, type: 2}
-  move: {fileID: 2100000, guid: bcdb740707a13714c8e89d95f8bd3e2b, type: 2}
 --- !u!1 &1121001623 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1279828476731470338, guid: ca1d1b577f6241e42bce89e10f71edc0,
@@ -4251,10 +4238,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
