@@ -1281,7 +1281,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 2, y: 269}
-  m_SizeDelta: {x: 476.3, y: 49.3}
+  m_SizeDelta: {x: 476.30005, y: 49.30005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &225958974
 MonoBehaviour:
@@ -9852,7 +9852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1922613474}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: EnterKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10573,7 +10573,7 @@ GameObject:
   - component: {fileID: 2121152429}
   - component: {fileID: 2121152428}
   m_Layer: 5
-  m_Name: Fondo (1)
+  m_Name: Difuminado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
