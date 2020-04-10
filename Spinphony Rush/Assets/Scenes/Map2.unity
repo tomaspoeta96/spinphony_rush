@@ -2023,6 +2023,21 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 4735985174503639974, guid: 1fce899ccdd3fc24aa82eabcf6bbf96b,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735985174503639974, guid: 1fce899ccdd3fc24aa82eabcf6bbf96b,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735985174503639974, guid: 1fce899ccdd3fc24aa82eabcf6bbf96b,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fce899ccdd3fc24aa82eabcf6bbf96b, type: 3}
 --- !u!1 &379395614
@@ -2071,14 +2086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9ed14279ec90941a1fc08dabe751bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boost: {fileID: 547173949}
-  name: {fileID: 168015377}
-  text_points: {fileID: 168956685}
   phony: {fileID: 1931238462}
-  jump: {fileID: 2100000, guid: 053326d55df5263488be31f8076ab312, type: 2}
-  shield: {fileID: 2100000, guid: a6159fa87f5760b44aeb6b490abfa5c8, type: 2}
-  fuelle: {fileID: 2100000, guid: d9f6caea3a099cc4ea2a8aaf6870e1cc, type: 2}
-  move: {fileID: 2100000, guid: bcdb740707a13714c8e89d95f8bd3e2b, type: 2}
 --- !u!1 &438321631
 GameObject:
   m_ObjectHideFlags: 0
@@ -2889,14 +2897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9ed14279ec90941a1fc08dabe751bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boost: {fileID: 679520709}
-  name: {fileID: 485089519}
-  text_points: {fileID: 13992987}
   phony: {fileID: 520091695}
-  jump: {fileID: 2100000, guid: 053326d55df5263488be31f8076ab312, type: 2}
-  shield: {fileID: 2100000, guid: a6159fa87f5760b44aeb6b490abfa5c8, type: 2}
-  fuelle: {fileID: 2100000, guid: d9f6caea3a099cc4ea2a8aaf6870e1cc, type: 2}
-  move: {fileID: 2100000, guid: bcdb740707a13714c8e89d95f8bd3e2b, type: 2}
 --- !u!1001 &610009515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3896,14 +3897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9ed14279ec90941a1fc08dabe751bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boost: {fileID: 1139847007}
-  name: {fileID: 1864940623}
-  text_points: {fileID: 1643026724}
   phony: {fileID: 2010211758}
-  jump: {fileID: 2100000, guid: 053326d55df5263488be31f8076ab312, type: 2}
-  shield: {fileID: 2100000, guid: a6159fa87f5760b44aeb6b490abfa5c8, type: 2}
-  fuelle: {fileID: 2100000, guid: d9f6caea3a099cc4ea2a8aaf6870e1cc, type: 2}
-  move: {fileID: 2100000, guid: bcdb740707a13714c8e89d95f8bd3e2b, type: 2}
 --- !u!1 &882318693
 GameObject:
   m_ObjectHideFlags: 0
@@ -4788,10 +4782,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -6758,14 +6752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9ed14279ec90941a1fc08dabe751bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boost: {fileID: 882318694}
-  name: {fileID: 955942150}
-  text_points: {fileID: 1584086041}
   phony: {fileID: 620221009}
-  jump: {fileID: 2100000, guid: 053326d55df5263488be31f8076ab312, type: 2}
-  shield: {fileID: 2100000, guid: a6159fa87f5760b44aeb6b490abfa5c8, type: 2}
-  fuelle: {fileID: 2100000, guid: d9f6caea3a099cc4ea2a8aaf6870e1cc, type: 2}
-  move: {fileID: 2100000, guid: bcdb740707a13714c8e89d95f8bd3e2b, type: 2}
 --- !u!4 &1964630183
 Transform:
   m_ObjectHideFlags: 0

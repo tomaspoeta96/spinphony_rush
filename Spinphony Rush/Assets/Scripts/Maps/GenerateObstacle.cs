@@ -91,8 +91,7 @@ public class GenerateObstacle : MonoBehaviour
                 } catch(NullReferenceException e)
                 {
 
-                }
-                
+                }             
             }
             timerDurationDelete = UnityEngine.Random.Range(5, 10);
             elapsedTimeDelete = 0f;
@@ -140,7 +139,5 @@ public class GenerateObstacle : MonoBehaviour
         inp_stm.Close();
         return vectors;
     }
-
-
 
 }
