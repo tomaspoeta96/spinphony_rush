@@ -2332,6 +2332,7 @@ MonoBehaviour:
   on_map_Fuelle: 0
   on_map_Move: 0
   Yboost: 72
+  FORCE_JUMP: 1500
   fileName: TreeRandomPoints.txt
 --- !u!4 &806159369
 Transform:
@@ -3232,7 +3233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 148586, guid: 3ced417f82bbd6742bdabb9be0707293, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 496482, guid: 3ced417f82bbd6742bdabb9be0707293, type: 3}
       propertyPath: m_LocalPosition.x

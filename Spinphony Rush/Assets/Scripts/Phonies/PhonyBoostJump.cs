@@ -5,7 +5,7 @@ using UnityEngine;
 public class PhonyBoostJump : PhonyActionFactory
 {
     public override void action() {
-        phonyClass.getPhony().AddForce(Vector3.up * 1000f);
+        phonyClass.getPhony().AddForce(Vector3.up * GameObject.Find("RandomBoost").gameObject.GetComponent<RandomBoost>().FORCE_JUMP);
         phonyClass.setIsJump(false);
     }
 

@@ -13,34 +13,30 @@ public class PhonyPlayerController : MonoBehaviour {
     private int seconds;
     private int pushSeconds;
     private float pushSpeed;
-    private bool onPush = false;
-    private bool haveJump = false;
-    private bool haveShield = false;
-    private bool haveFuelle = false;
-    private bool haveMove = false;
+
+
+
+    private bool grounded;
+    private Vector3 posCur;
+    private Quaternion rotCur;
 
     private bool locked = false;
     private float timeToLock = 0f;
 
-    private GameObject pickedBoost = null;
-
-    private KeysTable keys;
+    
+    
     public RandomBoost boosts;
     public Fuelle currentFuelle;
     private bool muerto = false;
     public Fuelle phony_fuelle;
-    private bool isShield = false;
-    private bool isJump = false;
-    private bool isMove = false;
+    
     private int points;
 
-    private bool isBeaten = false;
-    private bool keysDisabler = false;
-    private bool isReverb = false;
-
+   
     public PhysicMaterial normalPhysic;
     public PhysicMaterial movePhysic;
 
+    private KeysTable keys;
     public KeyCode right;
     public KeyCode left;
     public KeyCode up;
@@ -48,9 +44,23 @@ public class PhonyPlayerController : MonoBehaviour {
     public KeyCode hability;
     public KeyCode boost;
     public KeyCode reverb;
-
+    private bool keysDisabler = false;
+    
+    
     private int collisionCount = 0;
 
+
+    private GameObject pickedBoost = null;
+    private bool onPush = false;
+    private bool haveJump = false;
+    private bool haveShield = false;
+    private bool haveFuelle = false;
+    private bool haveMove = false;
+    private bool isBeaten = false;
+    private bool isShield = false;
+    private bool isJump = false;
+    private bool isMove = false;
+    private bool isReverb = false;
     private PhonyBoostHandling phonyBoostHandling;
     private PhonyBooostShield phonyBoostShield;
     private PhonyBoostJump phonyBoostJump;
@@ -89,7 +99,34 @@ public class PhonyPlayerController : MonoBehaviour {
 
     void FixedUpdate() {
 
-        if(locked)
+        Ray ray = new Ray(phony_body.position, -phony_body.transform.up);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1.5f) == true)
+        {
+            Debug.DrawLine(phony_body.position, hit.point, Color.green);
+            rotCur = Quaternion.FromToRotation(phony_body.transform.up, hit.normal) * phony_body.rotation;
+            posCur = new Vector3(phony_body.position.x, hit.point.y, phony_body.position.z);
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
+        if (grounded == true)
+        {
+            phony_body.transform.position = Vector3.Lerp(phony_body.position, posCur, Time.deltaTime * 5);
+            phony_body.transform.rotation = Quaternion.Lerp(phony_body.rotation, rotCur, Time.deltaTime * 5);
+        }
+        else
+        {
+            phony_body.transform.position = Vector3.Lerp(phony_body.position, phony_body.position - Vector3.up * 1f, Time.deltaTime * 1);
+
+            rotCur.eulerAngles = Vector3.zero;
+            phony_body.transform.rotation = Quaternion.Lerp(phony_body.rotation, rotCur, Time.deltaTime);
+
+        }
+
+        if (locked)
         {
             timeToLock += Time.deltaTime;
             if (timeToLock >= 0.2f)
@@ -155,7 +192,7 @@ public class PhonyPlayerController : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision col) {
-        if (col.gameObject.name == "Tronco") {
+        if (col.gameObject.name == "Ring") {
             phony_body.drag = 0;
             collisionCount++;
         }
@@ -219,12 +256,12 @@ public class PhonyPlayerController : MonoBehaviour {
         pickedBoost.GetComponent<AudioSource>().Play();
     }
     void OnCollisionStay(Collision col) {
-        if (col.gameObject.name == "Tronco") {
+        if (col.gameObject.name == "Ring") {
             collisionCount = 1;
         }
     }
     void OnCollisionExit(Collision col) {
-        if (col.gameObject.name == "Tronco") {
+        if (col.gameObject.name == "Ring") {
             phony_body.drag = 0.1f;
             collisionCount--;
         }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 public class RandomBoost : MonoBehaviour {
-    public int DISTANCE_PHONY_BOOST = 6;
+    public int DISTANCE_PHONY_BOOST = 5;
 
     private int index = 0;
     public GameObject[] boosts = new GameObject[4];
@@ -18,6 +18,10 @@ public class RandomBoost : MonoBehaviour {
     public bool on_map_Fuelle = false;
     public bool on_map_Move = false;
     public float Yboost;
+
+    //Este atributo es para configurar la fuerza del boost de salto por cada mapa
+    public float FORCE_JUMP = 1300f;
+
     private Vector3 auxPosition;
     private List<Vector3> vectors;
     public String fileName;
