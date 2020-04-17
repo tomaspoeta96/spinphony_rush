@@ -30,7 +30,7 @@ public class GenerateObstacle : MonoBehaviour
 
     void Start()
     {
-        map = GameObject.FindGameObjectWithTag("Map");
+        map = GameObject.FindGameObjectWithTag("Ring");
         mapCollider = map.GetComponent<Collider>();
         mapMesh = map.GetComponent<MeshFilter>().mesh;
         colliderBounds = mapCollider.bounds;
@@ -144,6 +144,7 @@ public class GenerateObstacle : MonoBehaviour
     {
         File.AppendAllText(doc, vect+"\n");
     }
+
     public List<Vector3> getPointsFromFile(string file_path)
     {
         StreamReader inp_stm = new StreamReader(file_path);
@@ -154,9 +155,9 @@ public class GenerateObstacle : MonoBehaviour
             inp_ln = inp_ln.Substring(1, inp_ln.Length - 2);
             string[] vectorValues = inp_ln.Split(',');
             Vector3 result = new Vector3(
-             float.Parse(vectorValues[0], System.Globalization.CultureInfo.InvariantCulture.NumberFormat),
-             float.Parse(vectorValues[1], System.Globalization.CultureInfo.InvariantCulture.NumberFormat),
-             float.Parse(vectorValues[2], System.Globalization.CultureInfo.InvariantCulture.NumberFormat));
+            float.Parse(vectorValues[0], System.Globalization.CultureInfo.InvariantCulture.NumberFormat),
+            float.Parse(vectorValues[1], System.Globalization.CultureInfo.InvariantCulture.NumberFormat),
+            float.Parse(vectorValues[2], System.Globalization.CultureInfo.InvariantCulture.NumberFormat));
             vectors.Add(result);
         }
         inp_stm.Close();

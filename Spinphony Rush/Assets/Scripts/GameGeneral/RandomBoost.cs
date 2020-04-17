@@ -19,6 +19,10 @@ public class RandomBoost : MonoBehaviour {
     public bool on_map_Move = false;
     public float Yboost;
 
+    Vector3 posCur;
+    Quaternion rotCur;
+    bool grounded;
+
     //Este atributo es para configurar la fuerza del boost de salto por cada mapa
     public float FORCE_JUMP = 1300f;
 
@@ -89,7 +93,8 @@ public class RandomBoost : MonoBehaviour {
                             if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
                             {
                                 boosts[index].SetActive(true);
-                                boosts[index].transform.position = auxPosition;
+                                findAngle(auxPosition, boosts[index]);
+                                //boosts[index].transform.position = auxPosition;
                             }
                             on_map_Jump = true;
                             boosts[index].GetComponentInChildren<Animator>().SetBool("DisplaySalto", true);
@@ -101,7 +106,8 @@ public class RandomBoost : MonoBehaviour {
                             if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
                             {
                                 boosts[index].SetActive(true);
-                                boosts[index].transform.position = auxPosition;
+                                findAngle(auxPosition, boosts[index]);
+                                //boosts[index].transform.position = auxPosition;
                             }
                             on_map_Shield = true;
                             boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayShield", true);
@@ -113,7 +119,8 @@ public class RandomBoost : MonoBehaviour {
                             if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
                             {
                                 boosts[index].SetActive(true);
-                                boosts[index].transform.position = auxPosition;
+                                findAngle(auxPosition, boosts[index]);
+                                //boosts[index].transform.position = auxPosition;
                             }
                             on_map_Fuelle = true;
                             boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayFuelle", true);
@@ -125,7 +132,8 @@ public class RandomBoost : MonoBehaviour {
                             if (Vector3.Distance(boosts[index].transform.position, closest.transform.position) > DISTANCE_PHONY_BOOST)
                             {
                                 boosts[index].SetActive(true);
-                                boosts[index].transform.position= auxPosition;
+                                findAngle(auxPosition, boosts[index]);
+                                //boosts[index].transform.position= auxPosition;
                             }
                             on_map_Move = true;
                             boosts[index].GetComponentInChildren<Animator>().SetBool("DisplayHandle", true);
@@ -213,5 +221,31 @@ public class RandomBoost : MonoBehaviour {
             list[randomIndex] = temp;
         }
         return list;
+    }
+
+    private void findAngle(Vector3 position, GameObject boost) {
+        Ray ray = new Ray(position, - Vector3.up);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1.5f) == true) {
+            Debug.DrawLine(position, hit.point, Color.green);
+            rotCur = Quaternion.FromToRotation(Vector3.up, hit.normal) * boost.transform.rotation;
+            posCur = new Vector3(boost.transform.position.x, hit.point.y, boost.transform.position.z);
+            grounded = true;
+        }
+        else {
+            grounded = false;
+        }
+        
+        if (grounded == true) {
+            boost.transform.position = Vector3.Lerp(boost.transform.position, posCur, Time.deltaTime * 5);
+            boost.transform.rotation = Quaternion.Lerp(boost.transform.rotation, rotCur, Time.deltaTime * 5);
+        }
+        else {
+            boost.transform.position = Vector3.Lerp(boost.transform.position, boost.transform.position - Vector3.up * 1f, Time.deltaTime * 1);
+
+            rotCur.eulerAngles = Vector3.zero;
+            boost.transform.rotation = Quaternion.Lerp(boost.transform.rotation, rotCur, Time.deltaTime);
+
+        }
     }
 }
